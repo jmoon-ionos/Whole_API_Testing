@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "24db5d1e-63f6-4c21-80b2-45674a34bbcf",
+		"name": "Activity Log Service API",
+		"description": "The Activity Log API allows contract owners and administrators to discover what activity has happened under a specific contract. This allows auditing of user activities as well as changes to any resources. The activity is grouped by contract and can be refined using date ranges. Activity information is READ-ONLY so all calls made against the Activity Log API will be handled using GET requests.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "activitylog",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "contracts",
+							"item": [
+								{
+									"name": "{contractNumber}",
+									"item": [
+										{
+											"name": "Download Activity Log entries.",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/activitylog/v1/contracts/:contractNumber?dateStart=<string>&dateEnd=<string>&offset=0&limit=20",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"activitylog",
+														"v1",
+														"contracts",
+														":contractNumber"
+													],
+													"query": [
+														{
+															"key": "dateStart",
+															"value": "<string>",
+															"description": "Start date for the Activity Log entries (inclusive) (e.g. '2021-09-23T11:43:51Z' or '2016-07-01')"
+														},
+														{
+															"key": "dateEnd",
+															"value": "<string>",
+															"description": "End date for the Activity Log entries (exclusive) (e.g. '2021-09-27T10:31:15Z' or '2016-07-30')"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "Page index ( the number of hits to skip )"
+														},
+														{
+															"key": "limit",
+															"value": "20",
+															"description": "Page size ( the maximum number of hits to return )"
+														}
+													],
+													"variable": [
+														{
+															"key": "contractNumber",
+															"value": "<integer>",
+															"description": "(Required) Contract number thats activity log entires should be downloaded."
+														}
+													]
+												},
+												"description": "This operation returns the actual activity log data related to the specific **contractId** supplied in the request. The amount of data returned can be limited by providing one or both of the optional **startDate** and **endDate** parameters.\n\n  If valid values for both **dateStart** and **dateEnd** are supplied, then the activity log information for the date range specified will be returned. Omitting either **dateStart** or **dateEnd** will return all entries available after **dateStart** or before **dateEnd**.\n\n  For pagination use the **page** and **size** parameters.\n"
+											},
+											"response": [
+												{
+													"name": "Downloading activity log entries",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/activitylog/v1/contracts/:contractNumber?dateStart=<string>&dateEnd=<string>&offset=0&limit=20",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"activitylog",
+																"v1",
+																"contracts",
+																":contractNumber"
+															],
+															"query": [
+																{
+																	"key": "dateStart",
+																	"value": "<string>",
+																	"description": "Start date for the Activity Log entries (inclusive) (e.g. '2021-09-23T11:43:51Z' or '2016-07-01')"
+																},
+																{
+																	"key": "dateEnd",
+																	"value": "<string>",
+																	"description": "End date for the Activity Log entries (exclusive) (e.g. '2021-09-27T10:31:15Z' or '2016-07-30')"
+																},
+																{
+																	"key": "offset",
+																	"value": "0",
+																	"description": "Page index ( the number of hits to skip )"
+																},
+																{
+																	"key": "limit",
+																	"value": "20",
+																	"description": "Page size ( the maximum number of hits to return )"
+																}
+															],
+															"variable": [
+																{
+																	"key": "contractNumber"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"hits\": {\n    \"total\": \"<integer>\",\n    \"hits\": [\n      {\n        \"_source\": {\n          \"principal\": {\n            \"sourceIP\": \"<string>\",\n            \"identity\": {\n              \"contractNumber\": \"<string>\",\n              \"username\": \"<string>\"\n            },\n            \"sourceService\": \"<string>\",\n            \"serviceHost\": \"<string>\"\n          },\n          \"meta\": {\n            \"auditVersion\": \"<string>\",\n            \"requestId\": \"<string>\",\n            \"queueRefId\": \"<integer>\",\n            \"time\": \"<string>\",\n            \"transactionId\": \"<string>\"\n          },\n          \"event\": {\n            \"param\": {\n              \"action\": \"GET\",\n              \"error\": {\n                \"httpStatus\": \"<string>\",\n                \"messages\": [\n                  {\n                    \"errorCode\": \"<string>\",\n                    \"message\": \"<string>\"\n                  },\n                  {\n                    \"errorCode\": \"<string>\",\n                    \"message\": \"<string>\"\n                  }\n                ]\n              },\n              \"uri\": \"<string>\",\n              \"initiator\": \"<string>\",\n              \"errorCode\": \"<string>\",\n              \"sourceService\": \"<string>\"\n            },\n            \"resources\": [\n              {\n                \"action\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              },\n              {\n                \"action\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              }\n            ],\n            \"message\": \"<string>\",\n            \"status\": \"RUNNING\",\n            \"type\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"_source\": {\n          \"principal\": {\n            \"sourceIP\": \"<string>\",\n            \"identity\": {\n              \"contractNumber\": \"<string>\",\n              \"username\": \"<string>\"\n            },\n            \"sourceService\": \"<string>\",\n            \"serviceHost\": \"<string>\"\n          },\n          \"meta\": {\n            \"auditVersion\": \"<string>\",\n            \"requestId\": \"<string>\",\n            \"queueRefId\": \"<integer>\",\n            \"time\": \"<string>\",\n            \"transactionId\": \"<string>\"\n          },\n          \"event\": {\n            \"param\": {\n              \"action\": \"PATCH\",\n              \"error\": {\n                \"httpStatus\": \"<string>\",\n                \"messages\": [\n                  {\n                    \"errorCode\": \"<string>\",\n                    \"message\": \"<string>\"\n                  },\n                  {\n                    \"errorCode\": \"<string>\",\n                    \"message\": \"<string>\"\n                  }\n                ]\n              },\n              \"uri\": \"<string>\",\n              \"initiator\": \"<string>\",\n              \"errorCode\": \"<string>\",\n              \"sourceService\": \"<string>\"\n            },\n            \"resources\": [\n              {\n                \"action\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              },\n              {\n                \"action\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              }\n            ],\n            \"message\": \"<string>\",\n            \"status\": \"DONE\",\n            \"type\": \"<string>\"\n          }\n        }\n      }\n    ]\n  }\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/activitylog/v1/contracts/:contractNumber?dateStart=<string>&dateEnd=<string>&offset=0&limit=20",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"activitylog",
+																"v1",
+																"contracts",
+																":contractNumber"
+															],
+															"query": [
+																{
+																	"key": "dateStart",
+																	"value": "<string>",
+																	"description": "Start date for the Activity Log entries (inclusive) (e.g. '2021-09-23T11:43:51Z' or '2016-07-01')"
+																},
+																{
+																	"key": "dateEnd",
+																	"value": "<string>",
+																	"description": "End date for the Activity Log entries (exclusive) (e.g. '2021-09-27T10:31:15Z' or '2016-07-30')"
+																},
+																{
+																	"key": "offset",
+																	"value": "0",
+																	"description": "Page index ( the number of hits to skip )"
+																},
+																{
+																	"key": "limit",
+																	"value": "20",
+																	"description": "Page size ( the maximum number of hits to return )"
+																}
+															],
+															"variable": [
+																{
+																	"key": "contractNumber"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Forbidden",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/activitylog/v1/contracts/:contractNumber?dateStart=<string>&dateEnd=<string>&offset=0&limit=20",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"activitylog",
+																"v1",
+																"contracts",
+																":contractNumber"
+															],
+															"query": [
+																{
+																	"key": "dateStart",
+																	"value": "<string>",
+																	"description": "Start date for the Activity Log entries (inclusive) (e.g. '2021-09-23T11:43:51Z' or '2016-07-01')"
+																},
+																{
+																	"key": "dateEnd",
+																	"value": "<string>",
+																	"description": "End date for the Activity Log entries (exclusive) (e.g. '2021-09-27T10:31:15Z' or '2016-07-30')"
+																},
+																{
+																	"key": "offset",
+																	"value": "0",
+																	"description": "Page index ( the number of hits to skip )"
+																},
+																{
+																	"key": "limit",
+																	"value": "20",
+																	"description": "Page size ( the maximum number of hits to return )"
+																}
+															],
+															"variable": [
+																{
+																	"key": "contractNumber"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/activitylog/v1/contracts/:contractNumber?dateStart=<string>&dateEnd=<string>&offset=0&limit=20",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"activitylog",
+																"v1",
+																"contracts",
+																":contractNumber"
+															],
+															"query": [
+																{
+																	"key": "dateStart",
+																	"value": "<string>",
+																	"description": "Start date for the Activity Log entries (inclusive) (e.g. '2021-09-23T11:43:51Z' or '2016-07-01')"
+																},
+																{
+																	"key": "dateEnd",
+																	"value": "<string>",
+																	"description": "End date for the Activity Log entries (exclusive) (e.g. '2021-09-27T10:31:15Z' or '2016-07-30')"
+																},
+																{
+																	"key": "offset",
+																	"value": "0",
+																	"description": "Page index ( the number of hits to skip )"
+																},
+																{
+																	"key": "limit",
+																	"value": "20",
+																	"description": "Page size ( the maximum number of hits to return )"
+																}
+															],
+															"variable": [
+																{
+																	"key": "contractNumber"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "List all accessible contracts",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/activitylog/v1/contracts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"activitylog",
+												"v1",
+												"contracts"
+											]
+										},
+										"description": "This operation is retrieving a list of contracts that your account credentials are authorized to access. This operation is primarily useful to IONOS' Resellers, as a non-reseller user account will only have access to a single contract."
+									},
+									"response": [
+										{
+											"name": "Successful operation",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/activitylog/v1/contracts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"activitylog",
+														"v1",
+														"contracts"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"href\": \"<uri>\"\n  }\n]"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/activitylog/v1/contracts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"activitylog",
+														"v1",
+														"contracts"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/activitylog/v1/contracts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"activitylog",
+														"v1",
+														"contracts"
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal Server Error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/activitylog/v1/contracts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"activitylog",
+														"v1",
+														"contracts"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Display API information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/activitylog/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activitylog",
+										"v1"
+									]
+								},
+								"description": "Display API information"
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/activitylog/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"activitylog",
+												"v1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"href\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com"
+		}
+	]
+}

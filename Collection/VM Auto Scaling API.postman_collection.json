@@ -1,0 +1,2550 @@
+{
+	"info": {
+		"_postman_id": "d1f02e96-44dc-414f-8f87-dd646173061b",
+		"name": "VM Auto Scaling API",
+		"description": "The VM Auto Scaling Service enables IONOS clients to horizontally scale the number of VM replicas based on configured rules. You can use VM Auto Scaling to ensure that you have a sufficient number of replicas to handle your application loads at all times.\n\nFor this purpose, create a VM Auto Scaling Group that contains the server replicas. The VM Auto Scaling Service ensures that the number of replicas in the group is always within the defined limits.\n\n\nWhen scaling policies are set, VM Auto Scaling creates or deletes replicas according to the requirements of your applications. For each policy, specified 'scale-in' and 'scale-out' actions are performed when the corresponding thresholds are reached.\n\nContact Support:\n Name: IONOS Cloud Support\n Email: support@cloud.ionos.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "{groupId}",
+					"item": [
+						{
+							"name": "actions",
+							"item": [
+								{
+									"name": "{actionId}",
+									"item": [
+										{
+											"name": "Get Scaling Action Details by ID",
+											"request": {
+												"auth": {
+													"type": "apikey",
+													"apikey": [
+														{
+															"key": "key",
+															"value": "Authorization",
+															"type": "string"
+														},
+														{
+															"key": "value",
+															"value": "{{apiKey}}",
+															"type": "string"
+														},
+														{
+															"key": "in",
+															"value": "header",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/actions/:actionId?depth=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"actions",
+														":actionId"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "actionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Retrieves the details of a scaling action specified by its ID. This operation returns metadata, properties, and the current status, for the specified scaling action"
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"SUSPENDED\"\n  },\n  \"properties\": {\n    \"actionStatus\": \"IN_PROGRESS\",\n    \"actionType\": \"SCALE_OUT\"\n  }\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Forbidden",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Get Scaling Actions",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "key",
+													"value": "Authorization",
+													"type": "string"
+												},
+												{
+													"key": "value",
+													"value": "{{apiKey}}",
+													"type": "string"
+												},
+												{
+													"key": "in",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId/actions?depth=0&orderBy=createdDate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId",
+												"actions"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+												},
+												{
+													"key": "orderBy",
+													"value": "createdDate",
+													"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+												}
+											],
+											"variable": [
+												{
+													"key": "groupId",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Retrieves the list of the last Auto Scaling actions or jobs performed by the VM Auto Scaling.The actions are specified by its ID. Only the last 10 actions are available"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/actions?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"actions"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": {\n    \"items\": {}\n  }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/actions?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"actions"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/actions?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"actions"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/actions?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"actions"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "servers",
+							"item": [
+								{
+									"name": "{serverId}",
+									"item": [
+										{
+											"name": "Get VM Auto Scaling Group Server by ID",
+											"request": {
+												"auth": {
+													"type": "apikey",
+													"apikey": [
+														{
+															"key": "key",
+															"value": "Authorization",
+															"type": "string"
+														},
+														{
+															"key": "value",
+															"value": "{{apiKey}}",
+															"type": "string"
+														},
+														{
+															"key": "in",
+															"value": "header",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/servers/:serverId?depth=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"servers",
+														":serverId"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "serverId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Retrieves the properties of the server specified by its ID.\n\n>Note that the server IDs of the VM Auto Scaling Groups are different from and do not match the VM server IDs in the data center."
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/servers/:serverId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"servers",
+																":serverId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "serverId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"SUSPENDED\"\n  },\n  \"properties\": {\n    \"datacenterServer\": {\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    \"name\": \"<string>\"\n  }\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/servers/:serverId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"servers",
+																":serverId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "serverId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Forbidden",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/servers/:serverId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"servers",
+																":serverId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "serverId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/groups/:groupId/servers/:serverId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"groups",
+																":groupId",
+																"servers",
+																":serverId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "groupId"
+																},
+																{
+																	"key": "serverId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Get VM Auto Scaling Group Servers",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "key",
+													"value": "Authorization",
+													"type": "string"
+												},
+												{
+													"key": "value",
+													"value": "{{apiKey}}",
+													"type": "string"
+												},
+												{
+													"key": "in",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId/servers?depth=0&orderBy=createdDate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId",
+												"servers"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+												},
+												{
+													"key": "orderBy",
+													"value": "createdDate",
+													"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+												}
+											],
+											"variable": [
+												{
+													"key": "groupId",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Retrieves all servers associated with the VM Auto Scaling Group specified by its ID. \n\n>Note that the server IDs of the VM Auto Scaling Groups are different from and do not match the VM server IDs in the data center."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/servers?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"servers"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": {\n    \"items\": {}\n  }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/servers?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"servers"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/servers?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"servers"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/groups/:groupId/servers?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"groups",
+														":groupId",
+														"servers"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+														}
+													],
+													"variable": [
+														{
+															"key": "groupId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get an Auto Scaling by ID",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/groups/:groupId?depth=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups",
+										":groupId"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "0",
+											"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+										}
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Retrieves the VM Auto Scaling Group specified by its ID including the details."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId?depth=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+												}
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    \"location\": \"<string>\",\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_SKYLAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"AA:88-60:8B-Be:CF\",\n              \"sourceIp\": \"216E19z253{230\",\n              \"targetIp\": \"32t150g1079250\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"D1-97:7e-bF:fB-03\",\n              \"sourceIp\": \"255$251v255D00\",\n              \"targetIp\": \"5n251M206i242\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"EGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"84:93-2c-dC:73-eF\",\n              \"sourceIp\": \"232z254 19#1\",\n              \"targetIp\": \"252w190\\\"05S81\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cE:65-fC:b9-fB-aE\",\n              \"sourceIp\": \"252-200a247[237\",\n              \"targetIp\": \"250s2330251[250\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"F47eC3b9-16da-96Da-A0Eb-b5B11A3acc7F\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"HDD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"53bcb28A-6f7c-cC81-00c1-5389d66a9680\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"entities\": {\n    \"actions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": {\n        \"items\": {}\n      }\n    },\n    \"servers\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": {\n        \"items\": {}\n      }\n    }\n  }\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId?depth=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+												}
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId?depth=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+												}
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId?depth=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+												}
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Update a VM Auto Scaling Group by ID",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_ICELAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"BIDIRECTIONAL\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cA:C5:2A:39:AC:a9\",\n              \"sourceIp\": \"237S1V255y253\",\n              \"targetIp\": \"245U97004v251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"97:f9:94-38-13:bC\",\n              \"sourceIp\": \"201:254J17a1\",\n              \"targetIp\": \"2558251&252L211\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"63:dD-1F:6B:95:6c\",\n              \"sourceIp\": \"239%224!82o223\",\n              \"targetIp\": \"243+017253O254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"Ac:aD-BA-eC-fe-29\",\n              \"sourceIp\": \"250q1746N12\",\n              \"targetIp\": \"216~250P213v254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"5aace222-bfb0-8819-0A4C-BaE13F32f6A9\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"AUTO\",\n          \"image\": \"A6A5A7Cb-2C13-307a-0A01-85fb86985CCd\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    },\n    \"location\": -3601296.4450493604\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/groups/:groupId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups",
+										":groupId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Updates the VM Auto Scaling Group specified by its ID. The IDs assigned by the system when the resource is created, such as 'properties.datacenter.id' and 'backupunitId', are immutable and cannot be updated."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_ICELAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"BIDIRECTIONAL\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cA:C5:2A:39:AC:a9\",\n              \"sourceIp\": \"237S1V255y253\",\n              \"targetIp\": \"245U97004v251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"97:f9:94-38-13:bC\",\n              \"sourceIp\": \"201:254J17a1\",\n              \"targetIp\": \"2558251&252L211\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"63:dD-1F:6B:95:6c\",\n              \"sourceIp\": \"239%224!82o223\",\n              \"targetIp\": \"243+017253O254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"Ac:aD-BA-eC-fe-29\",\n              \"sourceIp\": \"250q1746N12\",\n              \"targetIp\": \"216~250P213v254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"5aace222-bfb0-8819-0A4C-BaE13F32f6A9\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"AUTO\",\n          \"image\": \"A6A5A7Cb-2C13-307a-0A01-85fb86985CCd\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    },\n    \"location\": -3601296.4450493604\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    \"location\": \"<string>\",\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_SKYLAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"AA:88-60:8B-Be:CF\",\n              \"sourceIp\": \"216E19z253{230\",\n              \"targetIp\": \"32t150g1079250\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"D1-97:7e-bF:fB-03\",\n              \"sourceIp\": \"255$251v255D00\",\n              \"targetIp\": \"5n251M206i242\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"EGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"84:93-2c-dC:73-eF\",\n              \"sourceIp\": \"232z254 19#1\",\n              \"targetIp\": \"252w190\\\"05S81\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cE:65-fC:b9-fB-aE\",\n              \"sourceIp\": \"252-200a247[237\",\n              \"targetIp\": \"250s2330251[250\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"F47eC3b9-16da-96Da-A0Eb-b5B11A3acc7F\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"HDD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"53bcb28A-6f7c-cC81-00c1-5389d66a9680\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"entities\": {\n    \"actions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": {\n        \"items\": {}\n      }\n    },\n    \"servers\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": {\n        \"items\": {}\n      }\n    }\n  }\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_ICELAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"BIDIRECTIONAL\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cA:C5:2A:39:AC:a9\",\n              \"sourceIp\": \"237S1V255y253\",\n              \"targetIp\": \"245U97004v251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"97:f9:94-38-13:bC\",\n              \"sourceIp\": \"201:254J17a1\",\n              \"targetIp\": \"2558251&252L211\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"63:dD-1F:6B:95:6c\",\n              \"sourceIp\": \"239%224!82o223\",\n              \"targetIp\": \"243+017253O254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"Ac:aD-BA-eC-fe-29\",\n              \"sourceIp\": \"250q1746N12\",\n              \"targetIp\": \"216~250P213v254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"5aace222-bfb0-8819-0A4C-BaE13F32f6A9\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"AUTO\",\n          \"image\": \"A6A5A7Cb-2C13-307a-0A01-85fb86985CCd\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    },\n    \"location\": -3601296.4450493604\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"errorUuid\": \"fdAcBe53-F2BE-8cB3-56Ee-1188aFDfBdA6\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_ICELAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"BIDIRECTIONAL\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cA:C5:2A:39:AC:a9\",\n              \"sourceIp\": \"237S1V255y253\",\n              \"targetIp\": \"245U97004v251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"97:f9:94-38-13:bC\",\n              \"sourceIp\": \"201:254J17a1\",\n              \"targetIp\": \"2558251&252L211\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"63:dD-1F:6B:95:6c\",\n              \"sourceIp\": \"239%224!82o223\",\n              \"targetIp\": \"243+017253O254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"Ac:aD-BA-eC-fe-29\",\n              \"sourceIp\": \"250q1746N12\",\n              \"targetIp\": \"216~250P213v254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"5aace222-bfb0-8819-0A4C-BaE13F32f6A9\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"AUTO\",\n          \"image\": \"A6A5A7Cb-2C13-307a-0A01-85fb86985CCd\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    },\n    \"location\": -3601296.4450493604\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_ICELAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"BIDIRECTIONAL\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"cA:C5:2A:39:AC:a9\",\n              \"sourceIp\": \"237S1V255y253\",\n              \"targetIp\": \"245U97004v251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"97:f9:94-38-13:bC\",\n              \"sourceIp\": \"201:254J17a1\",\n              \"targetIp\": \"2558251&252L211\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"REJECTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"63:dD-1F:6B:95:6c\",\n              \"sourceIp\": \"239%224!82o223\",\n              \"targetIp\": \"243+017253O254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"Ac:aD-BA-eC-fe-29\",\n              \"sourceIp\": \"250q1746N12\",\n              \"targetIp\": \"216~250P213v254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"5aace222-bfb0-8819-0A4C-BaE13F32f6A9\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"AUTO\",\n          \"image\": \"A6A5A7Cb-2C13-307a-0A01-85fb86985CCd\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    },\n    \"location\": -3601296.4450493604\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a VM Auto Scaling Group by ID",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/groups/:groupId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups",
+										":groupId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Deletes the VM Auto Scaling Group specified by its ID.\n\n>Deleting the associated servers and disks is currently not implemented."
+							},
+							"response": [
+								{
+									"name": "No Content. The deletion was successful.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/groups/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"groups",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get VM Auto Scaling Groups",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/groups?depth=0&orderBy=createdDate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"groups"
+							],
+							"query": [
+								{
+									"key": "depth",
+									"value": "0",
+									"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+								},
+								{
+									"key": "orderBy",
+									"value": "createdDate",
+									"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+								}
+							]
+						},
+						"description": "Lists all VM Auto Scaling Groups of your account."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/groups?depth=0&orderBy=createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "0",
+											"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+										},
+										{
+											"key": "orderBy",
+											"value": "createdDate",
+											"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": [\n    {\n      \"properties\": {\n        \"datacenter\": {\n          \"id\": \"<uuid>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        \"location\": \"<string>\",\n        \"maxReplicaCount\": \"<long>\",\n        \"minReplicaCount\": \"<long>\",\n        \"name\": \"<string>\",\n        \"policy\": {\n          \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n          \"scaleInAction\": {\n            \"amount\": \"<number>\",\n            \"amountType\": \"ABSOLUTE\",\n            \"deleteVolumes\": \"<boolean>\",\n            \"cooldownPeriod\": \"5m\",\n            \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n          },\n          \"scaleInThreshold\": \"<number>\",\n          \"scaleOutAction\": {\n            \"amount\": \"<number>\",\n            \"amountType\": \"ABSOLUTE\",\n            \"cooldownPeriod\": \"5m\"\n          },\n          \"scaleOutThreshold\": \"<number>\",\n          \"unit\": \"TOTAL\",\n          \"range\": \"120s\"\n        },\n        \"replicaConfiguration\": {\n          \"cores\": \"<integer>\",\n          \"ram\": \"<integer>\",\n          \"availabilityZone\": \"AUTO\",\n          \"cpuFamily\": \"INTEL_SKYLAKE\",\n          \"nics\": [\n            {\n              \"lan\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"dhcp\": \"<boolean>\",\n              \"firewallActive\": \"<boolean>\",\n              \"firewallType\": \"EGRESS\",\n              \"flowLogs\": [\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"ACCEPTED\",\n                  \"direction\": \"BIDIRECTIONAL\",\n                  \"bucket\": \"<string>\"\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"REJECTED\",\n                  \"direction\": \"BIDIRECTIONAL\",\n                  \"bucket\": \"<string>\"\n                }\n              ],\n              \"firewallRules\": [\n                {\n                  \"protocol\": \"TCP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"86:Dc-D1:5d-f0-D7\",\n                  \"sourceIp\": \"225A253.11X250\",\n                  \"targetIp\": \"03~13l252<07\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"EGRESS\"\n                },\n                {\n                  \"protocol\": \"ICMP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"bC:Dd:76-5a-3d:52\",\n                  \"sourceIp\": \"69>177B251B255\",\n                  \"targetIp\": \"211y01a225_232\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"INGRESS\"\n                }\n              ],\n              \"targetGroup\": {\n                \"targetGroupId\": \"<string>\",\n                \"port\": \"<integer>\",\n                \"weight\": \"<integer>\"\n              }\n            },\n            {\n              \"lan\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"dhcp\": \"<boolean>\",\n              \"firewallActive\": \"<boolean>\",\n              \"firewallType\": \"EGRESS\",\n              \"flowLogs\": [\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"ACCEPTED\",\n                  \"direction\": \"EGRESS\",\n                  \"bucket\": \"<string>\"\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"REJECTED\",\n                  \"direction\": \"EGRESS\",\n                  \"bucket\": \"<string>\"\n                }\n              ],\n              \"firewallRules\": [\n                {\n                  \"protocol\": \"ANY\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"eA-81-55:Ab-E4-57\",\n                  \"sourceIp\": \"250207y253>215\",\n                  \"targetIp\": \"13x254-222\\\\216\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"INGRESS\"\n                },\n                {\n                  \"protocol\": \"UDP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"44-BA:Fd-Cd-B7:DA\",\n                  \"sourceIp\": \"200P201.45-211\",\n                  \"targetIp\": \"14|253B5:222\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"EGRESS\"\n                }\n              ],\n              \"targetGroup\": {\n                \"targetGroupId\": \"<string>\",\n                \"port\": \"<integer>\",\n                \"weight\": \"<integer>\"\n              }\n            }\n          ],\n          \"volumes\": [\n            {\n              \"type\": \"SSD_STANDARD\",\n              \"name\": \"<string>\",\n              \"size\": \"<integer>\",\n              \"bootOrder\": \"PRIMARY\",\n              \"image\": \"1f691dbA-4BAd-65dB-8247-605953AB65Ed\",\n              \"imageAlias\": \"<string>\",\n              \"sshKeys\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"userData\": \"<string>\",\n              \"bus\": \"VIRTIO\",\n              \"backupunitId\": \"<string>\",\n              \"imagePassword\": \"<string>\"\n            },\n            {\n              \"type\": \"SSD_STANDARD\",\n              \"name\": \"<string>\",\n              \"size\": \"<integer>\",\n              \"bootOrder\": \"PRIMARY\",\n              \"image\": \"CE768fbE-C364-cc46-aDdD-D9c3dF9cfA20\",\n              \"imageAlias\": \"<string>\",\n              \"sshKeys\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"userData\": \"<string>\",\n              \"bus\": \"VIRTIO\",\n              \"backupunitId\": \"<string>\",\n              \"imagePassword\": \"<string>\"\n            }\n          ]\n        }\n      },\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"BUSY\"\n      },\n      \"entities\": {\n        \"actions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": {\n            \"items\": {}\n          }\n        },\n        \"servers\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": {\n            \"items\": {}\n          }\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"datacenter\": {\n          \"id\": \"<uuid>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        \"location\": \"<string>\",\n        \"maxReplicaCount\": \"<long>\",\n        \"minReplicaCount\": \"<long>\",\n        \"name\": \"<string>\",\n        \"policy\": {\n          \"metric\": \"INSTANCE_NETWORK_OUT_PACKETS\",\n          \"scaleInAction\": {\n            \"amount\": \"<number>\",\n            \"amountType\": \"PERCENTAGE\",\n            \"deleteVolumes\": \"<boolean>\",\n            \"cooldownPeriod\": \"5m\",\n            \"terminationPolicy\": \"OLDEST_SERVER_FIRST\"\n          },\n          \"scaleInThreshold\": \"<number>\",\n          \"scaleOutAction\": {\n            \"amount\": \"<number>\",\n            \"amountType\": \"PERCENTAGE\",\n            \"cooldownPeriod\": \"5m\"\n          },\n          \"scaleOutThreshold\": \"<number>\",\n          \"unit\": \"TOTAL\",\n          \"range\": \"120s\"\n        },\n        \"replicaConfiguration\": {\n          \"cores\": \"<integer>\",\n          \"ram\": \"<integer>\",\n          \"availabilityZone\": \"AUTO\",\n          \"cpuFamily\": \"INTEL_ICELAKE\",\n          \"nics\": [\n            {\n              \"lan\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"dhcp\": \"<boolean>\",\n              \"firewallActive\": \"<boolean>\",\n              \"firewallType\": \"BIDIRECTIONAL\",\n              \"flowLogs\": [\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"ALL\",\n                  \"direction\": \"INGRESS\",\n                  \"bucket\": \"<string>\"\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"ACCEPTED\",\n                  \"direction\": \"EGRESS\",\n                  \"bucket\": \"<string>\"\n                }\n              ],\n              \"firewallRules\": [\n                {\n                  \"protocol\": \"UDP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"d0-bA-26:88:66-C1\",\n                  \"sourceIp\": \"252G251Y8o00\",\n                  \"targetIp\": \"49K251>254'8\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"EGRESS\"\n                },\n                {\n                  \"protocol\": \"ICMP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"Cd-1D-61-A1:a8-Aa\",\n                  \"sourceIp\": \"250C232x225Q233\",\n                  \"targetIp\": \"19s2526214M224\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"EGRESS\"\n                }\n              ],\n              \"targetGroup\": {\n                \"targetGroupId\": \"<string>\",\n                \"port\": \"<integer>\",\n                \"weight\": \"<integer>\"\n              }\n            },\n            {\n              \"lan\": \"<integer>\",\n              \"name\": \"<string>\",\n              \"dhcp\": \"<boolean>\",\n              \"firewallActive\": \"<boolean>\",\n              \"firewallType\": \"BIDIRECTIONAL\",\n              \"flowLogs\": [\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"ACCEPTED\",\n                  \"direction\": \"EGRESS\",\n                  \"bucket\": \"<string>\"\n                },\n                {\n                  \"name\": \"<string>\",\n                  \"action\": \"ACCEPTED\",\n                  \"direction\": \"EGRESS\",\n                  \"bucket\": \"<string>\"\n                }\n              ],\n              \"firewallRules\": [\n                {\n                  \"protocol\": \"UDP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"f1:a5:C1:aF-17-a6\",\n                  \"sourceIp\": \"12\\\\249O252W254\",\n                  \"targetIp\": \"254-255W12F18\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"INGRESS\"\n                },\n                {\n                  \"protocol\": \"ICMP\",\n                  \"name\": \"<string>\",\n                  \"sourceMac\": \"fD:d8:E5:D7:90:89\",\n                  \"sourceIp\": \"88r2525253O242\",\n                  \"targetIp\": \"251M26l16C218\",\n                  \"icmpCode\": \"<integer>\",\n                  \"icmpType\": \"<integer>\",\n                  \"portRangeStart\": \"<integer>\",\n                  \"portRangeEnd\": \"<integer>\",\n                  \"type\": \"INGRESS\"\n                }\n              ],\n              \"targetGroup\": {\n                \"targetGroupId\": \"<string>\",\n                \"port\": \"<integer>\",\n                \"weight\": \"<integer>\"\n              }\n            }\n          ],\n          \"volumes\": [\n            {\n              \"type\": \"SSD_STANDARD\",\n              \"name\": \"<string>\",\n              \"size\": \"<integer>\",\n              \"bootOrder\": \"AUTO\",\n              \"image\": \"3Cec4b7a-B248-f9dc-C099-d525ceEBcF1B\",\n              \"imageAlias\": \"<string>\",\n              \"sshKeys\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"userData\": \"<string>\",\n              \"bus\": \"VIRTIO\",\n              \"backupunitId\": \"<string>\",\n              \"imagePassword\": \"<string>\"\n            },\n            {\n              \"type\": \"SSD\",\n              \"name\": \"<string>\",\n              \"size\": \"<integer>\",\n              \"bootOrder\": \"NONE\",\n              \"image\": \"f6de7c7F-e513-6Fbe-1FE7-c6a230D609DA\",\n              \"imageAlias\": \"<string>\",\n              \"sshKeys\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"userData\": \"<string>\",\n              \"bus\": \"VIRTIO\",\n              \"backupunitId\": \"<string>\",\n              \"imagePassword\": \"<string>\"\n            }\n          ]\n        }\n      },\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"AVAILABLE\"\n      },\n      \"entities\": {\n        \"actions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": {\n            \"items\": {}\n          }\n        },\n        \"servers\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": {\n            \"items\": {}\n          }\n        }\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/groups?depth=0&orderBy=createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "0",
+											"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+										},
+										{
+											"key": "orderBy",
+											"value": "createdDate",
+											"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/groups?depth=0&orderBy=createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "0",
+											"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+										},
+										{
+											"key": "orderBy",
+											"value": "createdDate",
+											"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/groups?depth=0&orderBy=createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "0",
+											"description": "With this parameter, you control the level of detail of the response objects:\n\n  - ``0``: Only direct properties are included; children (such as executions or transitions) are not considered.\n\n  - ``1``: Direct properties and children references are included.\n\n  - ``2``: Direct properties and children properties are included.\n\n  - ``3``: Direct properties and children properties and children's children are included.\n\n  - etc.\n\n"
+										},
+										{
+											"key": "orderBy",
+											"value": "createdDate",
+											"description": "Use this parameter to specify by which the returned list should be sorted. Valid values are: ``createdDate`` and ``lastModifiedDate``."
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a VM Auto Scaling Group",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_XEON\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"ed-2a-Ea-99-f6-Fc\",\n              \"sourceIp\": \"247j254O235q50\",\n              \"targetIp\": \"2520081l250o251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0b:b0:Cb-2c-3C:4e\",\n              \"sourceIp\": \"208X250U249y4\",\n              \"targetIp\": \"244O255E252G254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"17-b0-dC:dB:EB-18\",\n              \"sourceIp\": \"42m254T2021253\",\n              \"targetIp\": \"253h3w254o11\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"C1-F4-E5:22-c4:7F\",\n              \"sourceIp\": \"252@255g008{254\",\n              \"targetIp\": \"252[252l19u251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"36CdFa29-Ca57-9A6f-4B5c-e0A68ba8F80c\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"Fa4DA8f1-4BA2-aE45-FB28-fEB0da6cc899\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": -63445451.275561474\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/groups",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"groups"
+							]
+						},
+						"description": "Creates a VM Auto Scaling Group. \n\n> Note that creating a group triggers the creation of two monitoring alarms for 'Scale-In' and 'Scale-Out' operations according to the 'Policy' settings."
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_XEON\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"ed-2a-Ea-99-f6-Fc\",\n              \"sourceIp\": \"247j254O235q50\",\n              \"targetIp\": \"2520081l250o251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0b:b0:Cb-2c-3C:4e\",\n              \"sourceIp\": \"208X250U249y4\",\n              \"targetIp\": \"244O255E252G254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"17-b0-dC:dB:EB-18\",\n              \"sourceIp\": \"42m254T2021253\",\n              \"targetIp\": \"253h3w254o11\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"C1-F4-E5:22-c4:7F\",\n              \"sourceIp\": \"252@255g008{254\",\n              \"targetIp\": \"252[252l19u251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"36CdFa29-Ca57-9A6f-4B5c-e0A68ba8F80c\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"Fa4DA8f1-4BA2-aE45-FB28-fEB0da6cc899\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": -63445451.275561474\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    \"location\": \"<string>\",\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_OUT_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"ABSOLUTE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"OLDEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_ICELAKE\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"BIDIRECTIONAL\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0E-9E-30:Bb:0E:ce\",\n              \"sourceIp\": \"59S16200^0\",\n              \"targetIp\": \"2511255m041f255\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"da:2F:53:1b:dE:21\",\n              \"sourceIp\": \"253;253.00^11\",\n              \"targetIp\": \"237O243R2459251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"40-E5:1F-dC-eD:A2\",\n              \"sourceIp\": \"254o252F9H249\",\n              \"targetIp\": \"219d252 251B244\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"B8-Cd-b8:88:da-08\",\n              \"sourceIp\": \"251w253N254{216\",\n              \"targetIp\": \"254p200J252+4\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"HDD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"D87b44eB-B919-c949-B00f-E4e64aD0b4A7\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"af66E9d3-1e7d-BDc3-54fA-8339FAB7d356\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"entities\": {\n    \"actions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    \"servers\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  },\n  \"startedActions\": [\n    {\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_XEON\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"ed-2a-Ea-99-f6-Fc\",\n              \"sourceIp\": \"247j254O235q50\",\n              \"targetIp\": \"2520081l250o251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0b:b0:Cb-2c-3C:4e\",\n              \"sourceIp\": \"208X250U249y4\",\n              \"targetIp\": \"244O255E252G254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"17-b0-dC:dB:EB-18\",\n              \"sourceIp\": \"42m254T2021253\",\n              \"targetIp\": \"253h3w254o11\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"C1-F4-E5:22-c4:7F\",\n              \"sourceIp\": \"252@255g008{254\",\n              \"targetIp\": \"252[252l19u251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"36CdFa29-Ca57-9A6f-4B5c-e0A68ba8F80c\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"Fa4DA8f1-4BA2-aE45-FB28-fEB0da6cc899\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": -63445451.275561474\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"errorUuid\": \"fdAcBe53-F2BE-8cB3-56Ee-1188aFDfBdA6\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_XEON\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"ed-2a-Ea-99-f6-Fc\",\n              \"sourceIp\": \"247j254O235q50\",\n              \"targetIp\": \"2520081l250o251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0b:b0:Cb-2c-3C:4e\",\n              \"sourceIp\": \"208X250U249y4\",\n              \"targetIp\": \"244O255E252G254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"17-b0-dC:dB:EB-18\",\n              \"sourceIp\": \"42m254T2021253\",\n              \"targetIp\": \"253h3w254o11\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"C1-F4-E5:22-c4:7F\",\n              \"sourceIp\": \"252@255g008{254\",\n              \"targetIp\": \"252[252l19u251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"36CdFa29-Ca57-9A6f-4B5c-e0A68ba8F80c\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"Fa4DA8f1-4BA2-aE45-FB28-fEB0da6cc899\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": -63445451.275561474\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_XEON\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"ed-2a-Ea-99-f6-Fc\",\n              \"sourceIp\": \"247j254O235q50\",\n              \"targetIp\": \"2520081l250o251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0b:b0:Cb-2c-3C:4e\",\n              \"sourceIp\": \"208X250U249y4\",\n              \"targetIp\": \"244O255E252G254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"17-b0-dC:dB:EB-18\",\n              \"sourceIp\": \"42m254T2021253\",\n              \"targetIp\": \"253h3w254o11\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"C1-F4-E5:22-c4:7F\",\n              \"sourceIp\": \"252@255g008{254\",\n              \"targetIp\": \"252[252l19u251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"36CdFa29-Ca57-9A6f-4B5c-e0A68ba8F80c\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"Fa4DA8f1-4BA2-aE45-FB28-fEB0da6cc899\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": -63445451.275561474\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"datacenter\": {\n      \"id\": \"<uuid>\"\n    },\n    \"maxReplicaCount\": \"<long>\",\n    \"minReplicaCount\": \"<long>\",\n    \"name\": \"<string>\",\n    \"policy\": {\n      \"metric\": \"INSTANCE_NETWORK_IN_BYTES\",\n      \"scaleInAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"deleteVolumes\": \"<boolean>\",\n        \"cooldownPeriod\": \"5m\",\n        \"terminationPolicy\": \"NEWEST_SERVER_FIRST\"\n      },\n      \"scaleInThreshold\": \"<number>\",\n      \"scaleOutAction\": {\n        \"amount\": \"<number>\",\n        \"amountType\": \"PERCENTAGE\",\n        \"cooldownPeriod\": \"5m\"\n      },\n      \"scaleOutThreshold\": \"<number>\",\n      \"unit\": \"TOTAL\",\n      \"range\": \"120s\"\n    },\n    \"replicaConfiguration\": {\n      \"cores\": \"<integer>\",\n      \"ram\": \"<integer>\",\n      \"availabilityZone\": \"AUTO\",\n      \"cpuFamily\": \"INTEL_XEON\",\n      \"nics\": [\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"INGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ICMP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"ed-2a-Ea-99-f6-Fc\",\n              \"sourceIp\": \"247j254O235q50\",\n              \"targetIp\": \"2520081l250o251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"EGRESS\"\n            },\n            {\n              \"protocol\": \"TCP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"0b:b0:Cb-2c-3C:4e\",\n              \"sourceIp\": \"208X250U249y4\",\n              \"targetIp\": \"244O255E252G254\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        },\n        {\n          \"lan\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"dhcp\": \"<boolean>\",\n          \"firewallActive\": \"<boolean>\",\n          \"firewallType\": \"INGRESS\",\n          \"flowLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ACCEPTED\",\n              \"direction\": \"EGRESS\",\n              \"bucket\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"action\": \"ALL\",\n              \"direction\": \"BIDIRECTIONAL\",\n              \"bucket\": \"<string>\"\n            }\n          ],\n          \"firewallRules\": [\n            {\n              \"protocol\": \"ANY\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"17-b0-dC:dB:EB-18\",\n              \"sourceIp\": \"42m254T2021253\",\n              \"targetIp\": \"253h3w254o11\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            },\n            {\n              \"protocol\": \"UDP\",\n              \"name\": \"<string>\",\n              \"sourceMac\": \"C1-F4-E5:22-c4:7F\",\n              \"sourceIp\": \"252@255g008{254\",\n              \"targetIp\": \"252[252l19u251\",\n              \"icmpCode\": \"<integer>\",\n              \"icmpType\": \"<integer>\",\n              \"portRangeStart\": \"<integer>\",\n              \"portRangeEnd\": \"<integer>\",\n              \"type\": \"INGRESS\"\n            }\n          ],\n          \"targetGroup\": {\n            \"targetGroupId\": \"<string>\",\n            \"port\": \"<integer>\",\n            \"weight\": \"<integer>\"\n          }\n        }\n      ],\n      \"volumes\": [\n        {\n          \"type\": \"SSD\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"PRIMARY\",\n          \"image\": \"36CdFa29-Ca57-9A6f-4B5c-e0A68ba8F80c\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        },\n        {\n          \"type\": \"SSD_PREMIUM\",\n          \"name\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"bootOrder\": \"NONE\",\n          \"image\": \"Fa4DA8f1-4BA2-aE45-FB28-fEB0da6cc899\",\n          \"imageAlias\": \"<string>\",\n          \"sshKeys\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"userData\": \"<string>\",\n          \"bus\": \"VIRTIO\",\n          \"backupunitId\": \"<string>\",\n          \"imagePassword\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"id\": -63445451.275561474\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com/autoscaling"
+		}
+	]
+}

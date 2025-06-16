@@ -1,0 +1,4865 @@
+{
+	"info": {
+		"_postman_id": "b8545bcb-99fe-4e2a-9f68-eee5c871df34",
+		"name": "IONOS Logging Service REST API",
+		"description": "The Logging Service offers a centralized platform to collect and store logs from various systems and applications. It includes tools to search, filter, visualize, and create alerts based on your log data.\nThis API provides programmatic control over logging pipelines, enabling you to create new pipelines or modify existing ones. It mirrors the functionality of the DCD visual tool, ensuring a consistent experience regardless of your chosen interface.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "pipelines",
+			"item": [
+				{
+					"name": "{pipelineId}",
+					"item": [
+						{
+							"name": "key",
+							"item": [
+								{
+									"name": "Create Key",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId",
+												"key"
+											],
+											"variable": [
+												{
+													"key": "pipelineId",
+													"value": "<uuid>",
+													"description": "(Required) The ID (UUID) of the Pipeline."
+												}
+											]
+										},
+										"description": "Creates a new Key.\n\nThe full Key needs to be provided to create the object.\nOptional data will be filled with defaults or left empty.\n"
+									},
+									"response": [
+										{
+											"name": "Key successfully created.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"key\": \"<string>\"\n}"
+										},
+										{
+											"name": "### Bad Request\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unsupported Media Type\nThe request has an unsupported media type.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unprocessable Entity\nThe request was well-formed but was unable to be followed due to semantic errors.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/pipelines/:pipelineId/key",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pipelines",
+														":pipelineId",
+														"key"
+													],
+													"variable": [
+														{
+															"key": "pipelineId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Retrieve Pipeline",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines/:pipelineId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines",
+										":pipelineId"
+									],
+									"variable": [
+										{
+											"key": "pipelineId",
+											"value": "<uuid>",
+											"description": "(Required) The ID (UUID) of the Pipeline."
+										}
+									]
+								},
+								"description": "Returns the Pipeline by ID."
+							},
+							"response": [
+								{
+									"name": "Getting Pipeline was successful.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"pipeline\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"state\": \"AVAILABLE\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"resourceURN\": \"<string>\"\n  },\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          }\n        ]\n      }\n    ],\n    \"tcpAddress\": \"<string>\",\n    \"httpAddress\": \"<string>\",\n    \"grafanaAddress\": \"<string>\",\n    \"resourceTier\": \"<string>\"\n  }\n}"
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Updates Pipeline",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines/:pipelineId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines",
+										":pipelineId"
+									],
+									"variable": [
+										{
+											"key": "pipelineId",
+											"value": "<uuid>",
+											"description": "(Required) The ID (UUID) of the Pipeline."
+										}
+									]
+								},
+								"description": "Changes Pipeline with the provided ID.\nValues provides will replace the existing data.\n"
+							},
+							"response": [
+								{
+									"name": "Pipeline successfully updated.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"pipeline\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"state\": \"AVAILABLE\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"resourceURN\": \"<string>\"\n  },\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          }\n        ]\n      }\n    ],\n    \"tcpAddress\": \"<string>\",\n    \"httpAddress\": \"<string>\",\n    \"grafanaAddress\": \"<string>\",\n    \"resourceTier\": \"<string>\"\n  }\n}"
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Conflict\nThe UUID is already taken by another party, follow the guides to generate UUIDs uniquely.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unsupported Media Type\nThe request has an unsupported media type.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unprocessable Entity\nThe request was well-formed but was unable to be followed due to semantic errors.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 7\n          }\n        ]\n      }\n    ]\n  },\n  \"metadata\": {\n    \"proidentb1f\": false\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Pipeline",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines/:pipelineId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines",
+										":pipelineId"
+									],
+									"variable": [
+										{
+											"key": "pipelineId",
+											"value": "<uuid>",
+											"description": "(Required) The ID (UUID) of the Pipeline."
+										}
+									]
+								},
+								"description": "Deletes the specified Pipeline."
+							},
+							"response": [
+								{
+									"name": "Deleting Pipeline was successful.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pipelines/:pipelineId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pipelines",
+												":pipelineId"
+											],
+											"variable": [
+												{
+													"key": "pipelineId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Retrieve all Pipelines",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pipelines"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+								},
+								{
+									"key": "orderBy",
+									"value": "-createdDate",
+									"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+								}
+							]
+						},
+						"description": "This endpoint enables retrieving all Pipelines using\npagination and optional filters.\n"
+					},
+					"response": [
+						{
+							"name": "Returned all requested Pipelines successfully.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"_links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  },\n  \"href\": \"<string>\",\n  \"id\": \"<uuid>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"type\": \"collection\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"type\": \"pipeline\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"state\": \"AVAILABLE\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"resourceURN\": \"<string>\"\n      },\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"logs\": [\n          {\n            \"source\": \"<string>\",\n            \"tag\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"destinations\": [\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 0\n              },\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 7\n              }\n            ]\n          },\n          {\n            \"source\": \"<string>\",\n            \"tag\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"destinations\": [\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 30\n              },\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 7\n              }\n            ]\n          }\n        ],\n        \"tcpAddress\": \"<string>\",\n        \"httpAddress\": \"<string>\",\n        \"grafanaAddress\": \"<string>\",\n        \"resourceTier\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"type\": \"pipeline\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"state\": \"FAILED\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"resourceURN\": \"<string>\"\n      },\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"logs\": [\n          {\n            \"source\": \"<string>\",\n            \"tag\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"destinations\": [\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 30\n              },\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 0\n              }\n            ]\n          },\n          {\n            \"source\": \"<string>\",\n            \"tag\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"destinations\": [\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 14\n              },\n              {\n                \"type\": \"loki\",\n                \"retentionInDays\": 30\n              }\n            ]\n          }\n        ],\n        \"tcpAddress\": \"<string>\",\n        \"httpAddress\": \"<string>\",\n        \"grafanaAddress\": \"<string>\",\n        \"resourceTier\": \"<string>\"\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Bad Request\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pipelines?offset=0&limit=100&orderBy=-createdDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element (of the total list of elements) to include in the response. Use this parameter together with the limit for pagination."
+										},
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use this parameter together with the offset for pagination."
+										},
+										{
+											"key": "orderBy",
+											"value": "-createdDate",
+											"description": "The field to order the results by. If not provided, the results will be ordered by the default field."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Pipeline",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pipelines",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pipelines"
+							]
+						},
+						"description": "Creates a new Pipeline.\n\nThe full Pipeline needs to be provided to create the object.\nOptional data will be filled with defaults or left empty.\n"
+					},
+					"response": [
+						{
+							"name": "Pipeline successfully created.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"pipeline\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"state\": \"AVAILABLE\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"resourceURN\": \"<string>\"\n  },\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 0\n          }\n        ]\n      }\n    ],\n    \"tcpAddress\": \"<string>\",\n    \"httpAddress\": \"<string>\",\n    \"grafanaAddress\": \"<string>\",\n    \"resourceTier\": \"<string>\"\n  }\n}"
+						},
+						{
+							"name": "### Bad Request\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unsupported Media Type\nThe request has an unsupported media type.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unprocessable Entity\nThe request was well-formed but was unable to be followed due to semantic errors.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"logs\": [\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      },\n      {\n        \"source\": \"<string>\",\n        \"tag\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"destinations\": [\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 14\n          },\n          {\n            \"type\": \"loki\",\n            \"retentionInDays\": 30\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pipelines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pipelines"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "central",
+			"item": [
+				{
+					"name": "{centralId}",
+					"item": [
+						{
+							"name": "Retrieve CentralLogging",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central/:centralId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central",
+										":centralId"
+									],
+									"variable": [
+										{
+											"key": "centralId",
+											"value": "<uuid>",
+											"description": "(Required) The ID (UUID) of the CentralLogging."
+										}
+									]
+								},
+								"description": "Returns the CentralLogging by ID."
+							},
+							"response": [
+								{
+									"name": "Getting CentralLogging was successful.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"centrallogging\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"grafanaEndpoint\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"resourceURN\": \"<string>\"\n  },\n  \"properties\": {\n    \"enabled\": false\n  }\n}"
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Ensure CentralLogging",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/central/:centralId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central",
+										":centralId"
+									],
+									"variable": [
+										{
+											"key": "centralId",
+											"value": "<uuid>",
+											"description": "(Required) The ID (UUID) of the CentralLogging."
+										}
+									]
+								},
+								"description": "Ensures that the CentralLogging with the provided ID is created or modified.\nThe full CentralLogging needs to be provided to ensure\n(either update or create) the CentralLogging. Non present data will\nonly be filled with defaults or left empty, but not take\nprevious values into consideration.\n"
+							},
+							"response": [
+								{
+									"name": "CentralLogging successfully updated.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"centrallogging\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"grafanaEndpoint\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"resourceURN\": \"<string>\"\n  },\n  \"properties\": {\n    \"enabled\": false\n  }\n}"
+								},
+								{
+									"name": "CentralLogging successfully ensured.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"centrallogging\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"grafanaEndpoint\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"resourceURN\": \"<string>\"\n  },\n  \"properties\": {\n    \"enabled\": false\n  }\n}"
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Conflict\nThe UUID is already taken by another party, follow the guides to generate UUIDs uniquely.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unsupported Media Type\nThe request has an unsupported media type.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unprocessable Entity\nThe request was well-formed but was unable to be followed due to semantic errors.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"enabled\": false\n  },\n  \"metadata\": {\n    \"exercitation_0\": \"sunt id\",\n    \"deserunt_22\": 96405746,\n    \"dolor6b\": \"occaecat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/central/:centralId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"central",
+												":centralId"
+											],
+											"variable": [
+												{
+													"key": "centralId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Retrieve all CentralLogging",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/central",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"central"
+							]
+						},
+						"description": "This endpoint enables retrieving all CentralLogging using\npagination and optional filters.\n"
+					},
+					"response": [
+						{
+							"name": "Returned all requested CentralLogging successfully.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<uuid>\",\n  \"type\": \"collection\",\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"type\": \"centrallogging\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"grafanaEndpoint\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"resourceURN\": \"<string>\"\n      },\n      \"properties\": {\n        \"enabled\": false\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"type\": \"centrallogging\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"grafanaEndpoint\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"resourceURN\": \"<string>\"\n      },\n      \"properties\": {\n        \"enabled\": false\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Bad Request\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Not Allowed\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Too Many Requests\nThe user has sent too many requests in a given amount of time.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Service Unavailable\nThe server is currently unable to handle the request due to a temporary overloading or maintenance of the server.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unexpected Internal Server Error\nAn unexpected internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/central",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"central"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://logging.de-fra.ionos.com"
+		}
+	]
+}

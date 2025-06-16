@@ -1,0 +1,4935 @@
+{
+	"info": {
+		"_postman_id": "d653ae58-5221-40ad-82d9-a7d2ccce705d",
+		"name": "IONOS Cloud - AI Model Hub API",
+		"description": "# IONOS Cloud AI Model Hub API\nAn API to interact with various AI models running on\nthe IONOS Cloud\n\n\nContact Support:\n Name: IONOS Cloud Support\n Email: support@cloud.ionos.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "models",
+			"item": [
+				{
+					"name": "{modelId}",
+					"item": [
+						{
+							"name": "predictions",
+							"item": [
+								{
+									"name": "Send a request to the selected AI model",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/models/:modelId/predictions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"models",
+												":modelId",
+												"predictions"
+											],
+											"variable": [
+												{
+													"key": "modelId",
+													"value": "<string>",
+													"description": "(Required) The ID of the model."
+												}
+											]
+										},
+										"description": "Send a request to the AI model and receive the result. The endpoint is synchronous and will return as soon as the model generates the full reply."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/models/:modelId/predictions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"models",
+														":modelId",
+														"predictions"
+													],
+													"variable": [
+														{
+															"key": "modelId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"prediction\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\",\n    \"duration\": \"<float>\",\n    \"outputTokens\": \"<number>\",\n    \"inputTokens\": \"<number>\"\n  },\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"esse_b95\": \"<string>\",\n      \"suntd\": \"<string>\",\n      \"ut_5\": \"<string>\"\n    },\n    \"additionalOutput\": {\n      \"enim_3\": \"<string>\",\n      \"velit_39\": \"<string>\"\n    },\n    \"output\": \"<string>\",\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  }\n}"
+										},
+										{
+											"name": "### Bad Request\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/models/:modelId/predictions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"models",
+														":modelId",
+														"predictions"
+													],
+													"variable": [
+														{
+															"key": "modelId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/models/:modelId/predictions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"models",
+														":modelId",
+														"predictions"
+													],
+													"variable": [
+														{
+															"key": "modelId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/models/:modelId/predictions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"models",
+														":modelId",
+														"predictions"
+													],
+													"variable": [
+														{
+															"key": "modelId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/models/:modelId/predictions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"models",
+														":modelId",
+														"predictions"
+													],
+													"variable": [
+														{
+															"key": "modelId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"input\": \"<string>\",\n    \"collectionId\": \"<string>\",\n    \"collectionQuery\": \"<string>\",\n    \"options\": {\n      \"sint3b\": \"<string>\",\n      \"culpa__4\": \"<string>\",\n      \"pariatura\": \"<string>\"\n    },\n    \"inputLengthInTokens\": \"<integer>\",\n    \"outputLengthInTokens\": \"<integer>\"\n  },\n  \"type\": 4572009\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/models/:modelId/predictions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"models",
+														":modelId",
+														"predictions"
+													],
+													"variable": [
+														{
+															"key": "modelId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Retrieve available AI models",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models"
+							]
+						},
+						"description": "Retreieve the list of AI models running on the IONOS AI Model Hub. The model identifier is then used with the /predictions endpoint."
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"collection\",\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      },\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"category\": \"text/nlp\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      },\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"category\": \"text/nlp\"\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Bad Request\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"models"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "collections",
+			"item": [
+				{
+					"name": "{collectionId}",
+					"item": [
+						{
+							"name": "documents",
+							"item": [
+								{
+									"name": "{documentId}",
+									"item": [
+										{
+											"name": "chunks",
+											"item": [
+												{
+													"name": "Get document chunks details",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId",
+																"chunks"
+															],
+															"query": [
+																{
+																	"key": "limit",
+																	"value": "100",
+																	"description": "The maximum number of documents to return - defaults to 100"
+																},
+																{
+																	"key": "offset",
+																	"value": "0",
+																	"description": "The offset to start from - defaults to 0"
+																}
+															],
+															"variable": [
+																{
+																	"key": "collectionId",
+																	"value": "<string>",
+																	"description": "(Required) The ID of the collection."
+																},
+																{
+																	"key": "documentId",
+																	"value": "<string>",
+																	"description": "(Required) The ID of the document."
+																}
+															]
+														},
+														"description": "Retrieve existing chunks for the document with documentId."
+													},
+													"response": [
+														{
+															"name": "Successful operation.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Bearer <token>",
+																		"description": "Added as a part of security scheme: bearer"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"collections",
+																		":collectionId",
+																		"documents",
+																		":documentId",
+																		"chunks"
+																	],
+																	"query": [
+																		{
+																			"key": "limit",
+																			"value": "100",
+																			"description": "The maximum number of documents to return - defaults to 100"
+																		},
+																		{
+																			"key": "offset",
+																			"value": "0",
+																			"description": "The offset to start from - defaults to 0"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "collectionId"
+																		},
+																		{
+																			"key": "documentId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"collection\",\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"labels\": {\n          \"sed3_e\": \"<string>\",\n          \"ut_70\": \"<string>\",\n          \"deserunt0f5\": \"<string>\"\n        }\n      },\n      \"id\": \"<string>\",\n      \"type\": \"document\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"labels\": {\n          \"esse_f00\": \"<string>\",\n          \"esse_5\": \"<string>\"\n        }\n      },\n      \"id\": \"<string>\",\n      \"type\": \"document\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    }\n  ]\n}"
+														},
+														{
+															"name": "### Bad Request\nThe request send to the API was malformed.\n",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Bearer <token>",
+																		"description": "Added as a part of security scheme: bearer"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"collections",
+																		":collectionId",
+																		"documents",
+																		":documentId",
+																		"chunks"
+																	],
+																	"query": [
+																		{
+																			"key": "limit",
+																			"value": "100",
+																			"description": "The maximum number of documents to return - defaults to 100"
+																		},
+																		{
+																			"key": "offset",
+																			"value": "0",
+																			"description": "The offset to start from - defaults to 0"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "collectionId"
+																		},
+																		{
+																			"key": "documentId"
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														},
+														{
+															"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Bearer <token>",
+																		"description": "Added as a part of security scheme: bearer"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"collections",
+																		":collectionId",
+																		"documents",
+																		":documentId",
+																		"chunks"
+																	],
+																	"query": [
+																		{
+																			"key": "limit",
+																			"value": "100",
+																			"description": "The maximum number of documents to return - defaults to 100"
+																		},
+																		{
+																			"key": "offset",
+																			"value": "0",
+																			"description": "The offset to start from - defaults to 0"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "collectionId"
+																		},
+																		{
+																			"key": "documentId"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														},
+														{
+															"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Bearer <token>",
+																		"description": "Added as a part of security scheme: bearer"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"collections",
+																		":collectionId",
+																		"documents",
+																		":documentId",
+																		"chunks"
+																	],
+																	"query": [
+																		{
+																			"key": "limit",
+																			"value": "100",
+																			"description": "The maximum number of documents to return - defaults to 100"
+																		},
+																		{
+																			"key": "offset",
+																			"value": "0",
+																			"description": "The offset to start from - defaults to 0"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "collectionId"
+																		},
+																		{
+																			"key": "documentId"
+																		}
+																	]
+																}
+															},
+															"status": "Forbidden",
+															"code": 403,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														},
+														{
+															"name": "### Not Found\nThe resource that was requested could not be found.\n",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Bearer <token>",
+																		"description": "Added as a part of security scheme: bearer"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"collections",
+																		":collectionId",
+																		"documents",
+																		":documentId",
+																		"chunks"
+																	],
+																	"query": [
+																		{
+																			"key": "limit",
+																			"value": "100",
+																			"description": "The maximum number of documents to return - defaults to 100"
+																		},
+																		{
+																			"key": "offset",
+																			"value": "0",
+																			"description": "The offset to start from - defaults to 0"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "collectionId"
+																		},
+																		{
+																			"key": "documentId"
+																		}
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														},
+														{
+															"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Bearer <token>",
+																		"description": "Added as a part of security scheme: bearer"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId/chunks?limit=100&offset=0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"collections",
+																		":collectionId",
+																		"documents",
+																		":documentId",
+																		"chunks"
+																	],
+																	"query": [
+																		{
+																			"key": "limit",
+																			"value": "100",
+																			"description": "The maximum number of documents to return - defaults to 100"
+																		},
+																		{
+																			"key": "offset",
+																			"value": "0",
+																			"description": "The offset to start from - defaults to 0"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "collectionId"
+																		},
+																		{
+																			"key": "documentId"
+																		}
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Get document details",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents",
+														":documentId"
+													],
+													"variable": [
+														{
+															"key": "collectionId",
+															"value": "<string>",
+															"description": "(Required) The ID of the collection."
+														},
+														{
+															"key": "documentId",
+															"value": "<string>",
+															"description": "(Required) The ID of the document."
+														}
+													]
+												},
+												"description": "Retreieve document's details."
+											},
+											"response": [
+												{
+													"name": "Successful operation.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"irure_e\": \"<string>\",\n      \"Duis_5\": \"<string>\",\n      \"ullamco_8b6\": \"<string>\"\n    }\n  },\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\"\n  }\n}"
+												},
+												{
+													"name": "### Bad Request\nThe request send to the API was malformed.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Found\nThe resource that was requested could not be found.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Update a document",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents",
+														":documentId"
+													],
+													"variable": [
+														{
+															"key": "collectionId",
+															"value": "<string>",
+															"description": "(Required) The ID of the collection."
+														},
+														{
+															"key": "documentId",
+															"value": "<string>",
+															"description": "(Required) The ID of the document."
+														}
+													]
+												},
+												"description": "Update a document"
+											},
+											"response": [
+												{
+													"name": "Successful operation.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"irure_e\": \"<string>\",\n      \"Duis_5\": \"<string>\",\n      \"ullamco_8b6\": \"<string>\"\n    }\n  },\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"href\": \"<string>\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\"\n  }\n}"
+												},
+												{
+													"name": "### Bad Request\nThe request send to the API was malformed.\n",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Found\nThe resource that was requested could not be found.\n",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contentType\": \"text/plain\",\n    \"content\": \"<string>\",\n    \"labels\": {\n      \"est_89\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Delete a document",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents",
+														":documentId"
+													],
+													"variable": [
+														{
+															"key": "collectionId",
+															"value": "<string>",
+															"description": "(Required) The ID of the collection."
+														},
+														{
+															"key": "documentId",
+															"value": "<string>",
+															"description": "(Required) The ID of the document."
+														}
+													]
+												},
+												"description": "Remove a document from the collection"
+											},
+											"response": [
+												{
+													"name": "Successful operation.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "### Bad Request\nThe request send to the API was malformed.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Found\nThe resource that was requested could not be found.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/collections/:collectionId/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"collections",
+																":collectionId",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "collectionId"
+																},
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Get the list of documents stored in the collection",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId",
+												"documents"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "100",
+													"description": "The maximum number of documents to return - defaults to 100"
+												},
+												{
+													"key": "offset",
+													"value": "0",
+													"description": "The offset to start from - defaults to 0"
+												}
+											],
+											"variable": [
+												{
+													"key": "collectionId",
+													"value": "<string>",
+													"description": "(Required) The ID of the collection."
+												}
+											]
+										},
+										"description": "Get the list of documents stored in the collection"
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of documents to return - defaults to 100"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The offset to start from - defaults to 0"
+														}
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"collection\",\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"labels\": {\n          \"sed3_e\": \"<string>\",\n          \"ut_70\": \"<string>\",\n          \"deserunt0f5\": \"<string>\"\n        }\n      },\n      \"id\": \"<string>\",\n      \"type\": \"document\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"labels\": {\n          \"esse_f00\": \"<string>\",\n          \"esse_5\": \"<string>\"\n        }\n      },\n      \"id\": \"<string>\",\n      \"type\": \"document\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Bad Request\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of documents to return - defaults to 100"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The offset to start from - defaults to 0"
+														}
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of documents to return - defaults to 100"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The offset to start from - defaults to 0"
+														}
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of documents to return - defaults to 100"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The offset to start from - defaults to 0"
+														}
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of documents to return - defaults to 100"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The offset to start from - defaults to 0"
+														}
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of documents to return - defaults to 100"
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The offset to start from - defaults to 0"
+														}
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Add documents to the collection",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId/documents",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId",
+												"documents"
+											],
+											"variable": [
+												{
+													"key": "collectionId",
+													"value": "<string>",
+													"description": "(Required) The ID of the collection."
+												}
+											]
+										},
+										"description": "Add documents to the collection.\nAlready existing documents will be replaced\n"
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"collection\",\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"labels\": {\n          \"sed3_e\": \"<string>\",\n          \"ut_70\": \"<string>\",\n          \"deserunt0f5\": \"<string>\"\n        }\n      },\n      \"id\": \"<string>\",\n      \"type\": \"document\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"labels\": {\n          \"esse_f00\": \"<string>\",\n          \"esse_5\": \"<string>\"\n        }\n      },\n      \"id\": \"<string>\",\n      \"type\": \"document\",\n      \"href\": \"<string>\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Bad Request\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"officiabc0\": \"<string>\",\n          \"dolore_2\": \"<string>\",\n          \"ut8\": \"<string>\",\n          \"nisi5\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"contentType\": \"text/plain\",\n        \"content\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"laborisc86\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"type\": -83372366.88891147\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Prune all documents in a collection",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId/documents",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId",
+												"documents"
+											],
+											"variable": [
+												{
+													"key": "collectionId",
+													"value": "<string>",
+													"description": "(Required) The ID of the collection."
+												}
+											]
+										},
+										"description": "Delete all documents from a collection, thus pruning it"
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "### Bad Request\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "query",
+							"item": [
+								{
+									"name": "Query a collection / search for related content",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId/query",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId",
+												"query"
+											],
+											"variable": [
+												{
+													"key": "collectionId",
+													"value": "<string>",
+													"description": "(Required) The ID of the collection."
+												}
+											]
+										},
+										"description": "Query a collection / search for related content.\nThis endpoint is used to return relevant documents from a collection.\n"
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/query",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"query"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"result\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\",\n    \"duration\": \"<float>\",\n    \"inputTokens\": \"<number>\"\n  },\n  \"properties\": {\n    \"matches\": [\n      {\n        \"score\": \"<number>\",\n        \"document\": {\n          \"properties\": {\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"contentType\": \"text/plain\",\n            \"content\": \"<string>\",\n            \"labels\": {\n              \"ad1\": \"<string>\",\n              \"aute_21a\": \"<string>\",\n              \"auteed\": \"<string>\",\n              \"exercitation1_7\": \"<string>\",\n              \"irure_47\": \"<string>\"\n            }\n          },\n          \"id\": \"<string>\",\n          \"type\": \"document\",\n          \"href\": \"<string>\",\n          \"metadata\": {\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"createdDate\": \"<dateTime>\"\n          }\n        }\n      },\n      {\n        \"score\": \"<number>\",\n        \"document\": {\n          \"properties\": {\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"contentType\": \"text/plain\",\n            \"content\": \"<string>\",\n            \"labels\": {\n              \"quia1\": \"<string>\",\n              \"deserunt_c7d\": \"<string>\",\n              \"tempor_\": \"<string>\",\n              \"occaecat_64a\": \"<string>\"\n            }\n          },\n          \"id\": \"<string>\",\n          \"type\": \"document\",\n          \"href\": \"<string>\",\n          \"metadata\": {\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"createdDate\": \"<dateTime>\"\n          }\n        }\n      }\n    ]\n  }\n}"
+										},
+										{
+											"name": "### Bad Request\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/query",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"query"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/query",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"query"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/query",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"query"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/query",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"query"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"limit\": 10\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/collections/:collectionId/query",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"collections",
+														":collectionId",
+														"query"
+													],
+													"variable": [
+														{
+															"key": "collectionId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get collection",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/collections/:collectionId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections",
+										":collectionId"
+									],
+									"variable": [
+										{
+											"key": "collectionId",
+											"value": "<string>",
+											"description": "(Required) The ID of the collection."
+										}
+									]
+								},
+								"description": "Returns the properties and metadata for the document collection"
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"labore_7ef\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"documentsCount\": \"<integer>\",\n    \"totalTokens\": \"<integer>\",\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  },\n  \"id\": \"<string>\",\n  \"href\": \"<string>\",\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\"\n  }\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Update an existing collection",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/collections/:collectionId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections",
+										":collectionId"
+									],
+									"variable": [
+										{
+											"key": "collectionId",
+											"value": "<string>",
+											"description": "(Required) The ID of the collection."
+										}
+									]
+								},
+								"description": "Update collection details and metadata. No modification is done on the documents."
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"labore_7ef\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"documentsCount\": \"<integer>\",\n    \"totalTokens\": \"<integer>\",\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  },\n  \"id\": \"<string>\",\n  \"href\": \"<string>\",\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\"\n  }\n}"
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"elit_9a6\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a collection and its documents",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/collections/:collectionId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections",
+										":collectionId"
+									],
+									"variable": [
+										{
+											"key": "collectionId",
+											"value": "<string>",
+											"description": "(Required) The ID of the collection."
+										}
+									]
+								},
+								"description": "Delete a collection and all documents stored in it"
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "### Bad Request\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/collections/:collectionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"collections",
+												":collectionId"
+											],
+											"variable": [
+												{
+													"key": "collectionId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create a new collection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"suntf94\": {\n        \"description\": \"The label value, max 256 chars.\"\n      },\n      \"non_2\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/collections",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"collections"
+							]
+						},
+						"description": "Create a new, empty document collection for storing documents"
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"suntf94\": {\n        \"description\": \"The label value, max 256 chars.\"\n      },\n      \"non_2\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/collections",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"labore_7ef\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"documentsCount\": \"<integer>\",\n    \"totalTokens\": \"<integer>\",\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  },\n  \"id\": \"<string>\",\n  \"href\": \"<string>\",\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"createdDate\": \"<dateTime>\"\n  }\n}"
+						},
+						{
+							"name": "### Bad Request\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"suntf94\": {\n        \"description\": \"The label value, max 256 chars.\"\n      },\n      \"non_2\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/collections",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"suntf94\": {\n        \"description\": \"The label value, max 256 chars.\"\n      },\n      \"non_2\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/collections",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"suntf94\": {\n        \"description\": \"The label value, max 256 chars.\"\n      },\n      \"non_2\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/collections",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"labels\": {\n      \"suntf94\": {\n        \"description\": \"The label value, max 256 chars.\"\n      },\n      \"non_2\": {\n        \"description\": \"The label value, max 256 chars.\"\n      }\n    },\n    \"embedding\": {\n      \"model\": \"<string>\"\n    },\n    \"engine\": {\n      \"db_type\": \"chromadb\"\n    },\n    \"chunking\": {\n      \"enabled\": false,\n      \"strategy\": {\n        \"name\": \"fixed_size\",\n        \"config\": {\n          \"chunk_size\": 128,\n          \"chunk_overlap\": 50\n        }\n      }\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/collections",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all collections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/collections?limit=100&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "The maximum number of collections to return - defaults to 100"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The offset to start from - defaults to 0"
+								}
+							]
+						},
+						"description": "Retrieve all stored document collections"
+					},
+					"response": [
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/collections?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of collections to return - defaults to 100"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The offset to start from - defaults to 0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"collection\",\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"labore3\": {\n            \"description\": \"The label value, max 256 chars.\"\n          },\n          \"exercitation835\": {\n            \"description\": \"The label value, max 256 chars.\"\n          }\n        },\n        \"documentsCount\": \"<integer>\",\n        \"totalTokens\": \"<integer>\",\n        \"embedding\": {\n          \"model\": \"<string>\"\n        },\n        \"engine\": {\n          \"db_type\": \"chromadb\"\n        },\n        \"chunking\": {\n          \"enabled\": false,\n          \"strategy\": {\n            \"name\": \"fixed_size\",\n            \"config\": {\n              \"chunk_size\": 128,\n              \"chunk_overlap\": 50\n            }\n          }\n        }\n      },\n      \"id\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"collection\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    },\n    {\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"labels\": {\n          \"in0\": {\n            \"description\": \"The label value, max 256 chars.\"\n          }\n        },\n        \"documentsCount\": \"<integer>\",\n        \"totalTokens\": \"<integer>\",\n        \"embedding\": {\n          \"model\": \"<string>\"\n        },\n        \"engine\": {\n          \"db_type\": \"chromadb\"\n        },\n        \"chunking\": {\n          \"enabled\": false,\n          \"strategy\": {\n            \"name\": \"fixed_size\",\n            \"config\": {\n              \"chunk_size\": 128,\n              \"chunk_overlap\": 50\n            }\n          }\n        }\n      },\n      \"id\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"collection\",\n      \"metadata\": {\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"createdDate\": \"<dateTime>\"\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/collections?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of collections to return - defaults to 100"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The offset to start from - defaults to 0"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Forbidden\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/collections?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of collections to return - defaults to 100"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The offset to start from - defaults to 0"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/collections?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of collections to return - defaults to 100"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The offset to start from - defaults to 0"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://inference.de-txl.ionos.com"
+		}
+	]
+}

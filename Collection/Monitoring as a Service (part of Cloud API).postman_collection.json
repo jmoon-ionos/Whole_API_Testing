@@ -1,0 +1,3328 @@
+{
+	"info": {
+		"_postman_id": "f9ffa4f7-260b-4bc1-bf89-05e1012a0547",
+		"name": "Monitoring as a Service (part of Cloud API)",
+		"description": "Alarm management endpoints for Monitoring as a Service by IONOS Cloud.\n\nMonitoring as a Service (or just MaaS) is a PaaS service by IONOS Cloud. It is a complimentary “always-on” service that is provided to all compute instances (public cloud servers as well as IONOS Cloud Cubes). “Always-on” means that the user can start using the service directly after provisioning a virtual instance, without the need to select any options or configure additional properties.\n\nWhat’s more, MaaS is readily available for the already-provisioned VMs, without requiring additional software or any changes to running virtual instances.\n\nThe “always-on” monitoring service collects instance metrics and provides options to set up threshold-based alarms and triggers for further actions. Monitoring as a Service currently supports email actions; additional action types will be added in future versions.\n\nThe Monitoring API can be used to manage (create/read/update/delete) monitoring alarms and actions.\n\n \n\nContact Support:\n Name: IONOS Cloud Support\n Email: support@cloud.ionos.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "cloudapi",
+			"item": [
+				{
+					"name": "monitoring",
+					"item": [
+						{
+							"name": "actions",
+							"item": [
+								{
+									"name": "{actionId}",
+									"item": [
+										{
+											"name": "executions",
+											"item": [
+												{
+													"name": "{executionId}",
+													"item": [
+														{
+															"name": "Get Action executions by ID",
+															"request": {
+																"auth": {
+																	"type": "basic",
+																	"basic": [
+																		{
+																			"key": "username",
+																			"value": "{{basicAuthUsername}}",
+																			"type": "string"
+																		},
+																		{
+																			"key": "password",
+																			"value": "{{basicAuthPassword}}",
+																			"type": "string"
+																		}
+																	]
+																},
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions/:executionId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"actions",
+																		":actionId",
+																		"executions",
+																		":executionId"
+																	],
+																	"variable": [
+																		{
+																			"key": "actionId",
+																			"value": "<string>",
+																			"description": "(Required) Unique resource identifier"
+																		},
+																		{
+																			"key": "executionId",
+																			"value": "<string>",
+																			"description": "(Required) Unique resource identifier"
+																		}
+																	]
+																},
+																"description": "Get an Action execution by Action and execution IDs."
+															},
+															"response": [
+																{
+																	"name": "The requested resource was found and returned.",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Authorization",
+																				"value": "Basic <credentials>",
+																				"description": "Added as a part of security scheme: basic"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions/:executionId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"cloudapi",
+																				"monitoring",
+																				"actions",
+																				":actionId",
+																				"executions",
+																				":executionId"
+																			],
+																			"variable": [
+																				{
+																					"key": "actionId"
+																				},
+																				{
+																					"key": "executionId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"BUSY\"\n  },\n  \"properties\": {\n    \"actionId\": \"3CBfAeC2-AEe1-A4af-b1f9-dA6dC016C8a2\",\n    \"actionLastModifiedDate\": \"<dateTime>\",\n    \"alarmTransitionId\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"message\": \"<string>\",\n    \"state\": \"<string>\"\n  }\n}"
+																},
+																{
+																	"name": "The request was not properly authenticated.",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Authorization",
+																				"value": "Basic <credentials>",
+																				"description": "Added as a part of security scheme: basic"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions/:executionId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"cloudapi",
+																				"monitoring",
+																				"actions",
+																				":actionId",
+																				"executions",
+																				":executionId"
+																			],
+																			"variable": [
+																				{
+																					"key": "actionId"
+																				},
+																				{
+																					"key": "executionId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "Unauthorized",
+																	"code": 401,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+																},
+																{
+																	"name": "The requested resource does not exist.",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Authorization",
+																				"value": "Basic <credentials>",
+																				"description": "Added as a part of security scheme: basic"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions/:executionId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"cloudapi",
+																				"monitoring",
+																				"actions",
+																				":actionId",
+																				"executions",
+																				":executionId"
+																			],
+																			"variable": [
+																				{
+																					"key": "actionId"
+																				},
+																				{
+																					"key": "executionId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "Not Found",
+																	"code": 404,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+																}
+															]
+														}
+													]
+												},
+												{
+													"name": "List all Action executions",
+													"request": {
+														"auth": {
+															"type": "basic",
+															"basic": [
+																{
+																	"key": "username",
+																	"value": "{{basicAuthUsername}}",
+																	"type": "string"
+																},
+																{
+																	"key": "password",
+																	"value": "{{basicAuthPassword}}",
+																	"type": "string"
+																}
+															]
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions?depth=0&orderBy=createdDate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId",
+																"executions"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																},
+																{
+																	"key": "orderBy",
+																	"value": "createdDate",
+																	"description": "Define the property to be used for ordering the returned list."
+																}
+															],
+															"variable": [
+																{
+																	"key": "actionId",
+																	"value": "<string>",
+																	"description": "(Required) Unique resource identifier"
+																}
+															]
+														},
+														"description": "List all executions for the specified Action."
+													},
+													"response": [
+														{
+															"name": "The requested resource was found and returned.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Basic <credentials>",
+																		"description": "Added as a part of security scheme: basic"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions?depth=0&orderBy=createdDate",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"actions",
+																		":actionId",
+																		"executions"
+																	],
+																	"query": [
+																		{
+																			"key": "depth",
+																			"value": "0",
+																			"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																		},
+																		{
+																			"key": "orderBy",
+																			"value": "createdDate",
+																			"description": "Define the property to be used for ordering the returned list."
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "actionId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"INACTIVE\"\n      },\n      \"properties\": {\n        \"actionId\": \"daDF507c-0a99-884E-8B8a-C4CA0aae52cC\",\n        \"actionLastModifiedDate\": \"<dateTime>\",\n        \"alarmTransitionId\": \"<string>\",\n        \"date\": \"<dateTime>\",\n        \"message\": \"<string>\",\n        \"state\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"AVAILABLE\"\n      },\n      \"properties\": {\n        \"actionId\": \"2EBaCEBE-e6E3-C51A-6beE-DC02320C2cc6\",\n        \"actionLastModifiedDate\": \"<dateTime>\",\n        \"alarmTransitionId\": \"<string>\",\n        \"date\": \"<dateTime>\",\n        \"message\": \"<string>\",\n        \"state\": \"<string>\"\n      }\n    }\n  ]\n}"
+														},
+														{
+															"name": "The request was not properly authenticated.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Basic <credentials>",
+																		"description": "Added as a part of security scheme: basic"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId/executions?depth=0&orderBy=createdDate",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"actions",
+																		":actionId",
+																		"executions"
+																	],
+																	"query": [
+																		{
+																			"key": "depth",
+																			"value": "0",
+																			"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																		},
+																		{
+																			"key": "orderBy",
+																			"value": "createdDate",
+																			"description": "Define the property to be used for ordering the returned list."
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "actionId"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Get Actions by ID",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId?depth=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions",
+														":actionId"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														}
+													],
+													"variable": [
+														{
+															"key": "actionId",
+															"value": "<string>",
+															"description": "(Required) Unique resource identifier"
+														}
+													]
+												},
+												"description": "Get an Action by the Action ID."
+											},
+											"response": [
+												{
+													"name": "The requested resource was found and returned.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"properties\": {\n    \"name\": \"4\",\n    \"type\": \"&\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    },\n    \"executions\": [\n      \"3f2d3B57-43DE-2D0F-dF9c-19cEA2fada1B\",\n      \"03FF6B5a-5189-3a82-DFAe-13230cB2878e\"\n    ]\n  },\n  \"entities\": {\n    \"executions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"metadata\": {\n            \"createdBy\": \"<string>\",\n            \"createdByUserId\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"etag\": \"<string>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedByUserId\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"state\": \"INACTIVE\"\n          },\n          \"properties\": {\n            \"actionId\": \"c8F6CC94-eAE5-B3a8-Af00-abFD53aFbbAC\",\n            \"actionLastModifiedDate\": \"<dateTime>\",\n            \"alarmTransitionId\": \"<string>\",\n            \"date\": \"<dateTime>\",\n            \"message\": \"<string>\",\n            \"state\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"metadata\": {\n            \"createdBy\": \"<string>\",\n            \"createdByUserId\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"etag\": \"<string>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedByUserId\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"state\": \"AVAILABLE\"\n          },\n          \"properties\": {\n            \"actionId\": \"3CeFB05C-3B46-Baca-A9A9-64EEbdEC4BA6\",\n            \"actionLastModifiedDate\": \"<dateTime>\",\n            \"alarmTransitionId\": \"<string>\",\n            \"date\": \"<dateTime>\",\n            \"message\": \"<string>\",\n            \"state\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}"
+												},
+												{
+													"name": "The request was not properly authenticated.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The requested resource does not exist.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId?depth=0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																}
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Update Actions",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions",
+														":actionId"
+													],
+													"variable": [
+														{
+															"key": "actionId",
+															"value": "<string>",
+															"description": "(Required) Unique resource identifier"
+														}
+													]
+												},
+												"description": "Update an Action with the specified Action ID.\n\n - \"name\" must not be null or blank\n\n - \"type\" must be of a valid type (EMAIL)\n\n - \"typeProperties.emailTo\" must be a well-formed email address that is not null or blank."
+											},
+											"response": [
+												{
+													"name": "The user-provided resource was updated.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"properties\": {\n    \"name\": \"%\",\n    \"type\": \"a\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    },\n    \"executions\": [\n      \"85C9fCfF-AFBB-Ab6e-cE1E-8B7FBF92a0d0\",\n      \"848e9197-63cC-E3F6-F8a2-2B8E4Db3f40A\"\n    ]\n  },\n  \"entities\": {\n    \"executions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  }\n}"
+												},
+												{
+													"name": "The request body could not be parsed.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The request was not properly authenticated.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The user-provided resource did not pass all validations.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+													"code": 422,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Delete Actions",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions",
+														":actionId"
+													],
+													"variable": [
+														{
+															"key": "actionId",
+															"value": "<string>",
+															"description": "(Required) Unique resource identifier"
+														}
+													]
+												},
+												"description": "Delete an Action with the specified Action ID."
+											},
+											"response": [
+												{
+													"name": "The requested resource was deleted.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "The request was not properly authenticated.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The requested resource does not exist.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/actions/:actionId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"actions",
+																":actionId"
+															],
+															"variable": [
+																{
+																	"key": "actionId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "List all Actions",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cloudapi/monitoring/actions?depth=0&orderBy=createdDate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cloudapi",
+												"monitoring",
+												"actions"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+												},
+												{
+													"key": "orderBy",
+													"value": "createdDate",
+													"description": "Define the property to be used for ordering the returned list."
+												}
+											]
+										},
+										"description": "List all Actions for a particular contract."
+									},
+									"response": [
+										{
+											"name": "The requested resource was found and returned.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Define the property to be used for ordering the returned list."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"SUSPENDED\"\n      },\n      \"properties\": {\n        \"name\": \"X\",\n        \"type\": \"K\",\n        \"typeProperties\": {\n          \"emailTo\": \"<string>\"\n        },\n        \"executions\": [\n          \"C1a7D6ec-4ceD-aEfC-57F2-4042483CDA1A\",\n          \"0237cd5c-ff7f-c2f8-3c67-Bfc902B5C6bE\"\n        ]\n      },\n      \"entities\": {\n        \"executions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"SUSPENDED\"\n              },\n              \"properties\": {\n                \"actionId\": \"8AAcE3ba-833e-0B26-25DC-A7DEA22F2A31\",\n                \"actionLastModifiedDate\": \"<dateTime>\",\n                \"alarmTransitionId\": \"<string>\",\n                \"date\": \"<dateTime>\",\n                \"message\": \"<string>\",\n                \"state\": \"<string>\"\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"INACTIVE\"\n              },\n              \"properties\": {\n                \"actionId\": \"8bd4DBD0-63e4-2ECF-ecaF-daEB7A937Bd6\",\n                \"actionLastModifiedDate\": \"<dateTime>\",\n                \"alarmTransitionId\": \"<string>\",\n                \"date\": \"<dateTime>\",\n                \"message\": \"<string>\",\n                \"state\": \"<string>\"\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"AVAILABLE\"\n      },\n      \"properties\": {\n        \"name\": \"~\",\n        \"type\": \"S\",\n        \"typeProperties\": {\n          \"emailTo\": \"<string>\"\n        },\n        \"executions\": [\n          \"AcaD868A-dfb2-dFbD-F1f9-0fd1cF33f1Bf\",\n          \"D11edeE8-d4bf-bF1b-04B0-EAbDaD863A6a\"\n        ]\n      },\n      \"entities\": {\n        \"executions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"AVAILABLE\"\n              },\n              \"properties\": {\n                \"actionId\": \"cBef664b-AA96-bcFF-626A-1623C9aFCB4e\",\n                \"actionLastModifiedDate\": \"<dateTime>\",\n                \"alarmTransitionId\": \"<string>\",\n                \"date\": \"<dateTime>\",\n                \"message\": \"<string>\",\n                \"state\": \"<string>\"\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"AVAILABLE\"\n              },\n              \"properties\": {\n                \"actionId\": \"698FeBb3-f7ec-e44f-5EB9-3E9e3E2cc8f7\",\n                \"actionLastModifiedDate\": \"<dateTime>\",\n                \"alarmTransitionId\": \"<string>\",\n                \"date\": \"<dateTime>\",\n                \"message\": \"<string>\",\n                \"state\": \"<string>\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "The request was not properly authenticated.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Define the property to be used for ordering the returned list."
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Create Actions",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cloudapi/monitoring/actions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cloudapi",
+												"monitoring",
+												"actions"
+											]
+										},
+										"description": "Create an Action that can be assigned to an arbitrary number of Alarms.\n\n - \"name\" must not be null or blank\n\n - \"type\" must be of a valid type (EMAIL)\n\n - \"typeProperties.emailTo\" must be a well-formed email address that is not null or blank"
+									},
+									"response": [
+										{
+											"name": "The user-provided resource was created successfully.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"properties\": {\n    \"name\": \"%\",\n    \"type\": \"a\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    },\n    \"executions\": [\n      \"85C9fCfF-AFBB-Ab6e-cE1E-8B7FBF92a0d0\",\n      \"848e9197-63cC-E3F6-F8a2-2B8E4Db3f40A\"\n    ]\n  },\n  \"entities\": {\n    \"executions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "The request body could not be parsed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The request was not properly authenticated.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The user-provided resource did not pass all validations.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"t\",\n    \"type\": \"N\",\n    \"typeProperties\": {\n      \"emailTo\": \"<string>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/actions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"actions"
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "alarms",
+							"item": [
+								{
+									"name": "{alarmId}",
+									"item": [
+										{
+											"name": "transitions",
+											"item": [
+												{
+													"name": "{transitionId}",
+													"item": [
+														{
+															"name": "Get Alarm transitions by ID",
+															"request": {
+																"auth": {
+																	"type": "basic",
+																	"basic": [
+																		{
+																			"key": "username",
+																			"value": "{{basicAuthUsername}}",
+																			"type": "string"
+																		},
+																		{
+																			"key": "password",
+																			"value": "{{basicAuthPassword}}",
+																			"type": "string"
+																		}
+																	]
+																},
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions/:transitionId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"alarms",
+																		":alarmId",
+																		"transitions",
+																		":transitionId"
+																	],
+																	"variable": [
+																		{
+																			"key": "alarmId",
+																			"value": "<string>",
+																			"description": "(Required) "
+																		},
+																		{
+																			"key": "transitionId",
+																			"value": "<string>",
+																			"description": "(Required) "
+																		}
+																	]
+																},
+																"description": "Get an Alarm transition by Alarm and transition IDs."
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Authorization",
+																				"value": "Basic <credentials>",
+																				"description": "Added as a part of security scheme: basic"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions/:transitionId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"cloudapi",
+																				"monitoring",
+																				"alarms",
+																				":alarmId",
+																				"transitions",
+																				":transitionId"
+																			],
+																			"variable": [
+																				{
+																					"key": "alarmId"
+																				},
+																				{
+																					"key": "transitionId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"href\": \"<uri>\",\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"properties\": {\n    \"alarmLastModifiedDate\": \"<dateTime>\",\n    \"date\": \"<dateTime>\",\n    \"newState\": \"OK\",\n    \"reason\": \"<string>\",\n    \"oldState\": \"FIRING\"\n  }\n}"
+																},
+																{
+																	"name": "The request was not properly authenticated.",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Authorization",
+																				"value": "Basic <credentials>",
+																				"description": "Added as a part of security scheme: basic"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions/:transitionId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"cloudapi",
+																				"monitoring",
+																				"alarms",
+																				":alarmId",
+																				"transitions",
+																				":transitionId"
+																			],
+																			"variable": [
+																				{
+																					"key": "alarmId"
+																				},
+																				{
+																					"key": "transitionId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "Unauthorized",
+																	"code": 401,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+																},
+																{
+																	"name": "The requested resource does not exist.",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Authorization",
+																				"value": "Basic <credentials>",
+																				"description": "Added as a part of security scheme: basic"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions/:transitionId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"cloudapi",
+																				"monitoring",
+																				"alarms",
+																				":alarmId",
+																				"transitions",
+																				":transitionId"
+																			],
+																			"variable": [
+																				{
+																					"key": "alarmId"
+																				},
+																				{
+																					"key": "transitionId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "Not Found",
+																	"code": 404,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+																}
+															]
+														}
+													]
+												},
+												{
+													"name": "List Alarm transitions",
+													"request": {
+														"auth": {
+															"type": "basic",
+															"basic": [
+																{
+																	"key": "username",
+																	"value": "{{basicAuthUsername}}",
+																	"type": "string"
+																},
+																{
+																	"key": "password",
+																	"value": "{{basicAuthPassword}}",
+																	"type": "string"
+																}
+															]
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions?depth=0&orderBy=createdDate",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId",
+																"transitions"
+															],
+															"query": [
+																{
+																	"key": "depth",
+																	"value": "0",
+																	"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																},
+																{
+																	"key": "orderBy",
+																	"value": "createdDate",
+																	"description": "Define the property to be used for ordering the returned list."
+																}
+															],
+															"variable": [
+																{
+																	"key": "alarmId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														},
+														"description": "List all Alarm transitions for a particular contract."
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Basic <credentials>",
+																		"description": "Added as a part of security scheme: basic"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions?depth=0&orderBy=createdDate",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"alarms",
+																		":alarmId",
+																		"transitions"
+																	],
+																	"query": [
+																		{
+																			"key": "depth",
+																			"value": "0",
+																			"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																		},
+																		{
+																			"key": "orderBy",
+																			"value": "createdDate",
+																			"description": "Define the property to be used for ordering the returned list."
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "alarmId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": [\n    {\n      \"href\": \"<uri>\",\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"INACTIVE\"\n      },\n      \"properties\": {\n        \"alarmLastModifiedDate\": \"<dateTime>\",\n        \"date\": \"<dateTime>\",\n        \"newState\": \"FIRING\",\n        \"reason\": \"<string>\",\n        \"oldState\": \"PENDING\"\n      }\n    },\n    {\n      \"href\": \"<uri>\",\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"INACTIVE\"\n      },\n      \"properties\": {\n        \"alarmLastModifiedDate\": \"<dateTime>\",\n        \"date\": \"<dateTime>\",\n        \"newState\": \"FIRING\",\n        \"reason\": \"<string>\",\n        \"oldState\": \"OK\"\n      }\n    }\n  ]\n}"
+														},
+														{
+															"name": "The request was not properly authenticated.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Basic <credentials>",
+																		"description": "Added as a part of security scheme: basic"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions?depth=0&orderBy=createdDate",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"alarms",
+																		":alarmId",
+																		"transitions"
+																	],
+																	"query": [
+																		{
+																			"key": "depth",
+																			"value": "0",
+																			"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																		},
+																		{
+																			"key": "orderBy",
+																			"value": "createdDate",
+																			"description": "Define the property to be used for ordering the returned list."
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "alarmId"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														},
+														{
+															"name": "The requested resource does not exist.",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Authorization",
+																		"value": "Basic <credentials>",
+																		"description": "Added as a part of security scheme: basic"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId/transitions?depth=0&orderBy=createdDate",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"cloudapi",
+																		"monitoring",
+																		"alarms",
+																		":alarmId",
+																		"transitions"
+																	],
+																	"query": [
+																		{
+																			"key": "depth",
+																			"value": "0",
+																			"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+																		},
+																		{
+																			"key": "orderBy",
+																			"value": "createdDate",
+																			"description": "Define the property to be used for ordering the returned list."
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "alarmId"
+																		}
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Get Alarms by ID",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms",
+														":alarmId"
+													],
+													"variable": [
+														{
+															"key": "alarmId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Get an Alarm by the Alarm ID."
+											},
+											"response": [
+												{
+													"name": "The requested resource was found and returned.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"BUSY\"\n  },\n  \"properties\": {\n    \"name\": \"/\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_in_packets\",\n      \"source\": {\n        \"uuid\": \"1515eb2b-f5b8-b4D1-c891-C13DcED82fdC\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"location\": \"<string>\",\n    \"state\": \"OK\",\n    \"stateTransitionedDate\": \"<dateTime>\",\n    \"alarmDelay\": \"<string>\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"metadata\": {\n            \"createdBy\": \"<string>\",\n            \"createdByUserId\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"etag\": \"<string>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedByUserId\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"state\": \"INACTIVE\"\n          },\n          \"properties\": {\n            \"name\": \"2\",\n            \"type\": \"B\",\n            \"typeProperties\": {\n              \"emailTo\": \"<string>\"\n            },\n            \"executions\": [\n              \"a8DfB1d2-A307-9ABD-F26b-eEeDe9ac2333\",\n              \"eaD17A9d-a10F-5230-CFbB-BfC2caCdEC7D\"\n            ]\n          },\n          \"entities\": {\n            \"executions\": {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"items\": [\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"metadata\": {\n                    \"createdBy\": \"<string>\",\n                    \"createdByUserId\": \"<string>\",\n                    \"createdDate\": \"<dateTime>\",\n                    \"etag\": \"<string>\",\n                    \"lastModifiedBy\": \"<string>\",\n                    \"lastModifiedByUserId\": \"<string>\",\n                    \"lastModifiedDate\": \"<dateTime>\",\n                    \"state\": \"INACTIVE\"\n                  },\n                  \"properties\": {\n                    \"actionId\": \"Eabe4EC2-ad1D-8362-E32c-B977Ee0Dd1fC\",\n                    \"actionLastModifiedDate\": \"<dateTime>\",\n                    \"alarmTransitionId\": \"<string>\",\n                    \"date\": \"<dateTime>\",\n                    \"message\": \"<string>\",\n                    \"state\": \"<string>\"\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"metadata\": {\n                    \"createdBy\": \"<string>\",\n                    \"createdByUserId\": \"<string>\",\n                    \"createdDate\": \"<dateTime>\",\n                    \"etag\": \"<string>\",\n                    \"lastModifiedBy\": \"<string>\",\n                    \"lastModifiedByUserId\": \"<string>\",\n                    \"lastModifiedDate\": \"<dateTime>\",\n                    \"state\": \"SUSPENDED\"\n                  },\n                  \"properties\": {\n                    \"actionId\": \"8818EEA7-7fC4-1A6A-94bd-5D134a8b3C2D\",\n                    \"actionLastModifiedDate\": \"<dateTime>\",\n                    \"alarmTransitionId\": \"<string>\",\n                    \"date\": \"<dateTime>\",\n                    \"message\": \"<string>\",\n                    \"state\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"metadata\": {\n            \"createdBy\": \"<string>\",\n            \"createdByUserId\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"etag\": \"<string>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedByUserId\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"state\": \"AVAILABLE\"\n          },\n          \"properties\": {\n            \"name\": \"(\",\n            \"type\": \"'\",\n            \"typeProperties\": {\n              \"emailTo\": \"<string>\"\n            },\n            \"executions\": [\n              \"bf7FFFBe-56DB-ead6-0ad5-92acFD1EEf54\",\n              \"5ae11bb6-fC3e-Eb6f-Bebb-07f918AD67E6\"\n            ]\n          },\n          \"entities\": {\n            \"executions\": {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"items\": [\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"metadata\": {\n                    \"createdBy\": \"<string>\",\n                    \"createdByUserId\": \"<string>\",\n                    \"createdDate\": \"<dateTime>\",\n                    \"etag\": \"<string>\",\n                    \"lastModifiedBy\": \"<string>\",\n                    \"lastModifiedByUserId\": \"<string>\",\n                    \"lastModifiedDate\": \"<dateTime>\",\n                    \"state\": \"BUSY\"\n                  },\n                  \"properties\": {\n                    \"actionId\": \"cDBFccde-BEfe-0cdf-b442-9802A4c5dc51\",\n                    \"actionLastModifiedDate\": \"<dateTime>\",\n                    \"alarmTransitionId\": \"<string>\",\n                    \"date\": \"<dateTime>\",\n                    \"message\": \"<string>\",\n                    \"state\": \"<string>\"\n                  }\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"metadata\": {\n                    \"createdBy\": \"<string>\",\n                    \"createdByUserId\": \"<string>\",\n                    \"createdDate\": \"<dateTime>\",\n                    \"etag\": \"<string>\",\n                    \"lastModifiedBy\": \"<string>\",\n                    \"lastModifiedByUserId\": \"<string>\",\n                    \"lastModifiedDate\": \"<dateTime>\",\n                    \"state\": \"AVAILABLE\"\n                  },\n                  \"properties\": {\n                    \"actionId\": \"EA1DE04D-4Da1-46f6-83cA-65b9aB8F2037\",\n                    \"actionLastModifiedDate\": \"<dateTime>\",\n                    \"alarmTransitionId\": \"<string>\",\n                    \"date\": \"<dateTime>\",\n                    \"message\": \"<string>\",\n                    \"state\": \"<string>\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      ]\n    },\n    \"transitions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"items\": [\n        {\n          \"href\": \"<uri>\",\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"metadata\": {\n            \"createdBy\": \"<string>\",\n            \"createdByUserId\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"etag\": \"<string>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedByUserId\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"state\": \"BUSY\"\n          },\n          \"properties\": {\n            \"alarmLastModifiedDate\": \"<dateTime>\",\n            \"date\": \"<dateTime>\",\n            \"newState\": \"OK\",\n            \"reason\": \"<string>\",\n            \"oldState\": \"FIRING\"\n          }\n        },\n        {\n          \"href\": \"<uri>\",\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"metadata\": {\n            \"createdBy\": \"<string>\",\n            \"createdByUserId\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"etag\": \"<string>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedByUserId\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"state\": \"SUSPENDED\"\n          },\n          \"properties\": {\n            \"alarmLastModifiedDate\": \"<dateTime>\",\n            \"date\": \"<dateTime>\",\n            \"newState\": \"PENDING\",\n            \"reason\": \"<string>\",\n            \"oldState\": \"FIRING\"\n          }\n        }\n      ]\n    }\n  }\n}"
+												},
+												{
+													"name": "The request body could not be parsed.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The request was not properly authenticated.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The requested resource does not exist.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Update Alarms",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms",
+														":alarmId"
+													],
+													"variable": [
+														{
+															"key": "alarmId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Update an Alarm. All the following properties must be provided: \"name\" and \"expression\" (\"comparisonThreshold\", \"metric\" and \"source\").\n\n - \"name\": the name of the Alarm\n\n - \"expression.source\": the virtual instance for which you want to configure the Alarm\n\n - \"expression.metric\": the metric (CPU|Network|Storage)\n\n - \"expression.comparisonThreshold\": the threshold value to be applied for the Alarm\n\n - 'range': required when setting a 'rangeAggregation'"
+											},
+											"response": [
+												{
+													"name": "The user-provided resource was updated.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"properties\": {\n    \"name\": \"g\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_in_bytes\",\n      \"source\": {\n        \"uuid\": \"de1Dd21A-1a41-9eb7-6E12-7d5AD8AA2B25\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"location\": \"<string>\",\n    \"state\": \"FIRING\",\n    \"stateTransitionedDate\": \"<dateTime>\",\n    \"alarmDelay\": \"<string>\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"executions\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    \"transitions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  }\n}"
+												},
+												{
+													"name": "The request body could not be parsed.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The request was not properly authenticated.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The user-provided resource did not pass all validations.",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+													"code": 422,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Delete Alarms",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms",
+														":alarmId"
+													],
+													"variable": [
+														{
+															"key": "alarmId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Delete an Alarm with the specified ID."
+											},
+											"response": [
+												{
+													"name": "The requested resource was deleted.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "The request was not properly authenticated.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "The requested resource does not exist.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/cloudapi/monitoring/alarms/:alarmId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"cloudapi",
+																"monitoring",
+																"alarms",
+																":alarmId"
+															],
+															"variable": [
+																{
+																	"key": "alarmId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "List all Alarms",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cloudapi/monitoring/alarms?depth=0&orderBy=createdDate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cloudapi",
+												"monitoring",
+												"alarms"
+											],
+											"query": [
+												{
+													"key": "depth",
+													"value": "0",
+													"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+												},
+												{
+													"key": "orderBy",
+													"value": "createdDate",
+													"description": "Define the property to be used for ordering the returned list."
+												}
+											]
+										},
+										"description": "List all Alarms for a particular contract."
+									},
+									"response": [
+										{
+											"name": "The requested resource was found and returned.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Define the property to be used for ordering the returned list."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"BUSY\"\n      },\n      \"properties\": {\n        \"name\": \"-\",\n        \"expression\": {\n          \"comparisonThreshold\": \"<number>\",\n          \"metric\": \"instance_network_in_packets\",\n          \"source\": {\n            \"uuid\": \"0DfE6eBb-C7ef-dC59-f6cD-A3De7EaaA7E1\"\n          },\n          \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n          \"range\": \"<string>\",\n          \"rangeAggregation\": \"AVERAGE\",\n          \"unit\": \"TOTAL\"\n        },\n        \"location\": \"<string>\",\n        \"state\": \"PENDING\",\n        \"stateTransitionedDate\": \"<dateTime>\",\n        \"alarmDelay\": \"<string>\"\n      },\n      \"entities\": {\n        \"firingActions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"AVAILABLE\"\n              },\n              \"properties\": {\n                \"name\": \"%\",\n                \"type\": \"2\",\n                \"typeProperties\": {\n                  \"emailTo\": \"<string>\"\n                },\n                \"executions\": [\n                  \"6B04Cf50-93da-80C6-Bb39-1AaDa9A0db52\",\n                  \"0c30c6fd-5E75-08FE-10CC-38DA24C79a74\"\n                ]\n              },\n              \"entities\": {\n                \"executions\": {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"items\": [\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"AVAILABLE\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"b6Dc6785-dE85-c1Eb-1fE8-7cBb4Fff2aBf\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    },\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"AVAILABLE\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"024bA194-DdaF-cf73-8399-D9D403f94f4F\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    }\n                  ]\n                }\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"SUSPENDED\"\n              },\n              \"properties\": {\n                \"name\": \"Y\",\n                \"type\": \"e\",\n                \"typeProperties\": {\n                  \"emailTo\": \"<string>\"\n                },\n                \"executions\": [\n                  \"D5dF4ce6-00CD-aFcB-EEF2-5808BE63E8F0\",\n                  \"07e3A38e-FD20-de4d-B79f-471ae178e47e\"\n                ]\n              },\n              \"entities\": {\n                \"executions\": {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"items\": [\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"SUSPENDED\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"479aB9f0-BBb1-F343-7aea-FFCAb6c8cF1e\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    },\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"SUSPENDED\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"1Df3BEe5-c420-21B3-54b0-0F3FAcDEfe0A\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    }\n                  ]\n                }\n              }\n            }\n          ]\n        },\n        \"transitions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": [\n            {\n              \"href\": \"<uri>\",\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"INACTIVE\"\n              },\n              \"properties\": {\n                \"alarmLastModifiedDate\": \"<dateTime>\",\n                \"date\": \"<dateTime>\",\n                \"newState\": \"PENDING\",\n                \"reason\": \"<string>\",\n                \"oldState\": \"OK\"\n              }\n            },\n            {\n              \"href\": \"<uri>\",\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"AVAILABLE\"\n              },\n              \"properties\": {\n                \"alarmLastModifiedDate\": \"<dateTime>\",\n                \"date\": \"<dateTime>\",\n                \"newState\": \"FIRING\",\n                \"reason\": \"<string>\",\n                \"oldState\": \"PENDING\"\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"metadata\": {\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"etag\": \"<string>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"state\": \"BUSY\"\n      },\n      \"properties\": {\n        \"name\": \"g\",\n        \"expression\": {\n          \"comparisonThreshold\": \"<number>\",\n          \"metric\": \"instance_volumes_read_ops\",\n          \"source\": {\n            \"uuid\": \"A7ba4F10-E1AC-5D8a-33B5-1fA4B1Fd0E0d\"\n          },\n          \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n          \"range\": \"<string>\",\n          \"rangeAggregation\": \"AVERAGE\",\n          \"unit\": \"TOTAL\"\n        },\n        \"location\": \"<string>\",\n        \"state\": \"OK\",\n        \"stateTransitionedDate\": \"<dateTime>\",\n        \"alarmDelay\": \"<string>\"\n      },\n      \"entities\": {\n        \"firingActions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": [\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"BUSY\"\n              },\n              \"properties\": {\n                \"name\": \"n\",\n                \"type\": \"r\",\n                \"typeProperties\": {\n                  \"emailTo\": \"<string>\"\n                },\n                \"executions\": [\n                  \"65572Ba7-1554-fEa3-fEeb-22c8415D6Fc9\",\n                  \"51F71edD-e670-3ea0-5eeE-D65aCCba84c6\"\n                ]\n              },\n              \"entities\": {\n                \"executions\": {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"items\": [\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"INACTIVE\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"560f05AD-490f-730A-f8e9-CAe625CFFadB\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    },\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"BUSY\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"F9f4b12B-bff9-5f4e-ADcB-2C6760Abe2B6\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    }\n                  ]\n                }\n              }\n            },\n            {\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"href\": \"<uri>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"INACTIVE\"\n              },\n              \"properties\": {\n                \"name\": \"X\",\n                \"type\": \":\",\n                \"typeProperties\": {\n                  \"emailTo\": \"<string>\"\n                },\n                \"executions\": [\n                  \"789AD1CB-7139-Ea1E-fa9F-871f875d7BeD\",\n                  \"4e32Dbf8-711d-9Efb-Eed5-15F76ac6Ebc2\"\n                ]\n              },\n              \"entities\": {\n                \"executions\": {\n                  \"id\": \"<string>\",\n                  \"type\": \"<string>\",\n                  \"href\": \"<uri>\",\n                  \"items\": [\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"AVAILABLE\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"87Ef85a6-b2dd-cFE5-C2B3-fe3141c5266A\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    },\n                    {\n                      \"id\": \"<string>\",\n                      \"type\": \"<string>\",\n                      \"href\": \"<uri>\",\n                      \"metadata\": {\n                        \"createdBy\": \"<string>\",\n                        \"createdByUserId\": \"<string>\",\n                        \"createdDate\": \"<dateTime>\",\n                        \"etag\": \"<string>\",\n                        \"lastModifiedBy\": \"<string>\",\n                        \"lastModifiedByUserId\": \"<string>\",\n                        \"lastModifiedDate\": \"<dateTime>\",\n                        \"state\": \"SUSPENDED\"\n                      },\n                      \"properties\": {\n                        \"actionId\": \"3cF4fc25-eE47-d533-EcD7-CA53DB6d7D5C\",\n                        \"actionLastModifiedDate\": \"<dateTime>\",\n                        \"alarmTransitionId\": \"<string>\",\n                        \"date\": \"<dateTime>\",\n                        \"message\": \"<string>\",\n                        \"state\": \"<string>\"\n                      }\n                    }\n                  ]\n                }\n              }\n            }\n          ]\n        },\n        \"transitions\": {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"href\": \"<uri>\",\n          \"items\": [\n            {\n              \"href\": \"<uri>\",\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"INACTIVE\"\n              },\n              \"properties\": {\n                \"alarmLastModifiedDate\": \"<dateTime>\",\n                \"date\": \"<dateTime>\",\n                \"newState\": \"FIRING\",\n                \"reason\": \"<string>\",\n                \"oldState\": \"FIRING\"\n              }\n            },\n            {\n              \"href\": \"<uri>\",\n              \"id\": \"<string>\",\n              \"type\": \"<string>\",\n              \"metadata\": {\n                \"createdBy\": \"<string>\",\n                \"createdByUserId\": \"<string>\",\n                \"createdDate\": \"<dateTime>\",\n                \"etag\": \"<string>\",\n                \"lastModifiedBy\": \"<string>\",\n                \"lastModifiedByUserId\": \"<string>\",\n                \"lastModifiedDate\": \"<dateTime>\",\n                \"state\": \"SUSPENDED\"\n              },\n              \"properties\": {\n                \"alarmLastModifiedDate\": \"<dateTime>\",\n                \"date\": \"<dateTime>\",\n                \"newState\": \"FIRING\",\n                \"reason\": \"<string>\",\n                \"oldState\": \"PENDING\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "The request body could not be parsed.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Define the property to be used for ordering the returned list."
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The request was not properly authenticated.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Define the property to be used for ordering the returned list."
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The requested resource does not exist.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms?depth=0&orderBy=createdDate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													],
+													"query": [
+														{
+															"key": "depth",
+															"value": "0",
+															"description": "Controls the detail depth of the response objects.\n\n  - depth=0: Only direct properties are included; children (such as executions or transitions) are not included.\n\n  - depth=1: Direct properties and children references are included.\n\n  - depth=2: Direct properties and children properties are included.\n\n  - depth=3: Direct properties and children properties and children's children are included.\n\n  - depth=... and so on\n\n"
+														},
+														{
+															"key": "orderBy",
+															"value": "createdDate",
+															"description": "Define the property to be used for ordering the returned list."
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Create Alarms",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cloudapi/monitoring/alarms",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cloudapi",
+												"monitoring",
+												"alarms"
+											]
+										},
+										"description": "Create an Alarm. All of the following properties must be provided: \"name\" and \"expression\" (\"comparisonThreshold\", \"metric\" and \"source\").\n\n - \"name\": the name of the Alarm\n\n - \"expression.source\": the virtual instance for which you want to configure the Alarm\n\n - \"expression.metric\": the metric (CPU|Network|Storage)\n\n - \"expression.comparisonThreshold\": the threshold value to be applied for the Alarm\n\n - 'range': required when setting a 'rangeAggregation'"
+									},
+									"response": [
+										{
+											"name": "The user-provided resource was created successfully.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"metadata\": {\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"etag\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"state\": \"INACTIVE\"\n  },\n  \"properties\": {\n    \"name\": \"g\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_in_bytes\",\n      \"source\": {\n        \"uuid\": \"de1Dd21A-1a41-9eb7-6E12-7d5AD8AA2B25\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"location\": \"<string>\",\n    \"state\": \"FIRING\",\n    \"stateTransitionedDate\": \"<dateTime>\",\n    \"alarmDelay\": \"<string>\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"executions\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    \"transitions\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "The request body could not be parsed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The request was not properly authenticated.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The user-provided resource did not pass all validations.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"=\",\n    \"expression\": {\n      \"comparisonThreshold\": \"<number>\",\n      \"metric\": \"instance_network_out_bytes\",\n      \"source\": {\n        \"uuid\": \"eADefDBC-F415-c140-0e3B-3e4913FbBdA1\"\n      },\n      \"comparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO_THRESHOLD\",\n      \"range\": \"<string>\",\n      \"rangeAggregation\": \"AVERAGE\",\n      \"unit\": \"TOTAL\"\n    },\n    \"alarmDelay\": \"0s\"\n  },\n  \"entities\": {\n    \"firingActions\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/alarms",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"alarms"
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errorUuid\": \"49FdcDF7-3a7E-aBF5-6aC7-D9Ef3C12da1f\",\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "openapi.json",
+							"item": [
+								{
+									"name": "Display MaaS OpenAPI spec (JSON)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cloudapi/monitoring/openapi.json",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cloudapi",
+												"monitoring",
+												"openapi.json"
+											]
+										},
+										"description": "Display OpenAPI JSON specification for Monitoring as a Service."
+									},
+									"response": [
+										{
+											"name": "The requested resource was found and returned.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/openapi.json",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"openapi.json"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "openapi.yaml",
+							"item": [
+								{
+									"name": "Display MaaS OpenAPI spec (YAML)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cloudapi/monitoring/openapi.yaml",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cloudapi",
+												"monitoring",
+												"openapi.yaml"
+											]
+										},
+										"description": "Display OpenAPI YAML specification for Monitoring as a Service."
+									},
+									"response": [
+										{
+											"name": "The requested resource was found and returned.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/cloudapi/monitoring/openapi.yaml",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cloudapi",
+														"monitoring",
+														"openapi.yaml"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com"
+		}
+	]
+}

@@ -1,0 +1,2027 @@
+{
+	"info": {
+		"_postman_id": "58ddc68f-42f7-4d56-81d2-20ee71c9fa92",
+		"name": "Auth API",
+		"description": "Use the Auth API to manage tokens for secure access to IONOS Cloud APIs (Auth API, Cloud API, Reseller API, Activity Log API, and others).\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "tokens",
+			"item": [
+				{
+					"name": "generate",
+					"item": [
+						{
+							"name": "Create new tokens",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens/generate?ttl=31536000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens",
+										"generate"
+									],
+									"query": [
+										{
+											"key": "ttl",
+											"value": "31536000",
+											"description": "The maximum time that the access token will be valid for use within the application in seconds."
+										}
+									]
+								},
+								"description": "Users can generate new tokens ([JWT](https://jwt.io/) or [JSON Web Token](https://tools.ietf.org/html/rfc7519)). By default, new tokens are linked to the user’s contract. Users with multiple contracts must provide the contract number, for which the token is generated, in the `X-Contract-Number` header; otherwise, an error response is returned.<br><br> To access this endpoint, 'Basic Authentication' or 'Token Authentication' tokens with valid credentials must be encapsulated in the header, by users with one or with multiple contracts.  <div style=\"padding: 15px; border: 1px solid #d1ecf1; background-color: #d1ecf1; color: #0c5460; margin-bottom: 15px;\">\n  <strong>Note:</strong><br/><br/>\n  From <b>March 15, 2024</b>, users with <b>2-Factor \n  Authentication</b> enabled must generate new tokens using 2FA-secured tokens through DCD in the <b>Token Manager</b>. \n  Tokens generated this way will not automatically inherit the <b>2FA-secured</b> property.\n</div> The response will contain a newly-generated token for accessing any IONOS Cloud APIs (Auth API, Cloud API, Reseller API, Activity Log API, and others). The token can be used to access the APIs without providing the contract number in the `X-Contract-Number` header, by users with one or with multiple contracts. However, a valid contract number must be provided in the `X-Contract-Number` header to access the Auth API. By default, generated access tokens will expire after one year (subject to change).\n"
+							},
+							"response": [
+								{
+									"name": "The JSON Web Token, associated with user credentials.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/generate?ttl=31536000",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												"generate"
+											],
+											"query": [
+												{
+													"key": "ttl",
+													"value": "31536000",
+													"description": "The maximum time that the access token will be valid for use within the application in seconds."
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"token\": \"<string>\"\n}"
+								},
+								{
+									"name": "An invalid username/password or token provided, or the User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/generate?ttl=31536000",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												"generate"
+											],
+											"query": [
+												{
+													"key": "ttl",
+													"value": "31536000",
+													"description": "The maximum time that the access token will be valid for use within the application in seconds."
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/generate?ttl=31536000",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												"generate"
+											],
+											"query": [
+												{
+													"key": "ttl",
+													"value": "31536000",
+													"description": "The maximum time that the access token will be valid for use within the application in seconds."
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/generate?ttl=31536000",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												"generate"
+											],
+											"query": [
+												{
+													"key": "ttl",
+													"value": "31536000",
+													"description": "The maximum time that the access token will be valid for use within the application in seconds."
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{tokenId}",
+					"item": [
+						{
+							"name": "Get tokens by Key ID",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens/:tokenId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens",
+										":tokenId"
+									],
+									"variable": [
+										{
+											"key": "tokenId",
+											"value": "<string>",
+											"description": "(Required) The Key ID of the token (can be retrieved from the header section of the token)."
+										}
+									]
+								},
+								"description": "Retrieve the details for a token by the Key ID (`tokenId`). To access this endpoint, 'Basic Authentication' or 'Token Authentication' tokens with valid credentials must be encapsulated in the header. Users with multiple contracts must also provide a valid contract number in the `X-Contract-Number` header."
+							},
+							"response": [
+								{
+									"name": "Token successfully retrieved",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"createdDate\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"href\": \"<string>\",\n  \"id\": \"<string>\"\n}"
+								},
+								{
+									"name": "An invalid username/password or token provided, or the User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Token not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The token could not be retrieved because of a validation error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete tokens",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens/:tokenId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens",
+										":tokenId"
+									],
+									"variable": [
+										{
+											"key": "tokenId",
+											"value": "<string>",
+											"description": "(Required) The Key ID of the token (can be retrieved from the header section of the token)."
+										}
+									]
+								},
+								"description": "Delete a token by Key ID (`tokenId`). To access the endpoint, 'Basic Authentication' or 'Token Authentication' tokens with valid credentials must be encapsulated in the header.  <div style=\"padding: 15px; border: 1px solid #d1ecf1; background-color: #d1ecf1; color: #0c5460; margin-bottom: 15px;\">\n  <strong>Note:</strong><br/><br/>\n  From <b>March 15, 2024</b>, users with <b>2-Factor Authentication</b> must use <b>2FA-secured</b> tokens to delete existing \n  tokens. Token deletion can only be performed through DCD in the <b>Token Manager</b>.\n</div> Users with multiple contracts must also provide a valid contract number in the `X-Contract-Number` header.\n"
+							},
+							"response": [
+								{
+									"name": "Token successfully deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\"\n}"
+								},
+								{
+									"name": "An invalid username/password or token provided, or the User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Token not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "The token could not be deleted because of <reason>",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The User or the Contract is not valid for endpoint access.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "X-Contract-Number",
+												"value": "<integer>",
+												"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tokens/:tokenId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens",
+												":tokenId"
+											],
+											"variable": [
+												{
+													"key": "tokenId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "<integer>",
+											"description": {
+												"content": "The number of requests that can still be made without triggering a failure response.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "<integer>",
+											"description": {
+												"content": "The average number of requests per minute allowed.",
+												"type": "text/plain"
+											}
+										},
+										{
+											"key": "X-RateLimit-Burst",
+											"value": "<integer>",
+											"description": {
+												"content": "The maximum number of concurrent API requests allowed.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List all tokens",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Contract-Number",
+								"value": "<integer>",
+								"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tokens",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tokens"
+							]
+						},
+						"description": "List  the details of all tokens, generated by the user. To access this endpoint, 'Basic Authentication' or 'Token Authentication' tokens with valid credentials must be encapsulated in the header. Users with multiple contracts must also provide a valid contract number in the `X-Contract-Number` header."
+					},
+					"response": [
+						{
+							"name": "The list of all tokens.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"tokens\": [\n    {\n      \"createdDate\": \"<string>\",\n      \"expirationDate\": \"<string>\",\n      \"href\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"createdDate\": \"<string>\",\n      \"expirationDate\": \"<string>\",\n      \"href\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "An invalid username/password or token provided, or the User or the Contract is not valid for endpoint access.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "The User or the Contract is not valid for endpoint access.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "List tokens request failed due to a validation error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "The User or the Contract is not valid for endpoint access.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete tokens by criteria",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Contract-Number",
+								"value": "<integer>",
+								"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tokens?criteria=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tokens"
+							],
+							"query": [
+								{
+									"key": "criteria",
+									"value": "<string>",
+									"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+								}
+							]
+						},
+						"description": "Delete one or multiple tokens by the required `criteria` parameter values: `ALL`, `EXPIRED` and `CURRENT`. With parameter values `ALL` and `EXPIRED`, 'Basic Authentication' or 'Token Authentication' tokens with valid credentials must be encapsulated in the header. <div style=\"padding: 15px; border: 1px solid #d1ecf1; background-color: #d1ecf1; color: #0c5460; margin-bottom: 15px;\"> <strong>Note:</strong><br/><br/> From **March 15, 2024**, users with **2-Factor Authentication** must use **2FA-secured** tokens to delete existing  tokens. Token deletion can only be performed through DCD in the **Token Manager**. </div> With value `CURRENT`, only the 'Token Authentication' with valid credentials is required. Users with multiple contracts must also provide a valid contract number in the `X-Contract-Number` header.\n"
+					},
+					"response": [
+						{
+							"name": "Token successfully deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens?criteria=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "criteria",
+											"value": "<string>",
+											"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": \"<boolean>\"\n}"
+						},
+						{
+							"name": "An invalid username/password or token provided, or the User or the Contract is not valid for endpoint access.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens?criteria=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "criteria",
+											"value": "<string>",
+											"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "The User or the Contract is not valid for endpoint access.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens?criteria=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "criteria",
+											"value": "<string>",
+											"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Token not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens?criteria=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "criteria",
+											"value": "<string>",
+											"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "The token could not be deleted because of <reason>",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens?criteria=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "criteria",
+											"value": "<string>",
+											"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "The User or the Contract is not valid for endpoint access.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Contract-Number",
+										"value": "<integer>",
+										"description": "Users with multiple contracts must provide the contract number, for which the token is generated."
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tokens?criteria=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									],
+									"query": [
+										{
+											"key": "criteria",
+											"value": "<string>",
+											"description": "(Required) Delete tokens by criteria EXPIRED, ALL, or CURRENT. The tokens are deleted for the specified contract."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "<integer>",
+									"description": {
+										"content": "The number of requests that can still be made without triggering a failure response.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "<integer>",
+									"description": {
+										"content": "The average number of requests per minute allowed.",
+										"type": "text/plain"
+									}
+								},
+								{
+									"key": "X-RateLimit-Burst",
+									"value": "<integer>",
+									"description": {
+										"content": "The maximum number of concurrent API requests allowed.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com/auth/v1"
+		}
+	]
+}

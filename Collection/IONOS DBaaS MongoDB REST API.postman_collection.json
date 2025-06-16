@@ -1,0 +1,3016 @@
+{
+	"info": {
+		"_postman_id": "4a9f8f2b-801d-4eb2-a417-8d31b1570c0a",
+		"name": "IONOS DBaaS MongoDB REST API",
+		"description": "With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.\n\nMongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.\n\nThe MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "clusters",
+			"item": [
+				{
+					"name": "{clusterId}",
+					"item": [
+						{
+							"name": "users",
+							"item": [
+								{
+									"name": "{username}",
+									"item": [
+										{
+											"name": "Get a MongoDB User by ID",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "clusterId",
+															"value": "<string>",
+															"description": "(Required) The unique ID of the cluster."
+														},
+														{
+															"key": "username",
+															"value": "<string>",
+															"description": "(Required) The authentication username."
+														}
+													]
+												},
+												"description": "Retrieves the MongoDB user identified by the username."
+											},
+											"response": [
+												{
+													"name": "The user identified by the username and database parameters is returned.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"users",
+																":username"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "username"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"read\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}"
+												},
+												{
+													"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"users",
+																":username"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "username"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json",
+															"description": {
+																"content": "The content type of the response.",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Patch a MongoDB User by ID",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"password\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"enableSharding\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "clusterId",
+															"value": "<string>",
+															"description": "(Required) The unique ID of the cluster."
+														},
+														{
+															"key": "username",
+															"value": "<string>",
+															"description": "(Required) The authentication username."
+														}
+													]
+												},
+												"description": "Patches a MongoDB user specified by its ID."
+											},
+											"response": [
+												{
+													"name": "The user identified by the username and database parameters will be patched.\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"password\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"enableSharding\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"users",
+																":username"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "username"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"read\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}"
+												},
+												{
+													"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"password\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"enableSharding\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"users",
+																":username"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "username"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json",
+															"description": {
+																"content": "The content type of the response.",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Delete a MongoDB User by ID",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "username",
+															"value": "{{basicAuthUsername}}",
+															"type": "string"
+														},
+														{
+															"key": "password",
+															"value": "{{basicAuthPassword}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "clusterId",
+															"value": "<string>",
+															"description": "(Required) The unique ID of the cluster."
+														},
+														{
+															"key": "username",
+															"value": "<string>",
+															"description": "(Required) The authentication username."
+														}
+													]
+												},
+												"description": "Deletes a MongoDB user specified by its ID."
+											},
+											"response": [
+												{
+													"name": "The user identified by the username and database parameters will be deleted from the cluster.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"users",
+																":username"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "username"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"read\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}"
+												},
+												{
+													"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Basic <credentials>",
+																"description": "Added as a part of security scheme: basic"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/users/:username",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"users",
+																":username"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "username"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json",
+															"description": {
+																"content": "The content type of the response.",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Get all Cluster Users",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/users?limit=100&offset=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"users"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "100",
+													"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+												},
+												{
+													"key": "offset",
+													"value": "0",
+													"description": "The first element to return. Use together with 'limit' for pagination."
+												}
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Retrieves a list of MongoDB users."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"collection\",\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"type\": \"snapshot\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\"\n      },\n      \"properties\": {\n        \"username\": \"<string>\",\n        \"roles\": [\n          {\n            \"role\": \"dbAdminAnyDatabase\",\n            \"database\": \"<string>\"\n          },\n          {\n            \"role\": \"dbAdmin\",\n            \"database\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"user\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\"\n      },\n      \"properties\": {\n        \"username\": \"<string>\",\n        \"roles\": [\n          {\n            \"role\": \"clusterMonitor\",\n            \"database\": \"<string>\"\n          },\n          {\n            \"role\": \"readWriteAnyDatabase\",\n            \"database\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json",
+													"description": {
+														"content": "The content type of the response.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Create MongoDB User",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"clusterMonitor\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/users",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"users"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Creates a MongoDB user.\n"
+									},
+									"response": [
+										{
+											"name": "The created user is returned with metadata indicating when the user was created and by whom.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"clusterMonitor\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"collection\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"read\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}"
+										},
+										{
+											"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\"\n  },\n  \"properties\": {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"roles\": [\n      {\n        \"role\": \"clusterMonitor\",\n        \"database\": \"<string>\"\n      },\n      {\n        \"role\": \"readAnyDatabase\",\n        \"database\": \"<string>\"\n      }\n    ]\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/users",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"users"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json",
+													"description": {
+														"content": "The content type of the response.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "logs",
+							"item": [
+								{
+									"name": "Get logs of your cluster",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/logs?start=<dateTime>&end=<dateTime>&direction=BACKWARD&limit=100",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"logs"
+											],
+											"query": [
+												{
+													"key": "start",
+													"value": "<dateTime>",
+													"description": "The start time for the query in RFC3339 format. Must not be more than 30 days ago but before the end parameter. The default is 30 days ago."
+												},
+												{
+													"key": "end",
+													"value": "<dateTime>",
+													"description": "The end time for the query in RFC3339 format. Must not be greater than now. The default is the current timestamp."
+												},
+												{
+													"key": "direction",
+													"value": "BACKWARD",
+													"description": "The direction in which to scan through the logs. The logs are returned in order of the direction."
+												},
+												{
+													"key": "limit",
+													"value": "100",
+													"description": "The maximal number of log lines to return.  If the limit is reached then log lines will be cut at the end (respecting the scan direction)."
+												}
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Retrieves MongoDB logs based on the given parameters."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/logs?start=<dateTime>&end=<dateTime>&direction=BACKWARD&limit=100",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"logs"
+													],
+													"query": [
+														{
+															"key": "start",
+															"value": "<dateTime>",
+															"description": "The start time for the query in RFC3339 format. Must not be more than 30 days ago but before the end parameter. The default is 30 days ago."
+														},
+														{
+															"key": "end",
+															"value": "<dateTime>",
+															"description": "The end time for the query in RFC3339 format. Must not be greater than now. The default is the current timestamp."
+														},
+														{
+															"key": "direction",
+															"value": "BACKWARD",
+															"description": "The direction in which to scan through the logs. The logs are returned in order of the direction."
+														},
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximal number of log lines to return.  If the limit is reached then log lines will be cut at the end (respecting the scan direction)."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"instances\": [\n    {\n      \"name\": \"<string>\",\n      \"messages\": [\n        {\n          \"time\": \"<dateTime>\",\n          \"message\": \"<string>\"\n        },\n        {\n          \"time\": \"<dateTime>\",\n          \"message\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"messages\": [\n        {\n          \"time\": \"<dateTime>\",\n          \"message\": \"<string>\"\n        },\n        {\n          \"time\": \"<dateTime>\",\n          \"message\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}"
+										},
+										{
+											"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/logs?start=<dateTime>&end=<dateTime>&direction=BACKWARD&limit=100",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"logs"
+													],
+													"query": [
+														{
+															"key": "start",
+															"value": "<dateTime>",
+															"description": "The start time for the query in RFC3339 format. Must not be more than 30 days ago but before the end parameter. The default is 30 days ago."
+														},
+														{
+															"key": "end",
+															"value": "<dateTime>",
+															"description": "The end time for the query in RFC3339 format. Must not be greater than now. The default is the current timestamp."
+														},
+														{
+															"key": "direction",
+															"value": "BACKWARD",
+															"description": "The direction in which to scan through the logs. The logs are returned in order of the direction."
+														},
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximal number of log lines to return.  If the limit is reached then log lines will be cut at the end (respecting the scan direction)."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json",
+													"description": {
+														"content": "The content type of the response.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "snapshots",
+							"item": [
+								{
+									"name": "Get the snapshots of your cluster",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/snapshots?limit=100&offset=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"snapshots"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "100",
+													"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+												},
+												{
+													"key": "offset",
+													"value": "0",
+													"description": "The first element to return. Use together with 'limit' for pagination."
+												}
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Retrieves MongoDB snapshots."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/snapshots?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"snapshots"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"collection\",\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"type\": \"cluster\",\n      \"id\": \"<string>\",\n      \"properties\": {\n        \"version\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"creationTime\": \"<dateTime>\"\n      }\n    },\n    {\n      \"type\": \"template\",\n      \"id\": \"<string>\",\n      \"properties\": {\n        \"version\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"creationTime\": \"<dateTime>\"\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  }\n}"
+										},
+										{
+											"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/snapshots?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"snapshots"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json",
+													"description": {
+														"content": "The content type of the response.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "restore",
+							"item": [
+								{
+									"name": "In-place restore of a cluster",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"snapshotId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"restore"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Triggers an in-place restore of the given MongoDB cluster."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"snapshotId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Accepted",
+											"code": 202,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"snapshotId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json",
+													"description": {
+														"content": "The content type of the response.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "versions",
+							"item": [
+								{
+									"name": "Get available MongoDB versions for this cluster",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/versions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"versions"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Retrieves all MongoDB versions currently selectable for this cluster."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/versions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"versions"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/versions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"versions"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json",
+													"description": {
+														"content": "The content type of the response.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get a cluster by id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the cluster."
+										}
+									]
+								},
+								"description": "Get a cluster by id."
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"template\",\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"location\": \"<string>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"templateID\": \"<string>\",\n    \"connectionString\": \"<string>\",\n    \"biConnector\": {\n      \"enabled\": false,\n      \"host\": \"<string>\",\n      \"port\": \"<string>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}"
+								},
+								{
+									"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json",
+											"description": {
+												"content": "The content type of the response.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Patch a cluster",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"DESTROYING\",\n    \"health\": \"UNHEALTHY\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"biConnector\": {\n      \"enabled\": false\n    },\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"templateID\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"HDD\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the cluster."
+										}
+									]
+								},
+								"description": "Patch attributes of a MongoDB cluster."
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"DESTROYING\",\n    \"health\": \"UNHEALTHY\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"biConnector\": {\n      \"enabled\": false\n    },\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"templateID\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"HDD\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"template\",\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"location\": \"<string>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"templateID\": \"<string>\",\n    \"connectionString\": \"<string>\",\n    \"biConnector\": {\n      \"enabled\": false,\n      \"host\": \"<string>\",\n      \"port\": \"<string>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}"
+								},
+								{
+									"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"DESTROYING\",\n    \"health\": \"UNHEALTHY\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"biConnector\": {\n      \"enabled\": false\n    },\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"templateID\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"HDD\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json",
+											"description": {
+												"content": "The content type of the response.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a Cluster",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the cluster."
+										}
+									]
+								},
+								"description": "Deletes a MongoDB cluster."
+							},
+							"response": [
+								{
+									"name": "The cluster to be deleted is automatically set to `state = DESTROYING`.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"template\",\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"location\": \"<string>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"templateID\": \"<string>\",\n    \"connectionString\": \"<string>\",\n    \"biConnector\": {\n      \"enabled\": false,\n      \"host\": \"<string>\",\n      \"port\": \"<string>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}"
+								},
+								{
+									"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json",
+											"description": {
+												"content": "The content type of the response.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get Clusters",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clusters"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The first element to return. Use together with 'limit' for pagination."
+								},
+								{
+									"key": "filter.name",
+									"value": "<string>",
+									"description": "Response filter to list only the MongoDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+								}
+							]
+						},
+						"description": "Retrieves a list of MongoDB clusters."
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MongoDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"snapshot\",\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"type\": \"template\",\n      \"id\": \"<string>\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"state\": \"UNKNOWN\",\n        \"health\": \"UNKNOWN\"\n      },\n      \"properties\": {\n        \"type\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"mongoDBVersion\": \"<string>\",\n        \"location\": \"<string>\",\n        \"backup\": {\n          \"location\": \"<string>\"\n        },\n        \"instances\": \"<integer>\",\n        \"shards\": \"<integer>\",\n        \"connections\": [\n          {\n            \"datacenterId\": \"<string>\",\n            \"lanId\": \"<string>\",\n            \"cidrList\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"maintenanceWindow\": {\n          \"time\": \"<string>\",\n          \"dayOfTheWeek\": \"Sunday\"\n        },\n        \"templateID\": \"<string>\",\n        \"connectionString\": \"<string>\",\n        \"biConnector\": {\n          \"enabled\": false,\n          \"host\": \"<string>\",\n          \"port\": \"<string>\"\n        },\n        \"edition\": \"<string>\",\n        \"cores\": \"<integer>\",\n        \"ram\": \"<integer>\",\n        \"storageSize\": \"<integer>\",\n        \"storageType\": \"HDD\"\n      }\n    },\n    {\n      \"type\": \"cluster\",\n      \"id\": \"<string>\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"state\": \"BUSY\",\n        \"health\": \"UNHEALTHY\"\n      },\n      \"properties\": {\n        \"type\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"mongoDBVersion\": \"<string>\",\n        \"location\": \"<string>\",\n        \"backup\": {\n          \"location\": \"<string>\"\n        },\n        \"instances\": \"<integer>\",\n        \"shards\": \"<integer>\",\n        \"connections\": [\n          {\n            \"datacenterId\": \"<string>\",\n            \"lanId\": \"<string>\",\n            \"cidrList\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"maintenanceWindow\": {\n          \"time\": \"<string>\",\n          \"dayOfTheWeek\": \"Thursday\"\n        },\n        \"templateID\": \"<string>\",\n        \"connectionString\": \"<string>\",\n        \"biConnector\": {\n          \"enabled\": false,\n          \"host\": \"<string>\",\n          \"port\": \"<string>\"\n        },\n        \"edition\": \"<string>\",\n        \"cores\": \"<integer>\",\n        \"ram\": \"<integer>\",\n        \"storageSize\": \"<integer>\",\n        \"storageType\": \"SSD Premium\"\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  }\n}"
+						},
+						{
+							"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MongoDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json",
+									"description": {
+										"content": "The content type of the response.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a Cluster",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPGRADING\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"mongoDBVersion\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"location\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"type\": \"<string>\",\n    \"templateID\": \"<string>\",\n    \"shards\": \"<integer>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"biConnector\": {\n      \"enabled\": false\n    },\n    \"fromBackup\": {\n      \"snapshotId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clusters",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clusters"
+							]
+						},
+						"description": "Creates a new MongoDB cluster.\n"
+					},
+					"response": [
+						{
+							"name": "The created cluster is returned and is automatically set to `state = BUSY`.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPGRADING\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"mongoDBVersion\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"location\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"type\": \"<string>\",\n    \"templateID\": \"<string>\",\n    \"shards\": \"<integer>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"biConnector\": {\n      \"enabled\": false\n    },\n    \"fromBackup\": {\n      \"snapshotId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"template\",\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"type\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"mongoDBVersion\": \"<string>\",\n    \"location\": \"<string>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"instances\": \"<integer>\",\n    \"shards\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"templateID\": \"<string>\",\n    \"connectionString\": \"<string>\",\n    \"biConnector\": {\n      \"enabled\": false,\n      \"host\": \"<string>\",\n      \"port\": \"<string>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}"
+						},
+						{
+							"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPGRADING\",\n    \"health\": \"DEGRADED\"\n  },\n  \"properties\": {\n    \"mongoDBVersion\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidrList\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"location\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"type\": \"<string>\",\n    \"templateID\": \"<string>\",\n    \"shards\": \"<integer>\",\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"<string>\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"biConnector\": {\n      \"enabled\": false\n    },\n    \"fromBackup\": {\n      \"snapshotId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    },\n    \"edition\": \"<string>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"storageType\": \"SSD Premium\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json",
+									"description": {
+										"content": "The content type of the response.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "versions",
+			"item": [
+				{
+					"name": "Get available MongoDB versions",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/versions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"versions"
+							]
+						},
+						"description": "Retrieves all MongoDB versions available for new MongoDB clusters."
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json",
+									"description": {
+										"content": "The content type of the response.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "templates",
+			"item": [
+				{
+					"name": "Get Templates",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/templates?limit=100&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"templates"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The first element to return. Use together with 'limit' for pagination."
+								}
+							]
+						},
+						"description": "Retrieves a list of valid templates. These templates can be used to create MongoDB clusters; they contain properties, such as number of cores, RAM, and the storage size.\n"
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/templates?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templates"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"snapshot\",\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"type\": \"user\",\n      \"id\": \"<string>\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"state\": \"UNKNOWN\",\n        \"health\": \"UNHEALTHY\"\n      },\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"edition\": \"<string>\",\n        \"cores\": \"<integer>\",\n        \"ram\": \"<integer>\",\n        \"storageSize\": \"<integer>\"\n      }\n    },\n    {\n      \"type\": \"template\",\n      \"id\": \"<string>\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"state\": \"AVAILABLE\",\n        \"health\": \"UNKNOWN\"\n      },\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"edition\": \"<string>\",\n        \"cores\": \"<integer>\",\n        \"ram\": \"<integer>\",\n        \"storageSize\": \"<integer>\"\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  }\n}"
+						},
+						{
+							"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/templates?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templates"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json",
+									"description": {
+										"content": "The content type of the response.",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "infos",
+			"item": [
+				{
+					"name": "version",
+					"item": [
+						{
+							"name": "Get API Version",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/infos/version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"infos",
+										"version"
+									]
+								},
+								"description": "Retrieves the current version of the responding API."
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/infos/version",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"infos",
+												"version"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"swaggerUrl\": \"<string>\"\n}"
+								},
+								{
+									"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/infos/version",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"infos",
+												"version"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json",
+											"description": {
+												"content": "The content type of the response.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "versions",
+					"item": [
+						{
+							"name": "Get All API Versions",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/infos/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"infos",
+										"versions"
+									]
+								},
+								"description": "Retrieves all available versions of the responding API."
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/infos/versions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"infos",
+												"versions"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"name\": \"<string>\",\n    \"swaggerUrl\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"swaggerUrl\": \"<string>\"\n  }\n]"
+								},
+								{
+									"name": "Any erroneous status code: 400 (parse error), 401 (auth error),\n402 (trial access), 403 (insufficient permissions), 404 (not found),\n405 (unsupported HTTP method), 415 (unsupported content type),\n422 (validation error), 429 (request rate limit exceeded),\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/infos/versions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"infos",
+												"versions"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json",
+											"description": {
+												"content": "The content type of the response.",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{basicAuthUsername}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{basicAuthPassword}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com/databases/mongodb"
+		}
+	]
+}

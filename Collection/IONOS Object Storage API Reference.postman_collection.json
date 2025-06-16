@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "8c5d9aa7-97cc-413f-9dd6-3f3d9cbfbcfe",
+		"name": "IONOS Object Storage API Reference",
+		"description": "### API References\n- [Object Storage Management API Reference](https://api.ionos.com/docs/s3-management/v1/) for managing Access Keys\n- [Object Storage API Reference for contract-owned buckets](https://api.ionos.com/docs/s3-contract-owned-buckets/v2/)\n- [Object Storage API Reference for user-owned buckets](https://api.ionos.com/docs/s3-user-owned-buckets/v2/)\n\n### User documentation\n[IONOS Object Storage User Guide](https://docs.ionos.com/cloud/storage-and-backup/ionos-object-storage)\n* [Documentation on user-owned and contract-owned buckets](https://docs.ionos.com/cloud/managed-services/s3-object-storage/concepts/buckets)\n* [Documentation on S3 API Compatibility](https://docs.ionos.com/cloud/managed-services/s3-object-storage/concepts/s3-api-compatibility)\n* [S3 Tools](https://docs.ionos.com/cloud/managed-services/s3-object-storage/s3-tools) that can be used\n\n### Endpoints\n| Location | Region Name | Bucket Type | Endpoint |\n| --- | --- | --- | --- |\n| **Frankfurt, Germany** | **de** | User-owned | `https://s3.eu-central-1.ionoscloud.com` |\n| **Berlin, Germany** | **eu-central-2** | User-owned | `https://s3.eu-central-2.ionoscloud.com` |\n| **Logroño, Spain** | **eu-south-2** | User-owned | `https://s3.eu-south-2.ionoscloud.com` |\n| **Berlin, Germany** | **eu-central-3** | Contract-owned | `https://s3.eu-central-3.ionoscloud.com` |\n| **Lenexa, USA** | **us-central-1** | Contract-owned | `https://s3.us-central-1.ionoscloud.com` |\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "example",
+			"item": [
+				{
+					"name": "Example",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/example",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"example"
+							]
+						},
+						"description": "This is just an example, please navigate to the actual Object Storage API Reference depending on the bucket type:\n- [IONOS Object Storage API for contract-owned buckets ](https://api.ionos.com/docs/s3-contract-owned-buckets/v2/)\n- [IONOS Object Storage API for user-owned buckets](https://api.ionos.com/docs/s3-user-owned-buckets/v2/)\n"
+					},
+					"response": [
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/example",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"example"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/example",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"example"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://s3.eu-central-1.ionoscloud.com"
+		}
+	]
+}

@@ -1,0 +1,5581 @@
+{
+	"info": {
+		"_postman_id": "ca99a3d4-ce92-4c38-a2f1-8902a0e2017a",
+		"name": "IONOS DBaaS MariaDB REST API",
+		"description": "An enterprise-grade Database is provided as a Service (DBaaS) solution that\ncan be managed through a browser-based \"Data Center Designer\" (DCD) tool or\nvia an easy to use API.\n\nThe API allows you to create additional MariaDB database clusters or modify existing\nones. It is designed to allow users to leverage the same power and\nflexibility found within the DCD visual tool. Both tools are consistent with\ntheir concepts and lend well to making the experience smooth and intuitive.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "clusters",
+			"item": [
+				{
+					"name": "{clusterId}",
+					"item": [
+						{
+							"name": "backups",
+							"item": [
+								{
+									"name": "List backups of cluster",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "key",
+													"value": "Authorization",
+													"type": "string"
+												},
+												{
+													"key": "value",
+													"value": "{{apiKey}}",
+													"type": "string"
+												},
+												{
+													"key": "in",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"backups"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "100",
+													"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+												},
+												{
+													"key": "offset",
+													"value": "0",
+													"description": "The first element to return. Use together with 'limit' for pagination."
+												}
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Retrieves a list of all backups of the given MariaDB cluster.\n"
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"properties\": {\n        \"clusterId\": \"<string>\",\n        \"location\": \"<string>\",\n        \"earliestRecoveryTargetTime\": \"<dateTime>\",\n        \"size\": \"<integer>\",\n        \"baseBackups\": [\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          },\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"properties\": {\n        \"clusterId\": \"<string>\",\n        \"location\": \"<string>\",\n        \"earliestRecoveryTargetTime\": \"<dateTime>\",\n        \"size\": \"<integer>\",\n        \"baseBackups\": [\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          },\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"total\": 0,\n  \"_links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  }\n}"
+										},
+										{
+											"name": "Parse error.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Authentication error.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Not Found.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unsupported HTTP method.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unsupported content type.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Validation error.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Request rate limit exceeded.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Server error.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Maintenance.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/backups?limit=100&offset=0",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"backups"
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "100",
+															"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+														},
+														{
+															"key": "offset",
+															"value": "0",
+															"description": "The first element to return. Use together with 'limit' for pagination."
+														}
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "restore",
+							"item": [
+								{
+									"name": "In-place restore of a cluster.",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "key",
+													"value": "Authorization",
+													"type": "string"
+												},
+												{
+													"key": "value",
+													"value": "{{apiKey}}",
+													"type": "string"
+												},
+												{
+													"key": "in",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"restore"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "<string>",
+													"description": "(Required) The unique ID of the cluster."
+												}
+											]
+										},
+										"description": "Restore a MariaDB cluster from a backup.\n\nConditions:\n - The backup must belong to the MariaDB cluster to\n   be restored.\n - The cluster must be in the state \"AVAILABLE\"."
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Accepted",
+											"code": 202,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Parse error.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Authentication error.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Not Found.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unsupported HTTP method.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unsupported content type.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Validation error.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Request rate limit exceeded.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Server error.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Maintenance.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"backupId\": \"<string>\",\n  \"recoveryTargetTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/restore",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"restore"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Fetch a cluster",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the cluster."
+										}
+									]
+								},
+								"description": "You can retrieve a MariaDB cluster by using its ID. This value can be\nfound in the response body when a MariaDB cluster is created or when\nyou GET a list of MariaDB clusters.\n"
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\"\n  },\n  \"properties\": {\n    \"displayName\": \"-6\",\n    \"mariadbVersion\": \"10.6\",\n    \"dnsName\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"22:7:6\",\n      \"dayOfTheWeek\": \"Saturday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    }\n  }\n}"
+								},
+								{
+									"name": "Parse error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Authentication error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Not Found.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported HTTP method.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported content type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Validation error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Request rate limit exceeded.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Server error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Maintenance.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Update a cluster",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the cluster."
+										}
+									]
+								},
+								"description": "Updates mutable attributes on a MariaDB cluster."
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\"\n  },\n  \"properties\": {\n    \"displayName\": \"-6\",\n    \"mariadbVersion\": \"10.6\",\n    \"dnsName\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"22:7:6\",\n      \"dayOfTheWeek\": \"Saturday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    }\n  }\n}"
+								},
+								{
+									"name": "Parse error.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Authentication error.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Not Found.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported HTTP method.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported content type.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Validation error.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Request rate limit exceeded.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Server error.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Maintenance.",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"UPDATING\"\n  },\n  \"properties\": {\n    \"mariadbVersion\": \"10.11\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"displayName\": \"vJPC r\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:50:25\",\n      \"dayOfTheWeek\": \"Saturday\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a cluster",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the cluster."
+										}
+									]
+								},
+								"description": "Delete a MariaDB cluster."
+							},
+							"response": [
+								{
+									"name": "The deleted cluster with `metadata.state` set to \"DESTROYING\".\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\"\n  },\n  \"properties\": {\n    \"displayName\": \"-6\",\n    \"mariadbVersion\": \"10.6\",\n    \"dnsName\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"22:7:6\",\n      \"dayOfTheWeek\": \"Saturday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    }\n  }\n}"
+								},
+								{
+									"name": "Parse error.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Authentication error.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Not Found.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported HTTP method.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported content type.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Validation error.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Request rate limit exceeded.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Server error.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Maintenance.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List clusters",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clusters"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The first element to return. Use together with 'limit' for pagination."
+								},
+								{
+									"key": "filter.name",
+									"value": "<string>",
+									"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+								}
+							]
+						},
+						"description": "Retrieves a list of MariaDB clusters."
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"state\": \"RESTORING\"\n      },\n      \"properties\": {\n        \"displayName\": \"L-\",\n        \"mariadbVersion\": \"10.6\",\n        \"dnsName\": \"<string>\",\n        \"instances\": \"<integer>\",\n        \"ram\": \"<integer>\",\n        \"cores\": \"<integer>\",\n        \"storageSize\": \"<integer>\",\n        \"connections\": [\n          {\n            \"datacenterId\": \"<string>\",\n            \"lanId\": \"<string>\",\n            \"cidr\": \"<string>\"\n          }\n        ],\n        \"maintenanceWindow\": {\n          \"time\": \"23:22:04\",\n          \"dayOfTheWeek\": \"Sunday\"\n        },\n        \"backup\": {\n          \"location\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"metadata\": {\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"state\": \"RESTORING\"\n      },\n      \"properties\": {\n        \"displayName\": \" -5:\",\n        \"mariadbVersion\": \"10.11\",\n        \"dnsName\": \"<string>\",\n        \"instances\": \"<integer>\",\n        \"ram\": \"<integer>\",\n        \"cores\": \"<integer>\",\n        \"storageSize\": \"<integer>\",\n        \"connections\": [\n          {\n            \"datacenterId\": \"<string>\",\n            \"lanId\": \"<string>\",\n            \"cidr\": \"<string>\"\n          }\n        ],\n        \"maintenanceWindow\": {\n          \"time\": \"4:9:01\",\n          \"dayOfTheWeek\": \"Tuesday\"\n        },\n        \"backup\": {\n          \"location\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"total\": 0,\n  \"_links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  }\n}"
+						},
+						{
+							"name": "Parse error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Authentication error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Not Found.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unsupported HTTP method.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unsupported content type.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Validation error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Request rate limit exceeded.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Server error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Maintenance.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?limit=100&offset=0&filter.name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										},
+										{
+											"key": "filter.name",
+											"value": "<string>",
+											"description": "Response filter to list only the MariaDB clusters that contain\nthe specified name. The value is case insensitive and matched on the\n'displayName' field.\n"
+										}
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a cluster",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clusters",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clusters"
+							]
+						},
+						"description": "Creates a new MariaDB cluster.\n"
+					},
+					"response": [
+						{
+							"name": "The created cluster is returned with `metadata.state` set to \"BUSY\".\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"metadata\": {\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"state\": \"FAILED\"\n  },\n  \"properties\": {\n    \"displayName\": \"-6\",\n    \"mariadbVersion\": \"10.6\",\n    \"dnsName\": \"<string>\",\n    \"instances\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"maintenanceWindow\": {\n      \"time\": \"22:7:6\",\n      \"dayOfTheWeek\": \"Saturday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    }\n  }\n}"
+						},
+						{
+							"name": "Parse error.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Authentication error.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Not Found.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unsupported HTTP method.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unsupported content type.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Validation error.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Request rate limit exceeded.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Server error.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Maintenance.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"mariadbVersion\": \"10.6\",\n    \"instances\": \"<integer>\",\n    \"cores\": \"<integer>\",\n    \"ram\": \"<integer>\",\n    \"storageSize\": \"<integer>\",\n    \"connections\": [\n      {\n        \"datacenterId\": \"<string>\",\n        \"lanId\": \"<string>\",\n        \"cidr\": \"<string>\"\n      }\n    ],\n    \"displayName\": \"-:q:--:::2\",\n    \"credentials\": {\n      \"username\": \"Ap_cGpiY_kgRnqUa\",\n      \"password\": \"<string>\"\n    },\n    \"maintenanceWindow\": {\n      \"time\": \"10:5:54\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"backup\": {\n      \"location\": \"<string>\"\n    },\n    \"fromBackup\": {\n      \"backupId\": \"<string>\",\n      \"recoveryTargetTime\": \"<dateTime>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "backups",
+			"item": [
+				{
+					"name": "{backupId}",
+					"item": [
+						{
+							"name": "Fetch backups",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{apiKey}}",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups/:backupId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups",
+										":backupId"
+									],
+									"variable": [
+										{
+											"key": "backupId",
+											"value": "<string>",
+											"description": "(Required) The unique ID of the backup."
+										}
+									]
+								},
+								"description": "Retrieve a MariaDB backup by ID. This value can be\nfound when you GET the list of MariaDB backups.\n"
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"properties\": {\n    \"clusterId\": \"<string>\",\n    \"location\": \"<string>\",\n    \"earliestRecoveryTargetTime\": \"<dateTime>\",\n    \"size\": \"<integer>\",\n    \"baseBackups\": [\n      {\n        \"created\": \"<dateTime>\",\n        \"size\": \"<integer>\"\n      },\n      {\n        \"created\": \"<dateTime>\",\n        \"size\": \"<integer>\"\n      }\n    ]\n  }\n}"
+								},
+								{
+									"name": "Parse error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Authentication error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Not Found.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported HTTP method.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unsupported content type.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Validation error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Request rate limit exceeded.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Server error.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Maintenance.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backups/:backupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backups",
+												":backupId"
+											],
+											"variable": [
+												{
+													"key": "backupId"
+												}
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List of backups.",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"backups"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The first element to return. Use together with 'limit' for pagination."
+								}
+							]
+						},
+						"description": "Retrieves all lists of backups for all MariaDB clusters in this contract.\n"
+					},
+					"response": [
+						{
+							"name": "Successful operation.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"properties\": {\n        \"clusterId\": \"<string>\",\n        \"location\": \"<string>\",\n        \"earliestRecoveryTargetTime\": \"<dateTime>\",\n        \"size\": \"<integer>\",\n        \"baseBackups\": [\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          },\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"properties\": {\n        \"clusterId\": \"<string>\",\n        \"location\": \"<string>\",\n        \"earliestRecoveryTargetTime\": \"<dateTime>\",\n        \"size\": \"<integer>\",\n        \"baseBackups\": [\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          },\n          {\n            \"created\": \"<dateTime>\",\n            \"size\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"total\": 0,\n  \"_links\": {\n    \"prev\": \"<uri>\",\n    \"self\": \"<uri>\",\n    \"next\": \"<uri>\"\n  }\n}"
+						},
+						{
+							"name": "Parse error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Authentication error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Not Found.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unsupported HTTP method.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unsupported content type.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Validation error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Request rate limit exceeded.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Server error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Maintenance.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backups?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backups"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "The maximum number of elements to return. Use together with 'offset' for pagination."
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "The first element to return. Use together with 'limit' for pagination."
+										}
+									]
+								}
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://mariadb.de-fra.ionos.com"
+		}
+	]
+}

@@ -1,0 +1,4810 @@
+{
+	"info": {
+		"_postman_id": "3d4d063e-f0bb-4936-bec4-f293ddec5746",
+		"name": "IONOS Cloud Billing API",
+		"description": "# Overview\nThe IONOS Billing API is a REST API that can be used to retrieve information about resource usage and invoices. Information on usage is provided without liability.\n\n# Access Permissions\nBoth Contract Owners and Contract Admins have access to the data, but Contract Admins for Reseller Sub-Contracts do not have permission to access the `/invoices` endpoint.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "{contract}",
+			"item": [
+				{
+					"name": "evn",
+					"item": [
+						{
+							"name": "{period}",
+							"item": [
+								{
+									"name": "evn Find By Period",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn/:period",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn",
+												":period"
+											],
+											"variable": [
+												{
+													"key": "contract",
+													"value": "82260882",
+													"description": "(Required) Contract number"
+												},
+												{
+													"key": "period",
+													"value": "null",
+													"description": "(Required) Period of interest in format YYYY-MM"
+												}
+											]
+										},
+										"description": "Returns provisioning itemized data for a certain period"
+									},
+									"response": [
+										{
+											"name": "Result data",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/evn/:period",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"evn",
+														":period"
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"period\": \"<string>\"\n  },\n  \"datacenters\": [\n    {\n      \"vdcUUID\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"data\": [\n        {\n          \"resourceType\": \"BACKUP\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"S03000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        },\n        {\n          \"resourceType\": \"BMC\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"WL2000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"vdcUUID\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"data\": [\n        {\n          \"resourceType\": \"NATGATEWAY\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"WL2000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        },\n        {\n          \"resourceType\": \"DBAAS\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"C03000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"evnCSV\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/evn/:period",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"evn",
+														":period"
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/evn/:period",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"evn",
+														":period"
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "The contract not found or doesn't belong to the user",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/evn/:period",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"evn",
+														":period"
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Wrong period format specified",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/evn/:period",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"evn",
+														":period"
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Unexpected internal server error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/evn/:period",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"evn",
+														":period"
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "evn Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/:contract/evn",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":contract",
+										"evn"
+									],
+									"variable": [
+										{
+											"key": "contract",
+											"value": "82260882",
+											"description": "(Required) Contract number"
+										}
+									]
+								},
+								"description": "Returns provisioning itemized data for a current month"
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"period\": \"<string>\"\n  },\n  \"datacenters\": [\n    {\n      \"vdcUUID\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"data\": [\n        {\n          \"resourceType\": \"BACKUP\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"S03000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        },\n        {\n          \"resourceType\": \"BMC\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"WL2000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"vdcUUID\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"data\": [\n        {\n          \"resourceType\": \"NATGATEWAY\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"WL2000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        },\n        {\n          \"resourceType\": \"DBAAS\",\n          \"resourceUUID\": \"<uuid>\",\n          \"intervalMin\": \"<number>\",\n          \"intervalDivisor\": \"<number>\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"itemStub\": \"C03000\",\n          \"value\": \"<float>\",\n          \"valueDivisor\": \"<number>\",\n          \"additionalParameters\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"evnCSV\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "The contract not found or doesn't belong to the user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Wrong period format specified",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/evn",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"evn"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "invoices",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "invoices Find By Id",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"invoices",
+												":id"
+											],
+											"query": [
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract",
+													"value": "82260882",
+													"description": "(Required) Contract number"
+												},
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) Invoice ID"
+												}
+											]
+										},
+										"description": "Returns the invoice for a given invoice ID."
+									},
+									"response": [
+										{
+											"name": "Result data",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"invoices",
+														":id"
+													],
+													"query": [
+														{
+															"key": "dateformat",
+															"value": "<string>",
+															"description": "Vendor date format"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metadata\": {\n    \"invoiceId\": \"<string>\",\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\",\n    \"postingPeriod\": \"<string>\",\n    \"finallyPosted\": \"<boolean>\",\n    \"reference\": \"<string>\",\n    \"resellerRef\": \"<string>\"\n  },\n  \"datacenters\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"location\": \"<string>\",\n      \"productGroup\": \"<string>\",\n      \"meters\": [\n        {\n          \"meterId\": \"<string>\",\n          \"meterDesc\": \"<string>\",\n          \"productGroup\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"rate\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"meterId\": \"<string>\",\n          \"meterDesc\": \"<string>\",\n          \"productGroup\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"rate\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ],\n      \"rebate\": {\n        \"amount\": {\n          \"quantity\": \"<float>\",\n          \"unit\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"location\": \"<string>\",\n      \"productGroup\": \"<string>\",\n      \"meters\": [\n        {\n          \"meterId\": \"<string>\",\n          \"meterDesc\": \"<string>\",\n          \"productGroup\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"rate\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"meterId\": \"<string>\",\n          \"meterDesc\": \"<string>\",\n          \"productGroup\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"rate\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          },\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ],\n      \"rebate\": {\n        \"amount\": {\n          \"quantity\": \"<float>\",\n          \"unit\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"total\": {\n    \"quantity\": \"<float>\",\n    \"unit\": \"<string>\"\n  }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"invoices",
+														":id"
+													],
+													"query": [
+														{
+															"key": "dateformat",
+															"value": "<string>",
+															"description": "Vendor date format"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"invoices",
+														":id"
+													],
+													"query": [
+														{
+															"key": "dateformat",
+															"value": "<string>",
+															"description": "Vendor date format"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Invoice with the ID not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"invoices",
+														":id"
+													],
+													"query": [
+														{
+															"key": "dateformat",
+															"value": "<string>",
+															"description": "Vendor date format"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Invoice with the ID doesn't belong to the contract",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"invoices",
+														":id"
+													],
+													"query": [
+														{
+															"key": "dateformat",
+															"value": "<string>",
+															"description": "Vendor date format"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Unexpected internal server error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/invoices/:id?dateformat=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"invoices",
+														":id"
+													],
+													"query": [
+														{
+															"key": "dateformat",
+															"value": "<string>",
+															"description": "Vendor date format"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "invoices Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/:contract/invoices",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":contract",
+										"invoices"
+									],
+									"variable": [
+										{
+											"key": "contract",
+											"value": "82260882",
+											"description": "(Required) Contract number"
+										}
+									]
+								},
+								"description": "Returns a list of all invoices."
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/invoices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"invoices"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\"\n  },\n  \"invoices\": [\n    {\n      \"id\": \"<string>\",\n      \"date\": \"6744-21\",\n      \"amount\": \"<float>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"date\": \"9979-78\",\n      \"amount\": \"<float>\",\n      \"unit\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/invoices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"invoices"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/invoices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"invoices"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "The contract not found or doesn't belong to the user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/invoices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"invoices"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/invoices",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"invoices"
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "products Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/:contract/products?date=<date>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":contract",
+										"products"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "<date>",
+											"description": "Date of interest in format of YYYY-MM-DD"
+										}
+									],
+									"variable": [
+										{
+											"key": "contract",
+											"value": "82260882",
+											"description": "(Required) contract number"
+										}
+									]
+								},
+								"description": "Returns a list of products available for the given contract (only billable and active)"
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/products?date=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"products"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "<date>",
+													"description": "Date of interest in format of YYYY-MM-DD"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\"\n  },\n  \"liability\": \"<string>\",\n  \"products\": [\n    {\n      \"meterId\": \"BU1300\",\n      \"meterDesc\": \"<string>\",\n      \"deprecated\": \"<boolean>\",\n      \"unit\": \"<string>\",\n      \"unitCost\": {\n        \"quantity\": \"<float>\",\n        \"unit\": \"GBP\"\n      }\n    },\n    {\n      \"meterId\": \"WL3000\",\n      \"meterDesc\": \"<string>\",\n      \"deprecated\": \"<boolean>\",\n      \"unit\": \"<string>\",\n      \"unitCost\": {\n        \"quantity\": \"<float>\",\n        \"unit\": \"GBP\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/products?date=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"products"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "<date>",
+													"description": "Date of interest in format of YYYY-MM-DD"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/products?date=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"products"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "<date>",
+													"description": "Date of interest in format of YYYY-MM-DD"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/products?date=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"products"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "<date>",
+													"description": "Date of interest in format of YYYY-MM-DD"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "traffic",
+					"item": [
+						{
+							"name": "{period}",
+							"item": [
+								{
+									"name": "traffic Find By Period",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic",
+												":period"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract",
+													"value": "82260882",
+													"description": "(Required) Contract number"
+												},
+												{
+													"key": "period",
+													"value": "null",
+													"description": "(Required) Period of interest in format YYYY-MM"
+												}
+											]
+										},
+										"description": "Get a high-granularity list of utilization resources for a certain period"
+									},
+									"response": [
+										{
+											"name": "Result data",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"traffic",
+														":period"
+													],
+													"query": [
+														{
+															"key": "ip",
+															"value": "<boolean>",
+															"description": "Provide report grouped by IPs"
+														},
+														{
+															"key": "output",
+															"value": "all",
+															"description": "The output format (object, array, CSV or all of them)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"period\": \"<string>\",\n    \"unit\": \"<string>\"\n  },\n  \"trafficObj\": {\n    \"vdc\": [\n      {\n        \"vdcUUID\": \"<uuid>\",\n        \"vdcName\": \"<string>\",\n        \"dates\": [\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          },\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          }\n        ]\n      },\n      {\n        \"vdcUUID\": \"<uuid>\",\n        \"vdcName\": \"<string>\",\n        \"dates\": [\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          },\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"trafficArr\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"traffic\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"traffic",
+														":period"
+													],
+													"query": [
+														{
+															"key": "ip",
+															"value": "<boolean>",
+															"description": "Provide report grouped by IPs"
+														},
+														{
+															"key": "output",
+															"value": "all",
+															"description": "The output format (object, array, CSV or all of them)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"traffic",
+														":period"
+													],
+													"query": [
+														{
+															"key": "ip",
+															"value": "<boolean>",
+															"description": "Provide report grouped by IPs"
+														},
+														{
+															"key": "output",
+															"value": "all",
+															"description": "The output format (object, array, CSV or all of them)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "The contract not found or doesn't belong to the user",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"traffic",
+														":period"
+													],
+													"query": [
+														{
+															"key": "ip",
+															"value": "<boolean>",
+															"description": "Provide report grouped by IPs"
+														},
+														{
+															"key": "output",
+															"value": "all",
+															"description": "The output format (object, array, CSV or all of them)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Wrong period format specified",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"traffic",
+														":period"
+													],
+													"query": [
+														{
+															"key": "ip",
+															"value": "<boolean>",
+															"description": "Provide report grouped by IPs"
+														},
+														{
+															"key": "output",
+															"value": "all",
+															"description": "The output format (object, array, CSV or all of them)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Unexpected internal server error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/traffic/:period?ip=<boolean>&output=all",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"traffic",
+														":period"
+													],
+													"query": [
+														{
+															"key": "ip",
+															"value": "<boolean>",
+															"description": "Provide report grouped by IPs"
+														},
+														{
+															"key": "output",
+															"value": "all",
+															"description": "The output format (object, array, CSV or all of them)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "traffic Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":contract",
+										"traffic"
+									],
+									"query": [
+										{
+											"key": "ip",
+											"value": "<boolean>",
+											"description": "Provide report grouped by IPs"
+										},
+										{
+											"key": "output",
+											"value": "all",
+											"description": "The output format (object, array, CSV or all of them)"
+										}
+									],
+									"variable": [
+										{
+											"key": "contract",
+											"value": "82260882",
+											"description": "(Required) Contract number"
+										}
+									]
+								},
+								"description": "Get a high-granularity list of utilization resources for current month by default"
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"period\": \"<string>\",\n    \"unit\": \"<string>\"\n  },\n  \"trafficObj\": {\n    \"vdc\": [\n      {\n        \"vdcUUID\": \"<uuid>\",\n        \"vdcName\": \"<string>\",\n        \"dates\": [\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          },\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          }\n        ]\n      },\n      {\n        \"vdcUUID\": \"<uuid>\",\n        \"vdcName\": \"<string>\",\n        \"dates\": [\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          },\n          {\n            \"Date\": \"<date>\",\n            \"In\": \"<float>\",\n            \"Out\": \"<float>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"trafficArr\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"traffic\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "The contract not found or doesn't belong to the user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Wrong period format specified",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/traffic?ip=<boolean>&output=all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"traffic"
+											],
+											"query": [
+												{
+													"key": "ip",
+													"value": "<boolean>",
+													"description": "Provide report grouped by IPs"
+												},
+												{
+													"key": "output",
+													"value": "all",
+													"description": "The output format (object, array, CSV or all of them)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "usage",
+					"item": [
+						{
+							"name": "{dc}",
+							"item": [
+								{
+									"name": "usage Find By DC",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage",
+												":dc"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract",
+													"value": "82260882",
+													"description": "(Required) Contract number"
+												},
+												{
+													"key": "dc",
+													"value": "e0FFA0C7-DD63-86ae-af6C-bdC5EFb9564D",
+													"description": "(Required) Get data for the particular data-center ID (VDC UUID)"
+												}
+											]
+										},
+										"description": "Returns the usage of a contract for a given data-center"
+									},
+									"response": [
+										{
+											"name": "Result data",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"datacenters\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"location\": \"<string>\",\n      \"meters\": [\n        {\n          \"meterId\": \"DAS1000\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"meterId\": \"DBPGS1000\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"location\": \"<string>\",\n      \"meters\": [\n        {\n          \"meterId\": \"S3TO1300\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"meterId\": \"DBPGC1000\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\"\n  }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "The contract not found or doesn't belong to the user",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Conflict when getting the invoice data for usage calculation",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Wrong period format specified",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Unexpected internal server error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/usage/:dc?period=8101-61",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"usage",
+														":dc"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "8101-61",
+															"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "dc"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "usage Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":contract",
+										"usage"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "8101-61",
+											"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+										}
+									],
+									"variable": [
+										{
+											"key": "contract",
+											"value": "82260882",
+											"description": "(Required) Contract number"
+										}
+									]
+								},
+								"description": "Returns the usage of a contract"
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"datacenters\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"location\": \"<string>\",\n      \"meters\": [\n        {\n          \"meterId\": \"DAS1000\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"meterId\": \"DBPGS1000\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"location\": \"<string>\",\n      \"meters\": [\n        {\n          \"meterId\": \"S3TO1300\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"meterId\": \"DBPGC1000\",\n          \"meterDesc\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\"\n  }\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "The contract not found or doesn't belong to the user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Conflict when getting the invoice data for usage calculation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Wrong period format specified",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/usage?period=8101-61",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"usage"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "8101-61",
+													"description": "Period of interest in format YYYY-MM (current month by default if not specified)"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "utilization",
+					"item": [
+						{
+							"name": "{period}",
+							"item": [
+								{
+									"name": "utilization Find By Period",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "username",
+													"value": "{{basicAuthUsername}}",
+													"type": "string"
+												},
+												{
+													"key": "password",
+													"value": "{{basicAuthPassword}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization",
+												":period"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract",
+													"value": "82260882",
+													"description": "(Required) Contract number"
+												},
+												{
+													"key": "period",
+													"value": "null",
+													"description": "(Required) Period of interest in format YYYY-MM"
+												}
+											]
+										},
+										"description": "Get a high-granularity data of resources utilization for a certain period"
+									},
+									"response": [
+										{
+											"name": "Result data",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"utilization",
+														":period"
+													],
+													"query": [
+														{
+															"key": "dc",
+															"value": "<uuid>",
+															"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+														},
+														{
+															"key": "resource",
+															"value": "<uuid>",
+															"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+														},
+														{
+															"key": "type",
+															"value": "DSAAS",
+															"description": "Filter out by particular type of items"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"datacenters\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"meters\": [\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"DB\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"S3TO1100\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"IP\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"DBPGS1000\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"meters\": [\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"DSAAS\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"S03000\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"BMC\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"DBPGS1000\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\"\n  }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"utilization",
+														":period"
+													],
+													"query": [
+														{
+															"key": "dc",
+															"value": "<uuid>",
+															"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+														},
+														{
+															"key": "resource",
+															"value": "<uuid>",
+															"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+														},
+														{
+															"key": "type",
+															"value": "DSAAS",
+															"description": "Filter out by particular type of items"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"utilization",
+														":period"
+													],
+													"query": [
+														{
+															"key": "dc",
+															"value": "<uuid>",
+															"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+														},
+														{
+															"key": "resource",
+															"value": "<uuid>",
+															"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+														},
+														{
+															"key": "type",
+															"value": "DSAAS",
+															"description": "Filter out by particular type of items"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "The contract not found or doesn't belong to the user",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"utilization",
+														":period"
+													],
+													"query": [
+														{
+															"key": "dc",
+															"value": "<uuid>",
+															"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+														},
+														{
+															"key": "resource",
+															"value": "<uuid>",
+															"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+														},
+														{
+															"key": "type",
+															"value": "DSAAS",
+															"description": "Filter out by particular type of items"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Wrong period format specified",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"utilization",
+														":period"
+													],
+													"query": [
+														{
+															"key": "dc",
+															"value": "<uuid>",
+															"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+														},
+														{
+															"key": "resource",
+															"value": "<uuid>",
+															"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+														},
+														{
+															"key": "type",
+															"value": "DSAAS",
+															"description": "Filter out by particular type of items"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Unexpected internal server error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Basic <credentials>",
+														"description": "Added as a part of security scheme: basic"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/:contract/utilization/:period?dc=<uuid>&resource=<uuid>&type=DSAAS",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														":contract",
+														"utilization",
+														":period"
+													],
+													"query": [
+														{
+															"key": "dc",
+															"value": "<uuid>",
+															"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+														},
+														{
+															"key": "resource",
+															"value": "<uuid>",
+															"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+														},
+														{
+															"key": "type",
+															"value": "DSAAS",
+															"description": "Filter out by particular type of items"
+														}
+													],
+													"variable": [
+														{
+															"key": "contract"
+														},
+														{
+															"key": "period"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "utilization Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":contract",
+										"utilization"
+									],
+									"query": [
+										{
+											"key": "dc",
+											"value": "<uuid>",
+											"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+										},
+										{
+											"key": "resource",
+											"value": "<uuid>",
+											"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+										},
+										{
+											"key": "type",
+											"value": "DSAAS",
+											"description": "Filter out by particular type of items"
+										}
+									],
+									"variable": [
+										{
+											"key": "contract",
+											"value": "82260882",
+											"description": "(Required) Contract number"
+										}
+									]
+								},
+								"description": "Get a high-granularity data of resources utilization"
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"datacenters\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"meters\": [\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"DB\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"S3TO1100\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"IP\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"DBPGS1000\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"meters\": [\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"DSAAS\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"S03000\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"resourceId\": \"<uuid>\",\n          \"serverId\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"type\": \"BMC\",\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\",\n          \"exists\": \"<boolean>\",\n          \"meterId\": \"DBPGS1000\",\n          \"meterDesc\": \"<string>\",\n          \"region\": \"<string>\",\n          \"quantity\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"contractId\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"reference\": \"<string>\"\n  }\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "The contract not found or doesn't belong to the user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Wrong period format specified",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:contract/utilization?dc=<uuid>&resource=<uuid>&type=DSAAS",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":contract",
+												"utilization"
+											],
+											"query": [
+												{
+													"key": "dc",
+													"value": "<uuid>",
+													"description": "Filter out by particular VDC UUID (or \"Bucket\" UUID for non-vdc related resources)"
+												},
+												{
+													"key": "resource",
+													"value": "<uuid>",
+													"description": "Filter out by particular resource UUID (e.g.VM UUID, NIC UUID)"
+												},
+												{
+													"key": "type",
+													"value": "DSAAS",
+													"description": "Filter out by particular type of items"
+												}
+											],
+											"variable": [
+												{
+													"key": "contract"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "intern",
+			"item": [
+				{
+					"name": "ping",
+					"item": [
+						{
+							"name": "internal Ping Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/intern/ping",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"intern",
+										"ping"
+									]
+								},
+								"description": "Check the API health"
+							},
+							"response": [
+								{
+									"name": "returns a value >= -1 when API is available",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/intern/ping",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"intern",
+												"ping"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "invoices",
+			"item": [
+				{
+					"name": "{period}",
+					"item": [
+						{
+							"name": "invoices Find By Period",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{basicAuthUsername}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{basicAuthPassword}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"invoices",
+										":period"
+									],
+									"query": [
+										{
+											"key": "contractid",
+											"value": "<string>",
+											"description": "Filter out the exact contractID"
+										},
+										{
+											"key": "dateformat",
+											"value": "<string>",
+											"description": "Vendor date format"
+										}
+									],
+									"variable": [
+										{
+											"key": "period",
+											"value": "5365-59",
+											"description": "(Required) Period of interest in format YYYY-MM"
+										}
+									]
+								},
+								"description": "Returns invoices of billing profiles of a use."
+							},
+							"response": [
+								{
+									"name": "Result data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invoices",
+												":period"
+											],
+											"query": [
+												{
+													"key": "contractid",
+													"value": "<string>",
+													"description": "Filter out the exact contractID"
+												},
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "period"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"metadata\": {\n      \"invoiceId\": \"<string>\",\n      \"contractId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"postingPeriod\": \"<string>\",\n      \"finallyPosted\": \"<boolean>\",\n      \"reference\": \"<string>\",\n      \"resellerRef\": \"<string>\"\n    },\n    \"datacenters\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"location\": \"<string>\",\n        \"productGroup\": \"<string>\",\n        \"meters\": [\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          },\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          }\n        ],\n        \"rebate\": {\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"location\": \"<string>\",\n        \"productGroup\": \"<string>\",\n        \"meters\": [\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          },\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          }\n        ],\n        \"rebate\": {\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"total\": {\n      \"quantity\": \"<float>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"invoiceId\": \"<string>\",\n      \"contractId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"postingPeriod\": \"<string>\",\n      \"finallyPosted\": \"<boolean>\",\n      \"reference\": \"<string>\",\n      \"resellerRef\": \"<string>\"\n    },\n    \"datacenters\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"location\": \"<string>\",\n        \"productGroup\": \"<string>\",\n        \"meters\": [\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          },\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          }\n        ],\n        \"rebate\": {\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"location\": \"<string>\",\n        \"productGroup\": \"<string>\",\n        \"meters\": [\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          },\n          {\n            \"meterId\": \"<string>\",\n            \"meterDesc\": \"<string>\",\n            \"productGroup\": \"<string>\",\n            \"quantity\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"rate\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            },\n            \"amount\": {\n              \"quantity\": \"<float>\",\n              \"unit\": \"<string>\"\n            }\n          }\n        ],\n        \"rebate\": {\n          \"amount\": {\n            \"quantity\": \"<float>\",\n            \"unit\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"total\": {\n      \"quantity\": \"<float>\",\n      \"unit\": \"<string>\"\n    }\n  }\n]"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invoices",
+												":period"
+											],
+											"query": [
+												{
+													"key": "contractid",
+													"value": "<string>",
+													"description": "Filter out the exact contractID"
+												},
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "period"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invoices",
+												":period"
+											],
+											"query": [
+												{
+													"key": "contractid",
+													"value": "<string>",
+													"description": "Filter out the exact contractID"
+												},
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "period"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Payload too large",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invoices",
+												":period"
+											],
+											"query": [
+												{
+													"key": "contractid",
+													"value": "<string>",
+													"description": "Filter out the exact contractID"
+												},
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "period"
+												}
+											]
+										}
+									},
+									"status": "Request Entity Too Large",
+									"code": 413,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Wrong period format specified",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invoices",
+												":period"
+											],
+											"query": [
+												{
+													"key": "contractid",
+													"value": "<string>",
+													"description": "Filter out the exact contractID"
+												},
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "period"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Unexpected internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Basic <credentials>",
+												"description": "Added as a part of security scheme: basic"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invoices/:period?contractid=<string>&dateformat=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invoices",
+												":period"
+											],
+											"query": [
+												{
+													"key": "contractid",
+													"value": "<string>",
+													"description": "Filter out the exact contractID"
+												},
+												{
+													"key": "dateformat",
+													"value": "<string>",
+													"description": "Vendor date format"
+												}
+											],
+											"variable": [
+												{
+													"key": "period"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "profile Get",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{basicAuthUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{basicAuthPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profile"
+							]
+						},
+						"description": "Retrieves the billing profile(s) of the authenticated account"
+					},
+					"response": [
+						{
+							"name": "Result data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"companies\": [\n    {\n      \"contractId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"reference\": \"<string>\"\n    },\n    {\n      \"contractId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"reference\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"name": "Unexpected internal server error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic <credentials>",
+										"description": "Added as a part of security scheme: basic"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com/billing"
+		}
+	]
+}

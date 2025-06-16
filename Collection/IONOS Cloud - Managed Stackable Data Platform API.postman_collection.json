@@ -1,0 +1,3910 @@
+{
+	"info": {
+		"_postman_id": "1f49d97d-05e8-4430-b476-6afa9608a7db",
+		"name": "IONOS Cloud - Managed Stackable Data Platform API",
+		"description": "*Managed Stackable Data Platform* by IONOS Cloud provides a preconfigured Kubernetes cluster\nwith pre-installed and managed Stackable operators. After the provision of these Stackable operators,\nthe customer can interact with them directly\nand build his desired application on top of the Stackable platform.\n\nThe Managed Stackable Data Platform by IONOS Cloud can be configured through the IONOS Cloud API\nin addition or as an alternative to the *Data Center Designer* (DCD).\n\n## Getting Started\n\nTo get your DataPlatformCluster up and running, the following steps needs to be performed.\n\n### IONOS Cloud Account\n\nThe first step is the creation of a IONOS Cloud account if not already existing.\n\nTo register a **new account**, visit [cloud.ionos.com](https://cloud.ionos.com/compute/signup).\n\n### Virtual Data Center (VDC)\n\nThe Managed Stackable Data Platform needs a virtual data center (VDC) hosting the cluster.\nThis could either be a VDC that already exists, especially if you want to connect the managed data platform\nto other services already running within your VDC.\nOtherwise, if you want to place the Managed Stackable Data Platform in a new VDC or you have not yet created a VDC,\nyou need to do so.\n\nA new VDC can be created via the IONOS Cloud API, the IONOS Cloud CLI (`ionosctl`), or the DCD Web interface.\nFor more information, see the\n[official documentation](https://docs.ionos.com/cloud/getting-started/basic-tutorials/data-center-basics).\n\n### Get a authentication token\n\nTo interact with this API a user specific authentication token is needed.\nThis token can be generated using the IONOS Cloud CLI the following way:\n\n```\nionosctl token generate\n```\n\nFor more information, [see](https://docs.ionos.com/cli-ionosctl/subcommands/authentication/token/generate).\n\n### Create a new DataPlatformCluster\n\nBefore using the Managed Stackable Data Platform, a new DataPlatformCluster must be created.\n\nTo create a cluster, use the [Create DataPlatformCluster](paths./clusters.post) API endpoint.\n\nThe provisioning of the cluster might take some time. To check the current provisioning status,\nyou can query the cluster by calling the [Get Endpoint](#/DataPlatformCluster/getCluster) with the cluster ID\nthat was presented to you in the response of the create cluster call.\n\n### Add a DataPlatformNodePool\n\nTo deploy and run a Stackable service, the cluster must have enough computational resources. The node pool\nthat is provisioned along with the cluster is reserved for the Stackable operators.\nYou may create further node pools with resources tailored to your use case.\n\nTo create a new node pool use the [Create DataPlatformNodepool](paths./clusters/{clusterId}/nodepools.post)\nendpoint.\n\n### Receive Kubeconfig\n\nOnce the DataPlatformCluster is created, the kubeconfig can be accessed by the API.\nThe kubeconfig allows the interaction with the provided cluster as with any regular Kubernetes cluster.\n\nTo protect the deployment of the Stackable distribution, the kubeconfig does not provide you with administration\nrights for the cluster. What that means is that your actions and deployments are limited to the **default** namespace.\n\nIf you still want to group your deployments, you have the option to create subnamespaces within the default namespace.\nThis is made possible by the concept of *hierarchical namespaces* (HNS). You can find more details\n[here](https://kubernetes.io/blog/2020/08/14/introducing-hierarchical-namespaces/).\n\nThe kubeconfig can be downloaded with the [Get Kubeconfig](paths./clusters/{clusterId}/kubeconfig.get) endpoint\nusing the cluster ID of the created DataPlatformCluster.\n\n### Create Stackable Services\n\nYou can leverage the `kubeconfig.json` file to access the Managed Stackable Data Platform cluster and manage the\ndeployment of [Stackable data apps](https://stackable.tech/en/platform/).\n\nWith the Stackable operators, you can deploy the\n[data apps](https://docs.stackable.tech/home/stable/getting_started.html#_deploying_stackable_services)\nyou want in your Data Platform cluster.\n\n## Authorization\n\nAll endpoints are secured, so only an authenticated user can access them.\nAs Authentication mechanism the default IONOS Cloud authentication mechanism\nis used. A detailed description can be found [here](https://api.ionos.com/docs/authentication/).\n\n### Basic Auth\n\nThe basic auth scheme uses the IONOS Cloud user credentials in form of a *Basic Authentication* header\naccordingly to [RFC 7617](https://datatracker.ietf.org/doc/html/rfc7617).\n\n### API Key as Bearer Token\n\nThe Bearer auth token used at the API Gateway is a user-related token created with the IONOS Cloud CLI\n(For details, see the\n[documentation](https://docs.ionos.com/cli-ionosctl/subcommands/authentication/token/generate)).\nFor every request to be authenticated, the token is passed as *Authorization Bearer* header along with the request.\n\n### Permissions and Access Roles\n\nCurrently, an administrator can see and manipulate all resources in a contract.\nFurthermore, users with the group privilege `Manage Dataplatform` can access the API.\n\n## Components\n\nThe Managed Stackable Data Platform by IONOS Cloud consists of two components.\nThe concept of a DataPlatformClusters and the backing DataPlatformNodePools the cluster is build on.\n\n### DataPlatformCluster\n\nA DataPlatformCluster is the virtual instance of the customer services and operations running the managed services\nlike Stackable operators.\nA DataPlatformCluster is a Kubernetes Cluster in the VDC of the customer.\nTherefore, it's possible to integrate the cluster with other resources as VLANs\ne.g. to shape the data center in the customer's need\nand integrate the cluster within the topology the customer wants to build.\n\nIn addition to the Kubernetes cluster, a small node pool is provided\nwhich is exclusively used to run the Stackable operators.\n\n### DataPlatformNodePool\n\nA DataPlatformNodePool represents the physical machines a DataPlatformCluster is build on top.\nAll nodes within a node pool are identical in setup.\nThe nodes of a pool are provisioned into virtual data centers at a location of your choice\nand you can freely specify the properties of all the nodes at once before creation.\n\nNodes in node pools provisioned by the Managed Stackable Data Platform Cloud API are read-only in the customer's VDC\nand can only be modified or deleted via the API.\n\n## References\n\n\nContact Support:\n Name: IONOS Cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5503703"
+	},
+	"item": [
+		{
+			"name": "clusters",
+			"item": [
+				{
+					"name": "{clusterId}",
+					"item": [
+						{
+							"name": "kubeconfig",
+							"item": [
+								{
+									"name": "Read the Kubeconfig",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"kubeconfig"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "7aa23f39a3353452-d842-254e9c962c01",
+													"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+												}
+											]
+										},
+										"description": "Retrieves the Kubernetes configuration file (*kubeconfig*)\nfor the specified DataPlatformCluster by its cluster ID.\n\nThe ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n"
+									},
+									"response": [
+										{
+											"name": "Successful operation.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"kubeconfig"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"kubeconfig"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"kubeconfig"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"kubeconfig"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"kubeconfig"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/kubeconfig",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"kubeconfig"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "nodepools",
+							"item": [
+								{
+									"name": "{nodepoolId}",
+									"item": [
+										{
+											"name": "Retrieve a DataPlatformNodePool",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools",
+														":nodepoolId"
+													],
+													"variable": [
+														{
+															"key": "clusterId",
+															"value": "7aa23f39a3353452-d842-254e9c962c01",
+															"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+														},
+														{
+															"key": "nodepoolId",
+															"value": "7aa23f39a3353452-d842-254e9c962c01",
+															"description": "(Required) The unique ID of the node pool. Must conform to the UUID format.\n"
+														}
+													]
+												},
+												"description": "Retrieve a node pool belonging to a Kubernetes cluster running Stackable by using its ID.\n\nThe cluster ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n\nThe node pool ID can be found in the response when a node pool is created\nor when you GET a list of all node pools assigned to a specific DataPlatformCluster.\n"
+											},
+											"response": [
+												{
+													"name": "The DataPlatformCluster node pool as stored after the create or update operation was applied\nor the DataPlatformCluster node pool properties before the delete operation was performed.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "ETag",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"c59b2a2a3755-a4393850-be7256e95e1b\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"8\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"slOuB\",\n      \"\"\n    ],\n    \"state\": \"DEPLOYING\"\n  },\n  \"properties\": {\n    \"name\": \"yae\",\n    \"dataPlatformVersion\": \"e9Yzq\",\n    \"datacenterId\": \"2bd447d9274a-0b6eff7293ce6ae7f2a3\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:22:58\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+												},
+												{
+													"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Partially Modify a DataPlatformNodePool",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools",
+														":nodepoolId"
+													],
+													"variable": [
+														{
+															"key": "clusterId",
+															"value": "7aa23f39a3353452-d842-254e9c962c01",
+															"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+														},
+														{
+															"key": "nodepoolId",
+															"value": "7aa23f39a3353452-d842-254e9c962c01",
+															"description": "(Required) The unique ID of the node pool. Must conform to the UUID format.\n"
+														}
+													]
+												},
+												"description": "Modifies the specified node pool of a DataPlatformCluster.\nUpdate selected attributes of a node pool belonging to a Kubernetes cluster running Stackable.\n\nThe fields in the request body are applied to the cluster.\nNote that the application to the node pool itself is performed asynchronously.\nYou can check the sync state by querying the node pool with the GET method.\n\nThe cluster ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n\nThe node pool ID can be found in the response when a node pool is created\nor when you GET a list of all node pools assigned to a specific DataPlatformCluster.\n"
+											},
+											"response": [
+												{
+													"name": "The DataPlatformCluster node pool as stored after the create or update operation was applied\nor the DataPlatformCluster node pool properties before the delete operation was performed.\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "ETag",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"c59b2a2a3755-a4393850-be7256e95e1b\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"8\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"slOuB\",\n      \"\"\n    ],\n    \"state\": \"DEPLOYING\"\n  },\n  \"properties\": {\n    \"name\": \"yae\",\n    \"dataPlatformVersion\": \"e9Yzq\",\n    \"datacenterId\": \"2bd447d9274a-0b6eff7293ce6ae7f2a3\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:22:58\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+												},
+												{
+													"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"properties\": {\n    \"nodeCount\": \"<integer>\",\n    \"maintenanceWindow\": {\n      \"time\": \"04:10:35\",\n      \"dayOfTheWeek\": \"Tuesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {}\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "Remove a DataPlatformNodePool from a DataPlatformCluster",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools",
+														":nodepoolId"
+													],
+													"variable": [
+														{
+															"key": "clusterId",
+															"value": "7aa23f39a3353452-d842-254e9c962c01",
+															"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+														},
+														{
+															"key": "nodepoolId",
+															"value": "7aa23f39a3353452-d842-254e9c962c01",
+															"description": "(Required) The unique ID of the node pool. Must conform to the UUID format.\n"
+														}
+													]
+												},
+												"description": "Removes the specified node pool from the specified DataPlatformCluster and deletes the node pool afterwards.\n\nThe cluster ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n\nThe node pool ID can be found in the response when a node pool is created\nor when you GET a list of all node pools assigned to a specific DataPlatformCluster.\n"
+											},
+											"response": [
+												{
+													"name": "The DataPlatformCluster node pool as stored after the create or update operation was applied\nor the DataPlatformCluster node pool properties before the delete operation was performed.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "ETag",
+															"value": "",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"c59b2a2a3755-a4393850-be7256e95e1b\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"8\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"slOuB\",\n      \"\"\n    ],\n    \"state\": \"DEPLOYING\"\n  },\n  \"properties\": {\n    \"name\": \"yae\",\n    \"dataPlatformVersion\": \"e9Yzq\",\n    \"datacenterId\": \"2bd447d9274a-0b6eff7293ce6ae7f2a3\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:22:58\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+												},
+												{
+													"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/clusters/:clusterId/nodepools/:nodepoolId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"clusters",
+																":clusterId",
+																"nodepools",
+																":nodepoolId"
+															],
+															"variable": [
+																{
+																	"key": "clusterId"
+																},
+																{
+																	"key": "nodepoolId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "List the DataPlatformNodePools of a DataPlatformCluster",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"nodepools"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "7aa23f39a3353452-d842-254e9c962c01",
+													"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+												}
+											]
+										},
+										"description": "List all node pools assigned to the specified DataPlatformCluster by its ID.\n\nThe cluster ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n"
+									},
+									"response": [
+										{
+											"name": "List of all node pools assigned to a specific DataPlatformCluster.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"items\": [\n    {\n      \"id\": \"53d0b2984546-7d7a-2bd878880126f016\",\n      \"metadata\": {\n        \"ETag\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdInContractNumber\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"currentDataPlatformVersion\": \"YzGjH8kCp\",\n        \"currentDataPlatformRevision\": \"<long>\",\n        \"availableUpgradeVersions\": [\n          \"\",\n          \"9_CYq5lsY\"\n        ],\n        \"state\": \"BUSY\"\n      },\n      \"properties\": {\n        \"name\": \"Pl\",\n        \"dataPlatformVersion\": \"khNFS\",\n        \"datacenterId\": \"aba2f50b2080-b8ce-ee81-8c931c37823d\",\n        \"nodeCount\": \"<integer>\",\n        \"cpuFamily\": \"AUTO\",\n        \"coresCount\": 4,\n        \"ramSize\": 4096,\n        \"availabilityZone\": \"AUTO\",\n        \"storageType\": \"SSD\",\n        \"storageSize\": 20,\n        \"maintenanceWindow\": {\n          \"time\": \"05:48:35\",\n          \"dayOfTheWeek\": \"Friday\"\n        },\n        \"labels\": {},\n        \"annotations\": {},\n        \"autoScaling\": {\n          \"minNodeCount\": \"<integer>\",\n          \"maxNodeCount\": \"<integer>\"\n        }\n      },\n      \"type\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"44afd50b-aa10925f35ecf78734fd6613\",\n      \"metadata\": {\n        \"ETag\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdInContractNumber\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"currentDataPlatformVersion\": \"XzS0C\",\n        \"currentDataPlatformRevision\": \"<long>\",\n        \"availableUpgradeVersions\": [\n          \"Jo17h\",\n          \"n\"\n        ],\n        \"state\": \"DESTROYING\"\n      },\n      \"properties\": {\n        \"name\": \"tA\",\n        \"dataPlatformVersion\": \"iOr\",\n        \"datacenterId\": \"c4dfa89e-894a1ac6d530c5d03a65d499\",\n        \"nodeCount\": \"<integer>\",\n        \"cpuFamily\": \"AUTO\",\n        \"coresCount\": 4,\n        \"ramSize\": 4096,\n        \"availabilityZone\": \"AUTO\",\n        \"storageType\": \"SSD\",\n        \"storageSize\": 20,\n        \"maintenanceWindow\": {\n          \"time\": \"08:22:38\",\n          \"dayOfTheWeek\": \"Friday\"\n        },\n        \"labels\": {},\n        \"annotations\": {},\n        \"autoScaling\": {\n          \"minNodeCount\": \"<integer>\",\n          \"maxNodeCount\": \"<integer>\"\n        }\n      },\n      \"type\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+										},
+										{
+											"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Create a DataPlatformNodePool for a distinct DataPlatformCluster",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId",
+												"nodepools"
+											],
+											"variable": [
+												{
+													"key": "clusterId",
+													"value": "7aa23f39a3353452-d842-254e9c962c01",
+													"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+												}
+											]
+										},
+										"description": "Creates a new node pool and assigns the node pool resources exclusively to the defined managed cluster.\n\nThe cluster ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n"
+									},
+									"response": [
+										{
+											"name": "The DataPlatformCluster node pool as stored after the create or update operation was applied\nor the DataPlatformCluster node pool properties before the delete operation was performed.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "ETag",
+													"value": "",
+													"description": {
+														"content": "",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"c59b2a2a3755-a4393850-be7256e95e1b\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"8\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"slOuB\",\n      \"\"\n    ],\n    \"state\": \"DEPLOYING\"\n  },\n  \"properties\": {\n    \"name\": \"yae\",\n    \"dataPlatformVersion\": \"e9Yzq\",\n    \"datacenterId\": \"2bd447d9274a-0b6eff7293ce6ae7f2a3\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:22:58\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+										},
+										{
+											"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"properties\": {\n    \"name\": \"EU08egj\",\n    \"nodeCount\": \"<integer>\",\n    \"cpuFamily\": \"AUTO\",\n    \"coresCount\": 4,\n    \"ramSize\": 4096,\n    \"availabilityZone\": \"AUTO\",\n    \"storageType\": \"SSD\",\n    \"storageSize\": 20,\n    \"maintenanceWindow\": {\n      \"time\": \"20:54:58\",\n      \"dayOfTheWeek\": \"Wednesday\"\n    },\n    \"labels\": {},\n    \"annotations\": {},\n    \"autoScaling\": {\n      \"minNodeCount\": \"<integer>\",\n      \"maxNodeCount\": \"<integer>\"\n    }\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/clusters/:clusterId/nodepools",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"clusters",
+														":clusterId",
+														"nodepools"
+													],
+													"variable": [
+														{
+															"key": "clusterId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Retrieve a DataPlatformCluster",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "7aa23f39a3353452-d842-254e9c962c01",
+											"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+										}
+									]
+								},
+								"description": "Retrieve the specified DataPlatformCluster by its distinct ID.\n\nThe cluster ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n"
+							},
+							"response": [
+								{
+									"name": "The DataPlatformCluster as stored after the create or update operation was applied\nor the DataPlatformCluster properties before the delete operation was performed.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "ETag",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"f27128b830304afb-32224d2cda26b47c\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"xmKIbQI.\",\n      \"\"\n    ],\n    \"state\": \"DESTROYING\"\n  },\n  \"properties\": {\n    \"name\": \"3WXscSI8ZKh\",\n    \"dataPlatformVersion\": \"cTfQYjQhQM\",\n    \"datacenterId\": \"281279a6-5ac97cccc3b0-6d4b2e31f232\",\n    \"maintenanceWindow\": {\n      \"time\": \"20:28:26\",\n      \"dayOfTheWeek\": \"Friday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+								},
+								{
+									"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Partially Modify a DataPlatformCluster",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "7aa23f39a3353452-d842-254e9c962c01",
+											"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+										}
+									]
+								},
+								"description": "Modifies the specified DataPlatformCluster by its distinct cluster ID.\nThe fields in the request body are applied to the cluster.\nNote that the application to the cluster itself is performed asynchronously.\nYou can check the sync state by querying the cluster with the GET method.\n\nThe ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n"
+							},
+							"response": [
+								{
+									"name": "The DataPlatformCluster as stored after the create or update operation was applied\nor the DataPlatformCluster properties before the delete operation was performed.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "ETag",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"f27128b830304afb-32224d2cda26b47c\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"xmKIbQI.\",\n      \"\"\n    ],\n    \"state\": \"DESTROYING\"\n  },\n  \"properties\": {\n    \"name\": \"3WXscSI8ZKh\",\n    \"dataPlatformVersion\": \"cTfQYjQhQM\",\n    \"datacenterId\": \"281279a6-5ac97cccc3b0-6d4b2e31f232\",\n    \"maintenanceWindow\": {\n      \"time\": \"20:28:26\",\n      \"dayOfTheWeek\": \"Friday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+								},
+								{
+									"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"properties\": {\n    \"name\": \"5oo80wn\",\n    \"dataPlatformVersion\": \"qnptxYX__\",\n    \"maintenanceWindow\": {\n      \"time\": \"22:24:55\",\n      \"dayOfTheWeek\": \"Sunday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a DataPlatformCluster",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters/:clusterId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters",
+										":clusterId"
+									],
+									"variable": [
+										{
+											"key": "clusterId",
+											"value": "7aa23f39a3353452-d842-254e9c962c01",
+											"description": "(Required) The unique ID of the cluster. Must conform to the UUID format.\n"
+										}
+									]
+								},
+								"description": "Deletes the specified DataPlatformCluster by its distinct cluster ID.\n\nThe ID can be found in the response when a cluster is created\nor when you GET a list of all DataPlatformClusters.\n"
+							},
+							"response": [
+								{
+									"name": "The DataPlatformCluster as stored after the create or update operation was applied\nor the DataPlatformCluster properties before the delete operation was performed.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "ETag",
+											"value": "",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"f27128b830304afb-32224d2cda26b47c\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"xmKIbQI.\",\n      \"\"\n    ],\n    \"state\": \"DESTROYING\"\n  },\n  \"properties\": {\n    \"name\": \"3WXscSI8ZKh\",\n    \"dataPlatformVersion\": \"cTfQYjQhQM\",\n    \"datacenterId\": \"281279a6-5ac97cccc3b0-6d4b2e31f232\",\n    \"maintenanceWindow\": {\n      \"time\": \"20:28:26\",\n      \"dayOfTheWeek\": \"Friday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+								},
+								{
+									"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Not Found\n\nThe resource that was requested could not be found.\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/clusters/:clusterId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"clusters",
+												":clusterId"
+											],
+											"variable": [
+												{
+													"key": "clusterId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List the DataPlatformClusters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/clusters?name=r.l2Ks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clusters"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "r.l2Ks",
+									"description": "Response filter to list only the clusters which include the specified name.\nThe value is case insensitive and matched on the `name` property of the cluster.\nThe input is limited to 63 characters with alphanumeric characters (`[a-z0-9A-Z]`),\ndashes (`-`), underscores (`_`), and dots (`.`) allowed.\n"
+								}
+							]
+						},
+						"description": "List all available DataPlatformClusters that can be accessed by the user.\n\nThe user might filter the request for the name of the DataPlatformCluster.\nIf no cluster is available matching the request, the list will be empty.\n"
+					},
+					"response": [
+						{
+							"name": "List of DataPlatformClusters the user can access\nand that fits the filter if the filter parameter was used.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?name=r.l2Ks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "r.l2Ks",
+											"description": "Response filter to list only the clusters which include the specified name.\nThe value is case insensitive and matched on the `name` property of the cluster.\nThe input is limited to 63 characters with alphanumeric characters (`[a-z0-9A-Z]`),\ndashes (`-`), underscores (`_`), and dots (`.`) allowed.\n"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"items\": [\n    {\n      \"id\": \"4a4014d0-ac1d-4ee1-b41b-f3629d6a440a\",\n      \"metadata\": {\n        \"ETag\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdInContractNumber\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"currentDataPlatformVersion\": \"em97UrL\",\n        \"currentDataPlatformRevision\": \"<long>\",\n        \"availableUpgradeVersions\": [\n          \"O\",\n          \"yF_7my\"\n        ],\n        \"state\": \"UPDATING\"\n      },\n      \"properties\": {\n        \"name\": \"yJPk\",\n        \"dataPlatformVersion\": \".dtHNH4J\",\n        \"datacenterId\": \"b1a0272f6d40-0999-1855771a43a4c192\",\n        \"maintenanceWindow\": {\n          \"time\": \"12:03:51\",\n          \"dayOfTheWeek\": \"Monday\"\n        },\n        \"lans\": [\n          {\n            \"lanId\": \"<string>\",\n            \"dhcp\": \"<boolean>\",\n            \"routes\": [\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              },\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"lanId\": \"<string>\",\n            \"dhcp\": \"<boolean>\",\n            \"routes\": [\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              },\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"type\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"2df1da44-d0ad43ef3971e5a84c79917b\",\n      \"metadata\": {\n        \"ETag\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"createdByUserId\": \"<string>\",\n        \"createdInContractNumber\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByUserId\": \"<string>\",\n        \"currentDataPlatformVersion\": \"X2\",\n        \"currentDataPlatformRevision\": \"<long>\",\n        \"availableUpgradeVersions\": [\n          \"1uKpxL\",\n          \"3\"\n        ],\n        \"state\": \"AVAILABLE\"\n      },\n      \"properties\": {\n        \"name\": \"HfnVJNG\",\n        \"dataPlatformVersion\": \"NYAU_J8\",\n        \"datacenterId\": \"a4c0cf6aed2aa6f732f44d6bb6bff95c\",\n        \"maintenanceWindow\": {\n          \"time\": \"22:40:02\",\n          \"dayOfTheWeek\": \"Saturday\"\n        },\n        \"lans\": [\n          {\n            \"lanId\": \"<string>\",\n            \"dhcp\": \"<boolean>\",\n            \"routes\": [\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              },\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"lanId\": \"<string>\",\n            \"dhcp\": \"<boolean>\",\n            \"routes\": [\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              },\n              {\n                \"network\": \"<string>\",\n                \"gateway\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"type\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+						},
+						{
+							"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?name=r.l2Ks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "r.l2Ks",
+											"description": "Response filter to list only the clusters which include the specified name.\nThe value is case insensitive and matched on the `name` property of the cluster.\nThe input is limited to 63 characters with alphanumeric characters (`[a-z0-9A-Z]`),\ndashes (`-`), underscores (`_`), and dots (`.`) allowed.\n"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?name=r.l2Ks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "r.l2Ks",
+											"description": "Response filter to list only the clusters which include the specified name.\nThe value is case insensitive and matched on the `name` property of the cluster.\nThe input is limited to 63 characters with alphanumeric characters (`[a-z0-9A-Z]`),\ndashes (`-`), underscores (`_`), and dots (`.`) allowed.\n"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?name=r.l2Ks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "r.l2Ks",
+											"description": "Response filter to list only the clusters which include the specified name.\nThe value is case insensitive and matched on the `name` property of the cluster.\nThe input is limited to 63 characters with alphanumeric characters (`[a-z0-9A-Z]`),\ndashes (`-`), underscores (`_`), and dots (`.`) allowed.\n"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/clusters?name=r.l2Ks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "r.l2Ks",
+											"description": "Response filter to list only the clusters which include the specified name.\nThe value is case insensitive and matched on the `name` property of the cluster.\nThe input is limited to 63 characters with alphanumeric characters (`[a-z0-9A-Z]`),\ndashes (`-`), underscores (`_`), and dots (`.`) allowed.\n"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a DataPlatformCluster",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"properties\": {\n    \"name\": \"eegtVG_j\",\n    \"datacenterId\": \"1cfd1b0e-19891a8b-f737-5953afb38eff\",\n    \"dataPlatformVersion\": \"T_ONjl3kB\",\n    \"maintenanceWindow\": {\n      \"time\": \"07:57:40\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clusters",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clusters"
+							]
+						},
+						"description": "Creates a new DataPlatformCluster.\n\nThe cluster will be provisioned in the data center matching the provided `DatacenterId`.\nTherefore the data center must be created upfront and must be editable by the user issuing the request.\n\nTo create a new virtual data center (VDC),\n[see](https://api.ionos.com/docs/cloud/v6/#tag/Data-centers/operation/datacentersPost).\n"
+					},
+					"response": [
+						{
+							"name": "The DataPlatformCluster as stored after the create or update operation was applied\nor the DataPlatformCluster properties before the delete operation was performed.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"eegtVG_j\",\n    \"datacenterId\": \"1cfd1b0e-19891a8b-f737-5953afb38eff\",\n    \"dataPlatformVersion\": \"T_ONjl3kB\",\n    \"maintenanceWindow\": {\n      \"time\": \"07:57:40\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "ETag",
+									"value": "",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"f27128b830304afb-32224d2cda26b47c\",\n  \"metadata\": {\n    \"ETag\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdByUserId\": \"<string>\",\n    \"createdInContractNumber\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByUserId\": \"<string>\",\n    \"currentDataPlatformVersion\": \"\",\n    \"currentDataPlatformRevision\": \"<long>\",\n    \"availableUpgradeVersions\": [\n      \"xmKIbQI.\",\n      \"\"\n    ],\n    \"state\": \"DESTROYING\"\n  },\n  \"properties\": {\n    \"name\": \"3WXscSI8ZKh\",\n    \"dataPlatformVersion\": \"cTfQYjQhQM\",\n    \"datacenterId\": \"281279a6-5ac97cccc3b0-6d4b2e31f232\",\n    \"maintenanceWindow\": {\n      \"time\": \"20:28:26\",\n      \"dayOfTheWeek\": \"Friday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+						},
+						{
+							"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"eegtVG_j\",\n    \"datacenterId\": \"1cfd1b0e-19891a8b-f737-5953afb38eff\",\n    \"dataPlatformVersion\": \"T_ONjl3kB\",\n    \"maintenanceWindow\": {\n      \"time\": \"07:57:40\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"eegtVG_j\",\n    \"datacenterId\": \"1cfd1b0e-19891a8b-f737-5953afb38eff\",\n    \"dataPlatformVersion\": \"T_ONjl3kB\",\n    \"maintenanceWindow\": {\n      \"time\": \"07:57:40\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"eegtVG_j\",\n    \"datacenterId\": \"1cfd1b0e-19891a8b-f737-5953afb38eff\",\n    \"dataPlatformVersion\": \"T_ONjl3kB\",\n    \"maintenanceWindow\": {\n      \"time\": \"07:57:40\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"properties\": {\n    \"name\": \"eegtVG_j\",\n    \"datacenterId\": \"1cfd1b0e-19891a8b-f737-5953afb38eff\",\n    \"dataPlatformVersion\": \"T_ONjl3kB\",\n    \"maintenanceWindow\": {\n      \"time\": \"07:57:40\",\n      \"dayOfTheWeek\": \"Monday\"\n    },\n    \"lans\": [\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"lanId\": \"<string>\",\n        \"dhcp\": \"<boolean>\",\n        \"routes\": [\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"gateway\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clusters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clusters"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "versions",
+			"item": [
+				{
+					"name": "Managed Stackable Data Platform API Versions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/versions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"versions"
+							]
+						},
+						"description": "Retrieves all available versions of the Managed Stackable Data Platform."
+					},
+					"response": [
+						{
+							"name": "List of all supported platform versions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"items\": [\n    \"q\",\n    \"hpRxq\"\n  ],\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"href\": \"<string>\"\n}"
+						},
+						{
+							"name": "### Bad Request\n\nThe request send to the API was malformed.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Unauthorized\n\nThe request is missing authorization information or the authorization information provided are expired.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Not Allowed\n\nThe user issuing the request does not have the needed permissions.\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "### Internal Server Error\n\nAn internal error occurred. We apologize for the inconvenience!\n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"versions"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"httpStatus\": \"<integer>\",\n  \"messages\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.ionos.com/dataplatform"
+		}
+	]
+}
